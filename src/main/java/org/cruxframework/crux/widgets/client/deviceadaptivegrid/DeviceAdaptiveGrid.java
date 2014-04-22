@@ -494,7 +494,7 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 
 					if (!(widget instanceof Button))
 					{
-						throw new RuntimeException("Action columns only supports org.cruxframework.crux.smartfaces.client.button.Button");
+						throw new RuntimeException("Action columns only supports org.cruxframework.crux.widgets.client.button.Button");
 					}
 
 					Button button = (Button) widget;
@@ -508,12 +508,14 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 		{
 			ColumnDefinitions smallColumnDefinitions = this.columnDefinitions.getSmallColumnDefinitions();
 
-			smallColumnDefinitions.add("detail", new WidgetColumnDefinition("", "5%", new WidgetColumnCreator()
+			smallColumnDefinitions.add("detail", new WidgetColumnDefinition("", "24px", new WidgetColumnCreator()
 			{
 				public Widget createWidgetForColumn()
 				{
 					final Button detailButton =  new Button();
-					detailButton.setStyleName("detailImage");
+					detailButton.setHeight("24px");
+					detailButton.setWidth("24px");
+					detailButton.setStylePrimaryName("detail-icon");
 
 					detailButton.addSelectHandler(new SelectHandler()
 					{
@@ -574,6 +576,8 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 
 		    CloseButtonCaption ref = (CloseButtonCaption) this.getCaption();
 		    PushButton closeButton = ref.getCloseButton();
+		    closeButton.setHeight("24px");
+		    closeButton.setWidth("24px");
 		    closeButton.addClickHandler(new ClickHandler()
 			{
 				@Override
@@ -641,6 +645,7 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 				vPanel.add(button);
 			}
 
+			vPanel.setHeight("100%");
 			setWidget(vPanel);
 		}
 
@@ -702,7 +707,7 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 	    super();
 	    setWidth( "100%" );
 	    setStyleName("caption");
-	    closeDialog = new PushButton("X");
+	    closeDialog = new PushButton("  X  ");
 	    closeDialog.setStyleName("close");
 	    text = new InlineLabel(label);
 	    add(text);
