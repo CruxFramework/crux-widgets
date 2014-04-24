@@ -17,6 +17,7 @@ import org.cruxframework.crux.core.rebind.screen.widget.creator.align.Horizontal
 import org.cruxframework.crux.core.rebind.screen.widget.creator.align.VerticalAlignment;
 import org.cruxframework.crux.core.rebind.screen.widget.creator.children.AnyWidgetChildProcessor;
 import org.cruxframework.crux.core.rebind.screen.widget.creator.children.ChoiceChildProcessor;
+import org.cruxframework.crux.core.rebind.screen.widget.creator.children.SequenceChildProcessor;
 import org.cruxframework.crux.core.rebind.screen.widget.creator.children.WidgetChildProcessor;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.DeclarativeFactory;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttribute;
@@ -49,7 +50,6 @@ import com.google.gwt.core.ext.typeinfo.JType;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 
-//CHECKSTYLE:OFF
 @DeclarativeFactory(id="adaptiveGrid", library="widgets", targetWidget=DeviceAdaptiveGrid.class)
 @TagAttributesDeclaration({
 	@TagAttributeDeclaration(value="pageSize", type=Integer.class, defaultValue="8"),
@@ -71,7 +71,8 @@ import com.google.gwt.user.client.ui.HasVerticalAlignment;
 })
 
 @TagChildren({
-@TagChild(value=DeviceAdaptiveGridFactory.DeviceAdaptiveColumnProcessor.class, autoProcess=false)})
+	@TagChild(value=DeviceAdaptiveGridFactory.DeviceAdaptiveColumnProcessor.class, autoProcess=false)
+})
 public class DeviceAdaptiveGridFactory extends WidgetCreator<WidgetCreatorContext>
 {
 	@Override
@@ -90,40 +91,38 @@ public class DeviceAdaptiveGridFactory extends WidgetCreator<WidgetCreatorContex
             getSortingType(widgetElement) + ");");
 	}
 
-
-	@TagConstraints(maxOccurs="1")
 	@TagChildren({
 		@TagChild(DeviceAdaptiveGridFactory.LargeColumnProcessor.class),
 		@TagChild(DeviceAdaptiveGridFactory.SmallColumnProcessor.class)
 	})
-	public static class DeviceAdaptiveColumnProcessor extends ChoiceChildProcessor<WidgetCreatorContext>
-	{
-		@Override
-		public void processChildren(SourcePrinter out, WidgetCreatorContext context) throws CruxGeneratorException {}
-	}
+	public static class DeviceAdaptiveColumnProcessor extends SequenceChildProcessor<WidgetCreatorContext> {}
 
-	@TagConstraints(maxOccurs="unbounded", minOccurs="1", tagName="largeColumns")
+	@TagConstraints(tagName="largeColumns")
+	@TagChildren({
+		@TagChild(LargeColumnProcessorChildren.class)
+	})
+	public static class LargeColumnProcessor extends WidgetChildProcessor<WidgetCreatorContext> {}
+
+	@TagConstraints(maxOccurs="unbounded", minOccurs="1")
 	@TagChildren({
 		@TagChild(DataColumnProcessor.class),
 		@TagChild(WidgetColumnProcessor.class)
 	})
-	public static class LargeColumnProcessor extends ChoiceChildProcessor<WidgetCreatorContext>
-	{
-		@Override
-		public void processChildren(SourcePrinter out, WidgetCreatorContext context) throws CruxGeneratorException {}
-	}
+	public static class LargeColumnProcessorChildren extends ChoiceChildProcessor<WidgetCreatorContext> {}
 
-	@TagConstraints(maxOccurs="unbounded", minOccurs="1", tagName="smallColumns")
+	@TagConstraints(tagName="smallColumns")
+	@TagChildren({
+		@TagChild(SmallColumnProcessorChildren.class),
+	})
+	public static class SmallColumnProcessor  extends WidgetChildProcessor<WidgetCreatorContext> {}
+
+	@TagConstraints(maxOccurs="unbounded", minOccurs="1")
 	@TagChildren({
 		@TagChild(DataColumnProcessor.class),
 		@TagChild(WidgetColumnProcessor.class),
 		@TagChild(value=ActionColumnProcessor.class, autoProcess=false)
 	})
-	public static class SmallColumnProcessor  extends ChoiceChildProcessor<WidgetCreatorContext>
-	{
-		@Override
-		public void processChildren(SourcePrinter out, WidgetCreatorContext context) throws CruxGeneratorException {}
-	}
+	public static class SmallColumnProcessorChildren  extends ChoiceChildProcessor<WidgetCreatorContext> {}
 
 	protected boolean getShowRowDetailsIcon(JSONObject gridElem)
 		{
