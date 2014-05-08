@@ -85,6 +85,10 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 		gridImpl.setDataSource(dataSource);
 	}
 
+	public void setDataSource(PagedDataSource<?> dataSource, boolean autoLoadData)
+	{
+		gridImpl.setDataSource(dataSource, autoLoadData);
+	}
 	
 	/**
 	 *  @see org.cruxframework.crux.widgets.client.grid.Grid#loadData()
@@ -103,7 +107,13 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 		gridImpl.clear();
 	}
 
-
+	/**
+	 * @return
+	 */
+	public ColumnDefinitions getGridColumnDefinitionsByDevice()
+	{
+		return gridImpl.getGridColumnDefinitionsByDevice();
+	}
 
 	/**
 	 * @param handler Event handler
@@ -302,6 +312,11 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 		public void setDataSource(PagedDataSource<?> dataSource)
 		{
 			grid.setDataSource(dataSource);
+		}
+
+		public void setDataSource(PagedDataSource<?> dataSource, boolean autoLoadData)
+		{
+			grid.setDataSource(dataSource, autoLoadData);
 		}
 
 		/**

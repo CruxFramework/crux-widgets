@@ -28,7 +28,7 @@ import com.google.gwt.user.client.ui.TextBox;
 
 /**
  * A default implementation for DatePicker
- * @author Samuel Almeida Cardoso
+ * @author Samuel Almeida Cardoso (samuel@cruxframework.org)
  */
 public class DefaultDateBox extends CommonDateBox
 {
@@ -38,6 +38,7 @@ public class DefaultDateBox extends CommonDateBox
 	{
 		impl = new DateBox();
 		initWidget(impl);
+		impl.getPopup().setStyleName("crux-popupPanel");
 		setStyleName(getBaseStyleName());
 	}
 
@@ -141,5 +142,12 @@ public class DefaultDateBox extends CommonDateBox
 	public void setTabIndex(int index) 
 	{
 		impl.setTabIndex(index);	
+	}
+
+	@Override
+	public void setReadOnly(boolean readOnly) 
+	{
+		impl.getTextBox().setReadOnly(readOnly);
+		impl.setEnabled(!readOnly);
 	}
 }

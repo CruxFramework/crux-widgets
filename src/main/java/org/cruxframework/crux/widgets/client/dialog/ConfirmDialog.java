@@ -15,6 +15,9 @@
  */
 package org.cruxframework.crux.widgets.client.dialog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.cruxframework.crux.core.client.Crux;
 import org.cruxframework.crux.core.client.screen.DeviceAdaptive;
 import org.cruxframework.crux.core.client.screen.Screen;
@@ -31,6 +34,12 @@ import org.cruxframework.crux.widgets.client.event.SelectHandler;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.RepeatingCommand;
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
+import com.google.gwt.event.logical.shared.HasCloseHandlers;
+import com.google.gwt.event.logical.shared.HasOpenHandlers;
+import com.google.gwt.event.logical.shared.OpenEvent;
+import com.google.gwt.event.logical.shared.OpenHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -47,7 +56,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Thiago da Rosa de Bustamante
  *
  */
-public class ConfirmDialog  implements HasOkHandlers, HasCancelHandlers, HasAnimation, IsWidget
+public class ConfirmDialog  implements HasOkHandlers, HasCancelHandlers, HasAnimation, IsWidget, HasCloseHandlers<ConfirmDialog>, HasOpenHandlers<ConfirmDialog>
 {
 	private static final String DEFAULT_STYLE_NAME = "crux-ConfirmDialog";
 	private DialogBox dialogBox;
@@ -56,6 +65,9 @@ public class ConfirmDialog  implements HasOkHandlers, HasCancelHandlers, HasAnim
 	private Button okButton;
 	private Button cancelButton;
 
+	private static List<CloseHandler<ConfirmDialog>> defaultCloseHandlers = new ArrayList<CloseHandler<ConfirmDialog>>();
+	private static List<OpenHandler<ConfirmDialog>> defaultOpenHandlers = new ArrayList<OpenHandler<ConfirmDialog>>();
+	
 	/**
 	 * Constructor 
 	 */
@@ -73,6 +85,22 @@ public class ConfirmDialog  implements HasOkHandlers, HasCancelHandlers, HasAnim
 		horizontalPanel.add(okButton);
 		cancelButton = createCancelButton();
 		horizontalPanel.add(cancelButton);
+		
+		if(defaultCloseHandlers != null)
+		{
+			for(CloseHandler<ConfirmDialog> closeHandler : defaultCloseHandlers)
+			{
+				this.addCloseHandler(closeHandler);
+			}
+		}
+		
+		if(defaultOpenHandlers != null)
+		{
+			for(OpenHandler<ConfirmDialog> openHandler : defaultOpenHandlers)
+			{
+				this.addOpenHandler(openHandler);
+			}
+		}
 
 		confirmPanel.add(horizontalPanel, DockPanel.SOUTH);
 		confirmPanel.setCellHorizontalAlignment(horizontalPanel, HasHorizontalAlignment.ALIGN_CENTER);
@@ -239,12 +267,12 @@ public class ConfirmDialog  implements HasOkHandlers, HasCancelHandlers, HasAnim
 			dialogBox.center();
 			dialogBox.show();
 			okButton.setFocus(true);
+			OpenEvent.fire(ConfirmDialog.this, ConfirmDialog.this);
 		}
 		catch (Exception e)
 		{
 			Crux.getErrorHandler().handleError(e);
 			Screen.unblockToUser();
-			
 		}
 	}
 
@@ -255,6 +283,7 @@ public class ConfirmDialog  implements HasOkHandlers, HasCancelHandlers, HasAnim
 	{
 		dialogBox.hide();
 		Screen.unblockToUser();
+		CloseEvent.fire(ConfirmDialog.this, ConfirmDialog.this);
 	}
 	
 	/**
@@ -426,4 +455,42 @@ public class ConfirmDialog  implements HasOkHandlers, HasCancelHandlers, HasAnim
     {
 		dialogBox.fireEvent(event);
     }
+	
+	@Override
+	public HandlerRegistration addCloseHandler(CloseHandler<ConfirmDialog> handler)
+	{
+		return dialogBox.addHandler(handler, CloseEvent.getType());
+	}
+	
+	@Override
+	public HandlerRegistration addOpenHandler(OpenHandler<ConfirmDialog> handler) 
+	{
+		return dialogBox.addHandler(handler, OpenEvent.getType());
+	}
+	
+	/**
+	 * Add a default open handler that will be appended to each created object
+	 * @param defaultOpenHandler
+	 */
+	public static void addDefaultOpenHandler(OpenHandler<ConfirmDialog> defaultOpenHandler) 
+	{
+		if(defaultOpenHandlers == null)
+		{
+			defaultOpenHandlers = new ArrayList<OpenHandler<ConfirmDialog>>();
+		}
+		defaultOpenHandlers.add(defaultOpenHandler);
+	}
+	
+	/**
+	 * Add a default close handler that will be appended to each created object
+	 * @param defaultCloseHandler
+	 */
+	public static void addDefaultCloseHandler(CloseHandler<ConfirmDialog> defaultCloseHandler) 
+	{
+		if(defaultCloseHandlers == null)
+		{
+			defaultCloseHandlers = new ArrayList<CloseHandler<ConfirmDialog>>();
+		}
+		defaultCloseHandlers.add(defaultCloseHandler);
+	}
 }

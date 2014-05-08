@@ -15,6 +15,9 @@
  */
 package org.cruxframework.crux.widgets.client.dialog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.cruxframework.crux.core.client.Crux;
 import org.cruxframework.crux.core.client.collection.FastList;
 import org.cruxframework.crux.core.client.screen.DeviceAdaptive;
@@ -33,6 +36,12 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.RepeatingCommand;
 import com.google.gwt.event.logical.shared.AttachEvent;
 import com.google.gwt.event.logical.shared.AttachEvent.Handler;
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
+import com.google.gwt.event.logical.shared.HasCloseHandlers;
+import com.google.gwt.event.logical.shared.HasOpenHandlers;
+import com.google.gwt.event.logical.shared.OpenEvent;
+import com.google.gwt.event.logical.shared.OpenHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -49,7 +58,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Thiago da Rosa de Bustamante
  *
  */
-public class MessageDialog implements HasOkHandlers, HasAnimation, IsWidget, OrientationChangeHandler
+public class MessageDialog implements HasOkHandlers, HasAnimation, IsWidget, OrientationChangeHandler, HasCloseHandlers<MessageDialog>, HasOpenHandlers<MessageDialog>
 {
 	private static final String DEFAULT_STYLE_NAME = "crux-MessageDialog";
 	private DialogBox dialogBox;
@@ -59,6 +68,9 @@ public class MessageDialog implements HasOkHandlers, HasAnimation, IsWidget, Ori
 	protected WidgetMessages messages = WidgetMsgFactory.getMessages();
 	private FastList<DialogBox> openedDialogBoxes = new FastList<DialogBox>(); 
 
+	private static List<CloseHandler<MessageDialog>> defaultCloseHandlers = new ArrayList<CloseHandler<MessageDialog>>();
+	private static List<OpenHandler<MessageDialog>> defaultOpenHandlers = new ArrayList<OpenHandler<MessageDialog>>();
+	
 	/**
 	 * Constructor 
 	 */
@@ -74,6 +86,22 @@ public class MessageDialog implements HasOkHandlers, HasAnimation, IsWidget, Ori
 		horizontalPanel.setSpacing(10);
 		okButton = createOkButton();
 		horizontalPanel.add(okButton);
+		
+		if(defaultCloseHandlers != null)
+		{
+			for(CloseHandler<MessageDialog> closeHandler : defaultCloseHandlers)
+			{
+				this.addCloseHandler(closeHandler);
+			}
+		}
+		
+		if(defaultOpenHandlers != null)
+		{
+			for(OpenHandler<MessageDialog> openHandler : defaultOpenHandlers)
+			{
+				this.addOpenHandler(openHandler);
+			}
+		}
 
 		messagePanel.add(horizontalPanel, DockPanel.SOUTH);
 		messagePanel.setCellHorizontalAlignment(horizontalPanel, HasHorizontalAlignment.ALIGN_CENTER);
@@ -261,6 +289,7 @@ public class MessageDialog implements HasOkHandlers, HasAnimation, IsWidget, Ori
 			dialogBox.center();
 			dialogBox.show();
 			okButton.setFocus(true);
+			OpenEvent.fire(MessageDialog.this, MessageDialog.this);
 		}
 		catch (Exception e)
 		{
@@ -277,6 +306,7 @@ public class MessageDialog implements HasOkHandlers, HasAnimation, IsWidget, Ori
 		dialogBox.hide();
 		openedDialogBoxes.remove(openedDialogBoxes.indexOf(dialogBox));
 		Screen.unblockToUser();
+		CloseEvent.fire(MessageDialog.this, MessageDialog.this);
 	}
 	
 	
@@ -381,5 +411,43 @@ public class MessageDialog implements HasOkHandlers, HasAnimation, IsWidget, Ori
 				}
 			}, 1000);
 		}
+	}
+	
+	@Override
+	public HandlerRegistration addCloseHandler(CloseHandler<MessageDialog> handler)
+	{
+		return dialogBox.addHandler(handler, CloseEvent.getType());
+	}
+	
+	@Override
+	public HandlerRegistration addOpenHandler(OpenHandler<MessageDialog> handler) 
+	{
+		return dialogBox.addHandler(handler, OpenEvent.getType());
+	}
+	
+	/**
+	 * Add a default open handler that will be appended to each created object
+	 * @param defaultOpenHandler
+	 */
+	public static void addDefaultOpenHandler(OpenHandler<MessageDialog> defaultOpenHandler) 
+	{
+		if(defaultOpenHandlers == null)
+		{
+			defaultOpenHandlers = new ArrayList<OpenHandler<MessageDialog>>();
+		}
+		defaultOpenHandlers.add(defaultOpenHandler);
+	}
+	
+	/**
+	 * Add a default close handler that will be appended to each created object
+	 * @param defaultCloseHandler
+	 */
+	public static void addDefaultCloseHandler(CloseHandler<MessageDialog> defaultCloseHandler) 
+	{
+		if(defaultCloseHandlers == null)
+		{
+			defaultCloseHandlers = new ArrayList<CloseHandler<MessageDialog>>();
+		}
+		defaultCloseHandlers.add(defaultCloseHandler);
 	}
 }

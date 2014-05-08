@@ -1,5 +1,8 @@
 package org.cruxframework.crux.widgets.client.dialog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.cruxframework.crux.widgets.client.button.Button;
 import org.cruxframework.crux.widgets.client.event.SelectEvent;
 import org.cruxframework.crux.widgets.client.event.SelectHandler;
@@ -9,6 +12,13 @@ import org.cruxframework.crux.widgets.client.util.draganddrop.MoveCapability.Mov
 import org.cruxframework.crux.widgets.client.util.draganddrop.ResizeCapability;
 import org.cruxframework.crux.widgets.client.util.draganddrop.ResizeCapability.Resizable;
 
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
+import com.google.gwt.event.logical.shared.HasCloseHandlers;
+import com.google.gwt.event.logical.shared.HasOpenHandlers;
+import com.google.gwt.event.logical.shared.OpenEvent;
+import com.google.gwt.event.logical.shared.OpenHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
@@ -20,7 +30,7 @@ import com.google.gwt.user.client.ui.Widget;
  * The base implementation for dialog boxes.
  * @author Gesse Dafe
  */
-public abstract class AbstractDialogBox extends PopupPanel implements Movable<Label>, Resizable<Label>
+public abstract class AbstractDialogBox extends PopupPanel implements Movable<Label>, Resizable<Label>, HasCloseHandlers<PopupPanel>, HasOpenHandlers<PopupPanel>
 {
 	private static final int MIN_WIDTH = 100;
 	private static final int MIN_HEIGHT = 50;
@@ -30,6 +40,9 @@ public abstract class AbstractDialogBox extends PopupPanel implements Movable<La
 	private Button closeBtn = new Button();
 	private Label moveHandle;
 	private Label resizeHandle;
+	
+	private static List<CloseHandler<PopupPanel>> defaultCloseHandlers = new ArrayList<CloseHandler<PopupPanel>>();
+	private static List<OpenHandler<PopupPanel>> defaultOpenHandlers = new ArrayList<OpenHandler<PopupPanel>>();
 	
 	public AbstractDialogBox()
 	{
@@ -50,6 +63,22 @@ public abstract class AbstractDialogBox extends PopupPanel implements Movable<La
 		split.setStyleName("dialogTitleBodySplit");
 		split.add(topBar);
 		split.add(body);
+		
+		if(defaultCloseHandlers != null)
+		{
+			for(CloseHandler<PopupPanel> closeHandler : defaultCloseHandlers)
+			{
+				this.addCloseHandler(closeHandler);
+			}
+		}
+		
+		if(defaultOpenHandlers != null)
+		{
+			for(OpenHandler<PopupPanel> openHandler : defaultOpenHandlers)
+			{
+				this.addOpenHandler(openHandler);
+			}
+		}
 		
 		if(resizable)
 		{
@@ -81,6 +110,20 @@ public abstract class AbstractDialogBox extends PopupPanel implements Movable<La
 		return resizer;
 	}
 
+	@Override
+	public void show() 
+	{
+		super.show();
+		OpenEvent.fire(AbstractDialogBox.this, AbstractDialogBox.this);
+	}
+	
+	@Override
+	public void hide() 
+	{
+		super.hide();
+		CloseEvent.fire(AbstractDialogBox.this, AbstractDialogBox.this);
+	}
+	
 	/**
 	 * Creates the dialog's title bar 
 	 * @param movable
@@ -220,5 +263,43 @@ public abstract class AbstractDialogBox extends PopupPanel implements Movable<La
 	public int getAbsoluteHeight()
 	{
 		return getElement().getOffsetHeight();
+	}
+	
+	@Override
+	public HandlerRegistration addCloseHandler(CloseHandler<PopupPanel> handler)
+	{
+		return addHandler(handler, CloseEvent.getType());
+	}
+	
+	@Override
+	public HandlerRegistration addOpenHandler(OpenHandler<PopupPanel> handler) 
+	{
+		return addHandler(handler, OpenEvent.getType());
+	}
+	
+	/**
+	 * Add a default open handler that will be appended to each created object
+	 * @param defaultOpenHandler
+	 */
+	public static void addDefaultOpenHandler(OpenHandler<PopupPanel> defaultOpenHandler) 
+	{
+		if(defaultOpenHandlers == null)
+		{
+			defaultOpenHandlers = new ArrayList<OpenHandler<PopupPanel>>();
+		}
+		defaultOpenHandlers.add(defaultOpenHandler);
+	}
+	
+	/**
+	 * Add a default close handler that will be appended to each created object
+	 * @param defaultCloseHandler
+	 */
+	public static void addDefaultCloseHandler(CloseHandler<PopupPanel> defaultCloseHandler) 
+	{
+		if(defaultCloseHandlers == null)
+		{
+			defaultCloseHandlers = new ArrayList<CloseHandler<PopupPanel>>();
+		}
+		defaultCloseHandlers.add(defaultCloseHandler);
 	}
 }

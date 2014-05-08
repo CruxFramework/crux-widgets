@@ -19,6 +19,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.UIObject;
 
@@ -172,7 +173,7 @@ public final class Loader {
    }-*/;
 
   private static void setupDocument(Element doc, String apiKey) {
-    String docContents = Resources.bootstrap();
+    String docContents = Resources.bootstrap(Window.Location.getProtocol().equals("https:"));
     docContents = docContents.replaceAll("KEY", (apiKey != null) ? "?key=" + apiKey : "");
 
     openDocument(doc);

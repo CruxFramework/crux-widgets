@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
 import com.google.gwt.user.client.ui.PushButton;
 
 /**
- * @author samuel.cardoso
+ * @author Samuel Almeida Cardoso (samuel@cruxframework.org)
  *
  */
 public final class CruxMonthSelector extends MonthSelector 
@@ -73,6 +73,7 @@ public final class CruxMonthSelector extends MonthSelector
 		
 		// Set up grid.
 		grid = new Grid(1, 5);
+		grid.setStyleName("datePickerMonthSelector");
 		grid.setWidget(0, 0, prevYear);
 		grid.setWidget(0, 1, prevMonth);
 		grid.setWidget(0, 3, nextMonth);
