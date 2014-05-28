@@ -20,6 +20,7 @@ import org.cruxframework.crux.core.client.screen.DeviceAdaptive.Device;
 
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.ClientBundle.Source;
 
 /**
  * @author Gesse Dafe
@@ -46,7 +47,9 @@ public interface XStandardResourcesSmall extends ClientBundle
 	@Source("svg-icon-success.svg")
 	DataResource svgIconSuccess();
 	
-	@Source("detail-icon.png")
-	DataResource detailIcon();
+	@Source("svg-icon-detail.svg")
+	DataResource svgIconDetail();
 
+	@Source("svg-icon-file.svg")
+	DataResource svgIconFile();
 }
