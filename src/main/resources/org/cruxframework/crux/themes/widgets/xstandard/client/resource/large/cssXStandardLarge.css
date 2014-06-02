@@ -76,6 +76,34 @@ DIV, INPUT, BUTTON
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
+
+
+
+/****************
+ Non-Selectables
+****************/
+
+.crux-ColorPickerDialog *,
+.crux-Dialog *,
+.crux-FlatMessageBox *,
+.crux-DialogViewContainer *,
+.crux-FileUploader *,
+.grid .columnHeader *,
+.flapCloseButton,
+.crux-TabBarItem,
+.crux-Button,
+.crux-MenuTabsDisposal *,
+.previousMessageButton,
+.nextMessageButton
+{
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+
+/***************/
+
 @external crux-StyledPanel, crux-StyledPanelOuter, crux-FileUploader, dropArea;
 .crux-StyledPanelOuter{
 	padding: 8px;
@@ -100,11 +128,6 @@ DIV, INPUT, BUTTON
 	color:#fff;
 	margin:0 2px;
 	text-shadow:0 1px 0 rgba(0,0,0,0.15);
-	
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 }
 .crux-Button:hover, .crux-FileUploader .fileInputButton:hover, .previousMessageButton:hover, .nextMessageButton:hover{
 	border-color:#084471;
@@ -243,9 +266,6 @@ DIV, INPUT, BUTTON
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-shadow: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	position: relative;
 	border-radius: 0px;
 	cursor: pointer;
@@ -282,9 +302,6 @@ DIV, INPUT, BUTTON
 	padding-left: 50px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	cursor: pointer;
 	border: solid 0px;
 	width: 100%;
@@ -296,9 +313,6 @@ DIV, INPUT, BUTTON
 	position: absolute;
 	right: 10px;
 	opacity: 0.0;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	transition: opacity ease-in-out 0.5s;
 }
 .crux-MenuTabsDisposal .menuSection-closed:after 
@@ -348,9 +362,6 @@ DIV, INPUT, BUTTON
 	opacity: 0.75;
 	margin-left: 0px;
 	cursor: default;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	box-shadow: -20px 0 20px -10px rgba(0, 0, 0, 0.2) inset, 0px -20px 10px -10px rgba(0, 0, 0, 0.2) inset;
 	position: relative;
 	transition: all ease 0.3s;
@@ -385,9 +396,6 @@ DIV, INPUT, BUTTON
 .flapCloseButton 
 {
 	background-color: transparent;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	transition: font-size ease-in-out 0.15s;	
 	height: 14px;
 	width: 14px;
@@ -400,9 +408,6 @@ DIV, INPUT, BUTTON
 {
 	content: "X";
 	color: rgb(255, 255, 255);
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	padding-right: 1px;
 	font-family: arial;
 	font-size: 14px;
@@ -524,15 +529,14 @@ DIV, INPUT, BUTTON
 	font-size:10px;
 	text-align:center;
 	line-height:56px;
+	letter-spacing:-1px;
+	padding-right:3px;
 }
 .crux-FileUploader .filePanel .cancelUploadButton
 {
 	background:svgIconClose no-repeat;
 	
 	border: 0px solid;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	transition: box-shadow ease-in-out 0.15s;
 	height: 16px;
 	width: 16px;
@@ -849,25 +853,39 @@ DIV, INPUT, BUTTON
 @external crux-ListShuttle, toSelectColumn, selectedColumn, buttonsColumn;
 
 .crux-ListShuttle{
-
+	margin:10px 0;
 }
 .crux-ListShuttle .toSelectColumn{
 	float:left;
 	width:40%;
+	height:100%;
 }
 .crux-ListShuttle .selectedColumn{
     float:left;
     width:40%;
+    height:100%;
 }
 .crux-ListShuttle .buttonsColumn{
     float:left;
     width:10%;
-    margin:0 5%;
+    margin:9px 5% 0;
+}
+
+.crux-ListShuttle legend {
+	color:#FFF;
+	font-size:10px;
+	padding:2px 7px;
+	background:#999;
+	border-radius:100px;
 }
 
 .crux-ListShuttle .buttonsColumn button{
+    width:100%;
+    font-size:11px;
+    font-weight:bold;
     border-radius:0;
     margin-top:-1px;
+    padding:8px 0;
 }
 .crux-ListShuttle .buttonsColumn button:first-child{
     border-radius:3px 3px 0 0;
@@ -879,7 +897,35 @@ DIV, INPUT, BUTTON
 .crux-ListShuttle fieldset{
     border:1px solid #ccc;
     border-radius:3px;
+    height:100%;
+    box-shadow:0 1px 5px rgba(0, 0, 0, 0.1) inset;
+    display:block;
+    padding:0;
 }
+
+.crux-ListShuttle fieldset > div
+{
+	height:180px;
+	overflow-y:auto;
+}
+
+.crux-ListShuttle fieldset div div div
+{
+	padding:4px 0;
+	border-bottom:1px solid #eee;
+	font-size:13px;
+}
+
+.crux-ListShuttle fieldset div div div:last-child
+{
+	border-bottom:0;
+}
+
+.crux-ListShuttle fieldset div div div[tabindex]:last-child
+{
+	border-radius:0 0 3px 3px;
+}
+
 
 /* common for all dialogs */
 @external crux-Dialog, dialogGlass, popupContent, dialogTitleBodySplit, dialogTopBar, dialogTopBarDragHandle, dialogTitle, dialogCloseButton, dialogBody, dialogResizer, crux-FlatDialog, crux-FlatMessageBox;  
@@ -921,9 +967,6 @@ DIV, INPUT, BUTTON
 	box-shadow:0 -2px #EAEAEA inset, 0 1px 0 #D1D1D1;
 	padding:11px 2px;
 	border-radius:3px 3px 0 0;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 }
 .crux-Dialog .dialogTopBarDragHandle, .crux-ProgressBox .dialogTopBarDragHandle, .crux-FlatMessageBox .dialogTopBarDragHandle
 {
@@ -934,18 +977,12 @@ DIV, INPUT, BUTTON
 	height: 100%;
 	width: 100%;
 	cursor: move;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 }
 .crux-Dialog .dialogTitle, .crux-ProgressBox .dialogTitle, .crux-FlatMessageBox .dialogTitle
 {
 	color: #4496C6;
 	text-align: center;
 	font-size: 18px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 }
 .crux-ProgressBox .dialogTitle{
 	font-size:12px;
@@ -959,18 +996,12 @@ DIV, INPUT, BUTTON
 	background: rgba(0, 0, 0, 0);
 	border: none;
 	cursor: pointer;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 }
 .crux-Dialog .dialogCloseButton:after 
 {
 	content: "X";
 	color: #4496C6;
 	font-size: 18px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 }
 .crux-Dialog .dialogBody, .crux-ProgressBox .dialogBody, .crux-FlatMessageBox .dialogBody
 {
@@ -999,9 +1030,6 @@ DIV, INPUT, BUTTON
 	border-left: rgba(0, 0, 0, 0);
 	cursor: nwse-resize;
 	border-bottom-right-radius: 3px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	background: linear-gradient(135deg, #FFF 50%, #AAA 50.1%, #EEE 60%);
 	padding: 10px;
 }
@@ -1021,9 +1049,6 @@ DIV, INPUT, BUTTON
 	/* border-left: rgba(0, 0, 0, 0); */
 	cursor: nwse-resize;
 	border-bottom-right-radius: 2px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	-webkit-transform: rotate(135deg);
 	-moz-transform: rotate(135deg);
 	-ms-transform: rotate(135deg);
@@ -1042,9 +1067,6 @@ DIV, INPUT, BUTTON
 	/* border-left: rgba(0, 0, 0, 0); */
 	cursor: nwse-resize;
 	border-bottom-right-radius: 2px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	-webkit-transform: rotate(135deg);
 	-moz-transform: rotate(135deg);
 	-ms-transform: rotate(135deg);
@@ -1213,7 +1235,7 @@ DIV, INPUT, BUTTON
 /************ (Versão antiga, com tabelas) *****************/
 
 
-.crux-DialogViewContainer{
+.crux-DialogViewContainer, .crux-ColorPickerDialog{
 	background:white;
 	border-radius: 3px;
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.4) !important;
@@ -1227,9 +1249,6 @@ DIV, INPUT, BUTTON
 	color:#5491B4;
 	box-shadow:0 -2px #EAEAEA inset, 0 1px 0 #D1D1D1;
 	padding:0 3px;
-	-moz-user-select:none;
-	-webkit-user-select:none;
-	-ms-user-select:none;
 	cursor:move;
 }
 .dialogTop  td:nth-child\(1\){
@@ -1272,9 +1291,6 @@ DIV, INPUT, BUTTON
 	border-left: rgba(0, 0, 0, 0);
 	cursor: nwse-resize;
 	border-bottom-right-radius: 3px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	background: linear-gradient(135deg, #FFF 50%, #AAA 50.1%, #EEE 60%);
 	padding: 10px;
 }
@@ -1295,9 +1311,6 @@ DIV, INPUT, BUTTON
 	/* border-left: rgba(0, 0, 0, 0); */
 	cursor: nwse-resize;
 	border-bottom-right-radius: 2px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	-webkit-transform: rotate(135deg);
 }
 
@@ -1314,9 +1327,6 @@ DIV, INPUT, BUTTON
 	/* border-left: rgba(0, 0, 0, 0); */
 	cursor: nwse-resize;
 	border-bottom-right-radius: 2px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	-webkit-transform: rotate(135deg);
 }
 
@@ -1430,6 +1440,44 @@ DIV, INPUT, BUTTON
 .grid .columnSorter table{
 	width:100%;
 }
+.grid .columnSorter .arrow
+{
+	position:relative;
+}
+.grid .columnSorter .arrow:before
+{
+	content:'';
+	width:0;
+	height:0;
+	right:0;
+	top:-5px;
+	position:absolute;
+	margin-right:10px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;	
+	border-bottom: 5px solid #999;
+}
+.grid .columnSorter .arrow:after
+{
+	content:'';
+	width:0;
+	height:0;
+	right:0;
+	top:1px;
+	position:absolute;
+	margin-right:10px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;	
+	border-top: 5px solid #999;
+}
+.grid .columnSorter.columnSorter-asc .arrow:before,
+.grid .columnSorter.columnSorter-asc .arrow:after,
+.grid .columnSorter.columnSorter-desc .arrow:before,
+.grid .columnSorter.columnSorter-desc .arrow:after
+{
+	display:none;
+}
+
 .grid .columnSorter.columnSorter-asc .arrow
 {
 	width:0;
@@ -1692,4 +1740,32 @@ DIV, INPUT, BUTTON
 .crux-ScrollBanner .previousMessageButton, .nextMessageButton
 {
 	padding:8px 9px;
+}
+
+
+/****************
+   ColorPicker
+****************/
+.crux-ColorPickerDialog .previewPanel
+{
+	width:20px;
+	height:20px;
+	float:right;
+	border-radius:2px;
+	margin-right:3px;
+}
+
+.crux-ColorPickerDialog .crux-SaturationLightnessPicker
+{
+	box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.crux-ColorPickerDialog .crux-HuePicker
+{
+	margin-left:10px;
+}
+
+.crux-ColorPickerDialog .dialogMiddleCenter
+{
+	padding:10px 0 10px 3px;
 }

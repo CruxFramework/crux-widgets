@@ -46,6 +46,26 @@ body{
 	font-family:OpenSans, Arial, Helvetica Neue, Helvetica, Roboto, Ubuntu, sans-serif;
 }
 
+/****************
+ Non-Selectables
+****************/
+
+.crux-TopMenuDisposal .showMenuButton,
+.crux-TopMenuDisposal .headerPanel,
+.crux-MenuTabsDisposal .showMenuButton,
+.crux-MenuTabsDisposal .menuEntry,
+.crux-MenuTabsDisposal .menuSection,
+.crux-MenuTabsDisposal .menuSection:after,
+.crux-MenuTabsDisposal .menuSection-closed:after
+{
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+
+/***************/
+
 .crux-StyledPanelOuter
 {
 	padding: 8px;
@@ -339,7 +359,6 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	background-color: transparent;
 	border: none;
 	float: left;
-	-webkit-user-select: none;
 	outline: none;
 }
 .crux-MenuTabsDisposal .menuEntry
@@ -356,9 +375,6 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-shadow: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	position: relative;
 	border-radius: 0px;
 	cursor: pointer;
@@ -395,9 +411,6 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	padding-left: 50px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
 	cursor: pointer;
 	border: solid 0px;
 	width: 100%;
@@ -408,10 +421,7 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	content: "...";
 	position: absolute;
 	right: 10px;
-	opacity: 0.0;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
+	opacity: 0;
 	transition: opacity ease-in-out 0.5s;
 }
 .crux-MenuTabsDisposal .menuSection-closed:after 
@@ -442,7 +452,6 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	background-color: transparent;
 	border: none;
 	float: left;
-	-webkit-user-select: none;
 	outline: none;
 }
 .crux-TopMenuDisposal .headerPanel
@@ -451,7 +460,6 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	color: #FFFFFF;
 	background-color: #606060;
 	text-shadow: 0 1px 0 #000000;
-	-webkit-user-select: none;
 	text-align: center;
 }
 .crux-TopMenuDisposal .menuPanel .menuEntry
@@ -601,16 +609,22 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	ListShuffle
 *******************************************************************************/
 
+.crux-ListShuttle
+{
+	margin:10px;
+}
+
 .crux-ListShuttle .buttonsColumn{
     margin:10px;
     text-align:center
 }
 .crux-ListShuttle .buttonsColumn button{
     border-radius:0;
-    margin-left:-1px;
-    width:25% !important;
-    min-width:0;
+    margin-left:-2px;
+    display:inline-block;
     position:relative;
+    width:25%;
+    margin:3px 0 0 0;
 }
 .crux-ListShuttle .buttonsColumn button{
     text-shadow:none;
@@ -655,8 +669,9 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 .crux-ListShuttle fieldset{
     border:1px solid #aaa;
     border-radius:3px;
-    padding:20px 0;
-    box-shadow:0 2px 2px rgba(0,0,0,0.1) inset
+    padding:0;
+    box-shadow:0 2px 2px rgba(0,0,0,0.1) inset;
+    background:#fff;
 }
 .crux-ListShuttle fieldset div div div{
     padding:10px;
@@ -667,17 +682,29 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 }
 .crux-ListShuttle fieldset legend{
     background:#aaa;
-    padding:0 5px;
-    border-radius:5px;
+    padding:2px 11px;
+    border-radius:25px;
     margin-left:2%;
-    font-weight:bold;
+    font-weight:normal;
     color:white;
-    font-size:12px;
+    font-size:17px;
+}
+
+.crux-ListShuttle fieldset > div
+{
+	height:180px;
+	overflow-y:auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.crux-ListShuttle fieldset > div *
+{
+	-webkit-transform: translateZ(0px);
 }
 
 /****************************************************************************/
 /* DIALOG */
-.crux-DialogViewContainer, .crux-Dialog, .popupContent{
+.crux-DialogViewContainer, .crux-Dialog, .popupContent, .crux-ColorPickerDialog{
 	width:90%;
 	height:auto;
 	overflow:auto;
@@ -1145,4 +1172,32 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	border-right: 5px solid transparent;	
 	border-top: 5px solid #fff;
 	margin-top:1px;
+}
+
+
+/****************
+   ColorPicker
+****************/
+.crux-ColorPickerDialog .previewPanel
+{
+	width:20px;
+	height:20px;
+	float:right;
+	border-radius:2px;
+	margin-right:3px;
+}
+
+.crux-ColorPickerDialog .crux-SaturationLightnessPicker
+{
+	box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.crux-ColorPickerDialog .crux-HuePicker
+{
+	margin-left:10px;
+}
+
+.crux-ColorPickerDialog .dialogMiddleCenter
+{
+	padding:10px 0 10px 3px;
 }
