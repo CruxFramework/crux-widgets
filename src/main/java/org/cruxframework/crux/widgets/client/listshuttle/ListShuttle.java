@@ -17,6 +17,7 @@ package org.cruxframework.crux.widgets.client.listshuttle;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.cruxframework.crux.widgets.client.button.Button;
 import org.cruxframework.crux.widgets.client.event.SelectEvent;
@@ -29,7 +30,7 @@ import com.google.gwt.user.cellview.client.CellList;
 import com.google.gwt.user.client.ui.CaptionPanel;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.view.client.SingleSelectionModel;
+import com.google.gwt.view.client.MultiSelectionModel;
 
 /**
  * @author Jair Elton
@@ -75,7 +76,7 @@ public class ListShuttle<T> extends Composite implements IListShuttle<T>
 		toSelectColumnFieldset.setStyleName("toSelectColumnFieldset");
 		
 		availableCellList = new CellList<T>(new BeanCell());
-		availableCellList.setSelectionModel(new SingleSelectionModel<T>());
+		availableCellList.setSelectionModel(new MultiSelectionModel<T>());
 		
 		//Middle Column
 		FlowPanel buttonsColumn = new FlowPanel();
@@ -98,7 +99,7 @@ public class ListShuttle<T> extends Composite implements IListShuttle<T>
 		selectedColumnFieldset.setStyleName("selectedColumnFieldset");
 		
 		selectedCellList = new CellList<T>(new BeanCell());
-		selectedCellList.setSelectionModel(new SingleSelectionModel<T>());
+		selectedCellList.setSelectionModel(new MultiSelectionModel<T>());
 		
 		//Attaching columns
 		toSelectColumnFieldset.add(availableCellList);
@@ -204,18 +205,18 @@ public class ListShuttle<T> extends Composite implements IListShuttle<T>
 	private void handleAddSelected() 
 	{
 		@SuppressWarnings("unchecked")
-		SingleSelectionModel<T> availableSelectionModel = (SingleSelectionModel<T>) this.availableCellList.getSelectionModel();
+		MultiSelectionModel<T> availableSelectionModel = (MultiSelectionModel<T>) this.availableCellList.getSelectionModel();
 
-		T selectedObject = availableSelectionModel.getSelectedObject();
+		Set<T> selectedObject = (Set<T>) availableSelectionModel.getSelectedSet();
 
 		if (!getSelectedItems().contains(selectedObject)) 
 		{
-			getSelectedItems().add(selectedObject);
+			for(T t : selectedObject)
+			{
+				getSelectedItems().add(t);
+				getAvailableItems().remove(t);
+			}
 			updateSelectedList();
-		}
-
-		if (getAvailableItems().remove(selectedObject)) 
-		{
 			updateAvailableList();
 		}
 	}
@@ -223,18 +224,19 @@ public class ListShuttle<T> extends Composite implements IListShuttle<T>
 	private void handleRemoveSelected() 
 	{
 		@SuppressWarnings("unchecked")
-		SingleSelectionModel<T> removeSelectionModel = (SingleSelectionModel<T>) this.selectedCellList.getSelectionModel();
+		MultiSelectionModel<T> removeSelectionModel = (MultiSelectionModel<T>) this.selectedCellList.getSelectionModel();
 
-		T selectedObject = removeSelectionModel.getSelectedObject();
+		Set<T> selectedObject = (Set<T>) removeSelectionModel.getSelectedSet();
 
 		if (!getAvailableItems().contains(selectedObject)) 
+			
 		{
-			getAvailableItems().add(selectedObject);
+			for(T t : selectedObject)
+			{
+				getAvailableItems().add(t);
+				getSelectedItems().remove(t);
+			}
 			updateAvailableList();
-		}
-
-		if (getSelectedItems().remove(selectedObject)) 
-		{
 			updateSelectedList();
 		}
 	}
