@@ -15,12 +15,12 @@
  */
 package org.cruxframework.crux.themes.widgets.xstandard.client.resource.small;
 
-import com.google.gwt.resources.client.CssResource;
+import org.cruxframework.crux.themes.widgets.xstandard.client.resource.common.CssXStandardCommon;
 
 /**
  * @author Gesse Dafe
  *
  */
-public interface CssXStandardSmall extends CssResource
+public interface CssXStandardSmall extends CssXStandardCommon
 {
 }

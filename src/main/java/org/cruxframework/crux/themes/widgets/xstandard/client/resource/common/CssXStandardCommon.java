@@ -13,14 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.cruxframework.crux.themes.widgets.xstandard.client.resource.large;
+package org.cruxframework.crux.themes.widgets.xstandard.client.resource.common;
 
-import org.cruxframework.crux.themes.widgets.xstandard.client.resource.common.CssXStandardCommon;
+import com.google.gwt.resources.client.CssResource;
 
 /**
  * @author Gesse Dafe
  *
  */
-public interface CssXStandardLarge extends CssXStandardCommon
+public interface CssXStandardCommon extends CssResource
 {
 }

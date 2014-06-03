@@ -17,30 +17,18 @@ package org.cruxframework.crux.themes.widgets.xstandard.client.resource.large;
 
 import org.cruxframework.crux.core.client.resources.Resource;
 import org.cruxframework.crux.core.client.screen.DeviceAdaptive.Device;
+import org.cruxframework.crux.themes.widgets.xstandard.client.resource.common.XStandardResourcesCommon;
 
-import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
 
 /**
  * @author Gesse Dafe
  */
 @Resource(value="xStandardResources", supportedDevices={Device.largeDisplayArrows, Device.largeDisplayMouse, Device.largeDisplayTouch})
-public interface XStandardResourcesLarge extends ClientBundle
+public interface XStandardResourcesLarge extends XStandardResourcesCommon
 {
-	@Source("cssXStandardLarge.css")
+	@Source({"../common/cssXStandardCommon.css","cssXStandardLarge.css"})
 	CssXStandardLarge css();
-	
-	@Source("svg-icon-close.svg")
-	DataResource svgIconClose();
-	
-	@Source("svg-icon-danger.svg")
-	DataResource svgIconDanger();
-	
-	@Source("svg-icon-warning.svg")
-	DataResource svgIconWarning();
-	
-	@Source("svg-icon-success.svg")
-	DataResource svgIconSuccess();
 	
 	@Source("svg-icon-arrow.svg")
 	DataResource svgIconArrow();
@@ -50,7 +38,4 @@ public interface XStandardResourcesLarge extends ClientBundle
 	
 	@Source("svg-icon-pause.svg")
 	DataResource svgIconPause();
-	
-	@Source("svg-icon-file.svg")
-	DataResource svgIconFile();
 }

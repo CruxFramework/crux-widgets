@@ -17,39 +17,23 @@ package org.cruxframework.crux.themes.widgets.xstandard.client.resource.small;
 
 import org.cruxframework.crux.core.client.resources.Resource;
 import org.cruxframework.crux.core.client.screen.DeviceAdaptive.Device;
+import org.cruxframework.crux.themes.widgets.xstandard.client.resource.common.XStandardResourcesCommon;
 
-import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
-import com.google.gwt.resources.client.ClientBundle.Source;
 
 /**
  * @author Gesse Dafe
  *
  */
 @Resource(value="xStandardResources", supportedDevices={Device.smallDisplayArrows, Device.smallDisplayTouch})
-public interface XStandardResourcesSmall extends ClientBundle
+public interface XStandardResourcesSmall extends XStandardResourcesCommon
 {
-	@Source("cssXStandardSmall.css")
+	@Source({"../common/cssXStandardCommon.css","cssXStandardSmall.css"})
 	CssXStandardSmall css();
 	
 	@Source("top-menu-disposal-menu-btn.png")
 	DataResource topMenuDisposalShowMenuButton();
 	
-	@Source("svg-icon-close.svg")
-	DataResource svgIconClose();
-	
-	@Source("svg-icon-danger.svg")
-	DataResource svgIconDanger();
-	
-	@Source("svg-icon-warning.svg")
-	DataResource svgIconWarning();
-	
-	@Source("svg-icon-success.svg")
-	DataResource svgIconSuccess();
-	
 	@Source("svg-icon-detail.svg")
 	DataResource svgIconDetail();
-
-	@Source("svg-icon-file.svg")
-	DataResource svgIconFile();
 }
