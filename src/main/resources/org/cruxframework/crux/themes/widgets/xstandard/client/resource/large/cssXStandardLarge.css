@@ -332,6 +332,11 @@
 	width: 400px;
 }
 
+.crux-FileUploader .buttonsPanel
+{
+	text-align:center;
+}
+
 .crux-FileUploader .filePanel
 {
 	background:#fff;
@@ -1348,4 +1353,55 @@
 .crux-StyledPanelOuter
 {
 	width:auto;
+}
+
+
+/****************
+    StackMenu
+****************/
+
+.crux-StackMenu
+{
+	width:200px;
+}
+
+
+/****************
+ TopMenuDisposal
+****************/
+.crux-TopMenuDisposal .headerPanel .menuPanel
+{
+	border:1px solid #ccc;
+	border-radius:2px;
+	overflow:hidden;
+}
+
+.crux-TopMenuDisposal .headerPanel .menuPanel table
+{
+	width:100%;
+}
+
+.crux-TopMenuDisposal .headerPanel .menuPanel .menuEntry
+{
+	width:auto;
+	padding:10px;
+	color:#222;
+	text-align:center !important;
+	border-right:1px solid #ccc;
+	box-shadow:none !important;
+}
+
+.crux-TopMenuDisposal .headerPanel .menuPanel .menuEntry:hover
+{
+	background:#f1f1f1;
+}
+
+.crux-TopMenuDisposal .headerPanel .menuPanel .menuEntry:last-child
+{
+	border-right:0;
+}
+
+.crux-TopMenuDisposal .headerPanel .menuPanel .menuEntry:after
+{
+	display:none;
 }

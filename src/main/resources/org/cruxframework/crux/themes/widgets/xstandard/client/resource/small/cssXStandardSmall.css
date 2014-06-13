@@ -479,9 +479,15 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	border-radius:3px;
 	box-shadow:0 0 0 1px rgba(0, 0, 0, 0.2), 0 0 7px 1px rgba(0, 0, 0, 0.4);
 	background:#fff;
+	
+	left:5% !important;
+	top:10% !important;
 }
 
-.crux-DialogViewContainer .dialogTop > td, .popupContent .dialogTopBar{
+.crux-DialogViewContainer .dialogTop > td,
+.popupContent .dialogTopBar,
+.crux-ColorPickerDialog .dialogTop >td
+{
 	background:#f7f7f7;
 	color:#4496c6;
 	box-shadow:0 -2px #EAEAEA inset, 0 1px 0 #D1D1D1;
@@ -491,7 +497,8 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	background:transparent;
 	box-shadow:none;
 }
-.crux-DialogViewContainer .dialogTop .dialogTopCenter .dialogTopCenterInner, .popupContent .dialogTopBar{
+.crux-DialogViewContainer .dialogTop .dialogTopCenter .dialogTopCenterInner,
+.popupContent .dialogTopBar{
 	text-align:center;
 }
 .crux-DialogViewContainer .dialogTop .dialogTopLeft{
@@ -853,4 +860,14 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	border-right: 5px solid transparent;	
 	border-top: 5px solid #fff;
 	margin-top:1px;
+}
+
+
+/****************
+    StackMenu
+****************/
+
+.crux-StackMenu
+{
+	width:100%;
 }

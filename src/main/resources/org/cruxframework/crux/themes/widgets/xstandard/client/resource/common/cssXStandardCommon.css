@@ -31,6 +31,24 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
   box-sizing: border-box;
 }
 
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+/**
+ * Enables .cf functionality in IE 6/7 too
+ */
+.cf {
+    *zoom: 1;
+}
+
+
+
 *[disabled]{
 	cursor:not-allowed !important;
 }
@@ -563,6 +581,112 @@ Inputs / Textarea
 .crux-ColorPickerDialog .dialogMiddleCenter
 {
 	padding:10px 0 10px 3px;
+}
+
+/****************
+    StackMenu
+****************/
+
+.crux-StackMenu .crux-StackMenuItem .item
+{
+	background:#4496c6;
+	border:1px solid #1a6299;
+	color:#fff;
+	font-weight:bold;
+	font-size:13px;
+	margin-top:-1px;
+	position:relative;
+	z-index:3;
+}
+
+.crux-StackMenu .crux-StackMenuItem .item .hasSubItems div
+{
+	content:'';
+	position:absolute;
+	top:15px;
+	right:10px;
+	width:0;
+	height:0;
+	border-left: 5px solid #fff;
+	border-top: 5px solid transparent;	
+	border-bottom: 5px solid transparent;
+}
+
+.crux-StackMenu .crux-StackMenuItem .item.item-open .hasSubItems div
+{
+	content:'';
+	position:absolute;
+	top:17px;
+	right:10px;
+	width:0;
+	height:0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;	
+	border-top: 5px solid #fff;
+}
+
+.crux-StackMenu .crux-StackMenuItem .item tbody tr:first-child, .crux-StackMenuItem .item tbody tr:last-child
+{
+	display:none;
+}
+
+.crux-StackMenu .crux-StackMenuItem .item-border-w, .crux-StackMenuItem .item-border-e
+{
+	width:1px;
+}
+
+.crux-StackMenu .crux-StackMenuItem .itemLabel
+{
+	padding:10px;
+}
+
+.crux-StackMenu .crux-StackMenuItem .crux-StackMenuItem .item
+{
+	background:#fff;
+	border:1px solid #ccc;
+	color:#555;
+	font-weight:normal;
+	z-index:1;
+}
+
+.crux-StackMenu .crux-StackMenuItem .crux-StackMenuItem .crux-StackMenuItem .item
+{
+	background:#eee;
+	border:1px solid #ccc;
+	color:#555;
+	z-index:2;
+}
+
+.crux-StackMenu .crux-StackMenuItem .crux-StackMenuItem .item .hasSubItems div
+{
+	content:'';
+	position:absolute;
+	top:15px;
+	right:10px;
+	width:0;
+	height:0;
+	border-left: 5px solid #333;
+	border-top: 5px solid transparent;	
+	border-bottom: 5px solid transparent;
+}
+
+.crux-StackMenu .crux-StackMenuItem .crux-StackMenuItem .item.item-open .hasSubItems div
+{
+	content:'';
+	position:absolute;
+	top:17px;
+	right:10px;
+	width:0;
+	height:0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;	
+	border-top: 5px solid #333;
+}
+
+.crux-StackMenu .itemLabel
+{
+	cursor:pointer;
+	font-size:13px;
 }
 
 
