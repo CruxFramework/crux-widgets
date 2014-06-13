@@ -28,12 +28,16 @@ body
 
 /***************/
 
-.crux-StyledPanel, .crux-ScrollBanner
+.crux-StyledPanel
 {
 	background:#fff;
-	box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08);
 	padding:10px;
 	margin-top:10px;
+}
+
+.crux-ScrollBanner
+{
+	padding:0;
 }
 
 .crux-styledPanel h1,
@@ -46,7 +50,9 @@ body
 	margin-top:10px;
 }
 
-.gwt-TextBox, .gwt-TextArea
+.gwt-TextBox,
+.gwt-TextArea,
+.crux-SingleSelect
 {
 	font-size:115%;
 	padding:12px 8px;
@@ -471,7 +477,12 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 
 /****************************************************************************/
 /* DIALOG */
-.crux-DialogViewContainer, .crux-Dialog, .popupContent, .crux-ColorPickerDialog{
+.crux-DialogViewContainer,
+.crux-Dialog,
+.popupContent,
+.crux-ColorPickerDialog,
+.grid-detail-dialog
+{
 	width:90%;
 	height:auto;
 	overflow:auto;
@@ -480,13 +491,16 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	box-shadow:0 0 0 1px rgba(0, 0, 0, 0.2), 0 0 7px 1px rgba(0, 0, 0, 0.4);
 	background:#fff;
 	
+	z-index:10;
+	
 	left:5% !important;
 	top:10% !important;
+	position:absolute;
 }
 
 .crux-DialogViewContainer .dialogTop > td,
 .popupContent .dialogTopBar,
-.crux-ColorPickerDialog .dialogTop >td
+.crux-ColorPickerDialog .dialogTop > td
 {
 	background:#f7f7f7;
 	color:#4496c6;
@@ -532,6 +546,7 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 .crux-ProgressBox{
 	max-width:70%;
 	height: 60px;
+	z-index:10px;
 }
 .crux-ProgressBox .dialogTopBar
 {
@@ -611,6 +626,13 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	margin-top:10px;
 }
 
+.crux-FlatMessageBox
+{
+	z-index:10;
+	width:100%;
+	left:0 !important;
+}
+
 .crux-FlatMessageBox .dialogTopBar
 {
 	opacity:0;
@@ -627,16 +649,41 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	border:none;
 }
 
-.grid-detail-dialogbox {
+.grid-detail-dialogbox
+{
 	font-size: 14px;
 	background-color: rgba(255,255,255,1.0);
 	border: 1px solid #aaa;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-	padding: 1.25em;
+	padding:0;
 	border-radius: 6px;
 	z-index: 98;
 	color: #000;
-	
+	overflow:hidden;
+}
+
+.grid-detail-dialogbox .detail-key
+{
+	font-weight:bold;
+	width:90px;
+	padding-right:8px;
+}
+
+.grid-detail-dialogbox .dialogContent > table
+{
+	margin-bottom:2px;
+}
+
+.grid-detail-dialogbox .dialogContent > table > tbody > tr > td
+{
+	border: 1px solid #CCC;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+.grid-detail-dialogbox .dialogContent > table > tbody > tr:first-child
+{
+	display:none;
 }
 
 .grid{
@@ -870,4 +917,44 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 .crux-StackMenu
 {
 	width:100%;
+}
+
+
+/****************
+    StackMenu
+****************/
+
+.crux-ColorPickerDialog > div > table
+{
+	width:100%;
+}
+
+.crux-ColorPickerDialog table
+{
+	margin:0 auto;
+	text-align:center;
+}
+
+.crux-ColorPickerDialog .PickerButtons .crux-Button
+{
+	background:transparent;
+	color:#222;
+	text-shadow:none;
+	border:1px solid #CCC;
+	float:left;
+	width:50%;
+	margin-left:-1px;
+	margin-top:10px;
+}
+
+
+/****************
+   SingleSelect
+****************/
+
+.crux-SingleSelect
+{
+	width:100% !important;
+	display:block;
+	margin-bottom:10px;
 }

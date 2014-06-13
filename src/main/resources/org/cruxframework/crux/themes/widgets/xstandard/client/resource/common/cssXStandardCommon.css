@@ -220,7 +220,8 @@ Inputs / Textarea
 ****************/
 
 .gwt-TextBox,
-.gwt-TextArea
+.gwt-TextArea,
+.crux-SingleSelect
 {
 	background:#fff;
 	color:#444;
@@ -232,13 +233,15 @@ Inputs / Textarea
 }
 
 .gwt-TextBox:hover,
-.gwt-TextArea:hover
+.gwt-TextArea:hover,
+.crux-SingleSelect:hover
 {
 	border:1px solid #5c87b0;
 }
 
 .gwt-TextBox:focus,
-.gwt-TextArea:focus
+.gwt-TextArea:focus,
+.crux-SingleSelect:focus
 {
 	border:1px solid #66afe9;
 	box-shadow:0 1px 2px rgba(0,0,0,0.2) inset, 0 0 5px rgba(102,175,233,0.75);
@@ -690,6 +693,15 @@ Inputs / Textarea
 }
 
 
+/****************
+   SingleSelect
+****************/
+
+.crux-SingleSelect
+{
+	font-size:13px;
+	margin:0 10px 0 0;
+}
 
 
 

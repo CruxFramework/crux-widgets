@@ -28,6 +28,11 @@ public class SingleSelect extends ListBox implements HasValue<String>
 
 		return null;
 	}
+	
+	public SingleSelect()
+	{
+		setStyleName("crux-SingleSelect");
+	}
 
 	/**
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
