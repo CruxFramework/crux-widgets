@@ -1405,3 +1405,13 @@
 {
 	display:none;
 }
+
+
+/****************
+      Timer
+****************/
+
+.crux-Timer
+{
+	display:inline-block;
+}

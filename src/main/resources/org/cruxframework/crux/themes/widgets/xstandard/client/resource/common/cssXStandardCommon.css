@@ -704,6 +704,19 @@ Inputs / Textarea
 }
 
 
+/****************
+      Timer
+****************/
+
+.crux-Timer
+{
+	border:1px solid #CCC;
+	font-size:13px;
+	padding:5px;
+	box-shadow:0 1px 2px rgba(0, 0, 0, 0.1);
+	color:#555;
+}
+
 
 
 
