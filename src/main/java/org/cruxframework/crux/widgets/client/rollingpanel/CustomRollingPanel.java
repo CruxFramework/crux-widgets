@@ -398,7 +398,7 @@ public class CustomRollingPanel extends Composite implements InsertPanel, HasHor
 	 */
 	protected void checkNavigationButtons()
 	{
-		if (itemsPanel.getOffsetWidth() > layoutPanel.getOffsetWidth())
+		if (itemsPanel.getOffsetWidth() > layoutPanel.getOffsetWidth() - (nextButton.getOffsetWidth() + previousButton.getOffsetWidth()))
 		{
 			enableNavigationButtons();
 		}
