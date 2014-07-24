@@ -15,6 +15,9 @@
  */
 package org.cruxframework.crux.widgets.rebind.rollingtabs;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.cruxframework.crux.core.client.utils.EscapeUtils;
 import org.cruxframework.crux.core.client.utils.StringUtils;
 import org.cruxframework.crux.core.rebind.AbstractProxyCreator.SourcePrinter;
@@ -47,19 +50,20 @@ import org.cruxframework.crux.widgets.client.rollingtabs.RollingTabBar.Tab;
 import org.cruxframework.crux.widgets.client.rollingtabs.RollingTabPanel;
 import org.json.JSONObject;
 
-
 class RollingTabPanelContext extends WidgetCreatorContext
 {
-
 	public JSONObject tabElement;
 	public boolean isHTMLTitle;
+	public boolean isWidgetTitle;
 	public String title;
 	public String titleWidget;
 	public boolean titleWidgetPartialSupport;
 	public String titleWidgetClassType;
+	
 	public void clearAttributes()
     {
 	    isHTMLTitle = false;
+	    isWidgetTitle = false;
 	    title = null;
 	    titleWidget = null;
 	    tabElement = null;
@@ -81,6 +85,8 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 									implements HasAnimationFactory<RollingTabPanelContext>, 
 									HasBeforeSelectionHandlersFactory<RollingTabPanelContext>
 {
+	 private static Logger logger = Logger.getLogger(RollingTabPanelFactory.class.getName());
+	 
 	/**
 	 * @author Thiago da Rosa de Bustamante
 	 *
@@ -97,7 +103,7 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 			String widget = context.getWidget();
 			String widgetClassName = getWidgetCreator().getWidgetClassName();
 			printlnPostProcessing("final "+widgetClassName+" "+widget+" = ("+widgetClassName+")"+ getViewVariable()+".getWidget("+EscapeUtils.quote(context.getWidgetId())+");");
-			printlnPostProcessing(widget+".selectTab("+Integer.parseInt(propertyValue)+");");
+			printlnPostProcessing(widget+".selectTab("+String.valueOf(Integer.parseInt(propertyValue) - 1)+");");
         }
 	}	
 	
@@ -122,7 +128,6 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 		{
 			context.tabElement = context.getChildElement();
 		}
-		
 	}
 	
 	@TagConstraints(minOccurs="0")
@@ -168,6 +173,7 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 		@Override
 		public void processChildren(SourcePrinter out, RollingTabPanelContext context) throws CruxGeneratorException
 		{
+			context.isWidgetTitle = true;
 			context.titleWidget = getWidgetCreator().createChildWidget(out, context.getChildElement(), context);
 			context.titleWidgetPartialSupport = getWidgetCreator().hasChildPartialSupport(context.getChildElement());
 			if (context.titleWidgetPartialSupport)
@@ -203,7 +209,13 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 				{
 					out.println("if ("+context.titleWidgetClassType+".isSupported()){");
 				}
-				out.println(rootWidget+".add("+widget+", "+EscapeUtils.quote(context.titleWidget)+");");
+				if(context.isWidgetTitle)
+				{
+					out.println(rootWidget+".add("+widget+", "+context.titleWidget+");");
+				} else
+				{
+					out.println(rootWidget+".add("+widget+", "+EscapeUtils.quote(context.titleWidget)+");");
+				}
 				if (context.titleWidgetPartialSupport)
 				{
 					out.println("}");
@@ -222,7 +234,7 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 		
 		private void updateTabState(SourcePrinter out, RollingTabPanelContext context)
 		{
-			String enabled = context.tabElement.optString("enabled");
+			String enabled = context.tabElement.optString("tabEnabled");
 			String rootWidget = context.getWidget();
 			if (enabled != null && enabled.length() >0)
 			{
@@ -243,27 +255,33 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 			if (keyPressEvtBind == null) keyPressEvtBind = new KeyPressEvtBind(getWidgetCreator());
 			if (keyDownEvtBind == null) keyDownEvtBind = new KeyDownEvtBind(getWidgetCreator());
 
-			String clickEvt = context.tabElement.optString(clickEvtBind.getEventName());
-			if (!StringUtils.isEmpty(clickEvt))
+			try
 			{
-				clickEvtBind.processEvent(out, clickEvt, currentTab, null);
-			}
-			String keyUpEvt = context.tabElement.optString(keyUpEvtBind.getEventName());
-			if (!StringUtils.isEmpty(keyUpEvt))
+				String clickEvt = context.tabElement.optString(clickEvtBind.getEventName());
+				if (!StringUtils.isEmpty(clickEvt))
+				{
+					clickEvtBind.processEvent(out, clickEvt, currentTab, null);
+				}
+				String keyUpEvt = context.tabElement.optString(keyUpEvtBind.getEventName());
+				if (!StringUtils.isEmpty(keyUpEvt))
+				{
+					keyUpEvtBind.processEvent(out, keyUpEvt, currentTab, null);
+				}
+				String keyPressEvt = context.tabElement.optString(keyPressEvtBind.getEventName());
+				if (!StringUtils.isEmpty(keyPressEvt))
+				{
+					keyPressEvtBind.processEvent(out, keyPressEvt, currentTab, null);
+				}
+				String keyDownEvt = context.tabElement.optString(keyDownEvtBind.getEventName());
+				if (!StringUtils.isEmpty(keyDownEvt))
+				{
+					keyDownEvtBind.processEvent(out, keyDownEvt, currentTab, null);
+				}
+			} catch (Exception e)
 			{
-				keyUpEvtBind.processEvent(out, keyUpEvt, currentTab, null);
+				logger.log(Level.SEVERE, "Error when processing events for Widget.", e);
 			}
-			String keyPressEvt = context.tabElement.optString(keyPressEvtBind.getEventName());
-			if (!StringUtils.isEmpty(keyPressEvt))
-			{
-				keyPressEvtBind.processEvent(out, keyPressEvt, currentTab, null);
-			}
-			String keyDownEvt = context.tabElement.optString(keyDownEvtBind.getEventName());
-			if (!StringUtils.isEmpty(keyDownEvt))
-			{
-				keyDownEvtBind.processEvent(out, keyDownEvt, currentTab, null);
-			}
-
+			
 			context.clearAttributes();
 		}	
 		private static ClickEvtBind clickEvtBind;

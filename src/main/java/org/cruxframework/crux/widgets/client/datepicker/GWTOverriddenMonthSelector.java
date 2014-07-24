@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 cruxframework.org.
+ * Copyright 2008 Google Inc.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,21 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.cruxframework.crux.widgets.client.dialog;
+package org.cruxframework.crux.widgets.client.datepicker;
 
 /**
- * A simple dialog box built upon DIV elements.
- * @author Gesse Dafe
+ * Abstract month selector widget.
  */
-public class DialogBox extends AbstractDialogBox
-{
-	public DialogBox()
-	{
-		super(true, true, true);
-	}
-	
-	public DialogBox(boolean movable, boolean resizable, boolean closable)
-	{
-		super(movable, resizable, closable);
-	}
+abstract class GWTOverriddenMonthSelector extends GWTOverriddenDatePickerComponent {
 }

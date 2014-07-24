@@ -38,4 +38,13 @@ public interface XStandardResourcesLarge extends XStandardResourcesCommon
 	
 	@Source("svg-icon-pause.svg")
 	DataResource svgIconPause();
+	
+	@Source("edit-small.png")
+	DataResource gridEditIcon();
+	
+	@Source("ok-small.png")
+	DataResource gridSaveIcon();
+	
+	@Source("cancel-small.png")
+	DataResource gridCancelIcon();
 }

@@ -16,6 +16,7 @@
 package org.cruxframework.crux.widgets.client.swapcontainer;
 
 import org.cruxframework.crux.core.client.Crux;
+import org.cruxframework.crux.core.client.css.transition.Transition;
 import org.cruxframework.crux.core.client.screen.DeviceAdaptive.Device;
 import org.cruxframework.crux.core.client.screen.DeviceAdaptive.Size;
 import org.cruxframework.crux.core.client.screen.Screen;
@@ -37,6 +38,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
  * @author Thiago da Rosa de Bustamante
  *
  */
+@SuppressWarnings("deprecation")
 public class HorizontalSwapContainer extends SingleViewContainer implements HasChangeViewHandlers
 {
 	public static final String DEFAULT_STYLE_NAME = "crux-HorizontalSwapContainer";
@@ -46,6 +48,7 @@ public class HorizontalSwapContainer extends SingleViewContainer implements HasC
 	private boolean autoRemoveInactiveViews = false;
 	private boolean animationEnabled = true;
 	private boolean inheritHeightForPanels = false;
+	private boolean isAnimationRunning = false;
 	
 	public HorizontalSwapContainer()
 	{
@@ -116,16 +119,27 @@ public class HorizontalSwapContainer extends SingleViewContainer implements HasC
 	}
 	
 	/**
+	 * @param viewName
+	 * @param viewId
+	 * @param direction
+	 * @param parameter
+	 */
+	public void showView(String viewName, final String viewId, final Direction direction, final Object parameter)
+	{
+		showView(viewName, viewId, direction, null, parameter);
+	}
+	
+	/**
 	 * 
 	 * @param viewName
 	 * @param viewId
 	 * @param direction
 	 */
-	public void showView(String viewName, final String viewId, final Direction direction, final Object parameter)
+	public void showView(String viewName, final String viewId, final Direction direction, final Transition.Callback animationCallback, final Object parameter)
 	{
 		if (views.containsKey(viewId))
 		{
-			renderView(getView(viewId), direction, parameter);
+			renderView(getView(viewId), direction, animationCallback, parameter);
 		}
 		else
 		{
@@ -136,7 +150,7 @@ public class HorizontalSwapContainer extends SingleViewContainer implements HasC
 				{
 					if (addView(view, false, parameter))
 					{
-						renderView(view, direction, parameter);
+						renderView(view, direction, animationCallback, parameter);
 					}
 					else
 					{
@@ -148,12 +162,23 @@ public class HorizontalSwapContainer extends SingleViewContainer implements HasC
 	}
 
 	/**
+	 * @param view
+	 * @param direction
+	 * @param parameter
+	 * @return
+	 */
+	protected boolean renderView(View view, Direction direction, Object parameter)
+	{
+		return renderView(view, direction, null, parameter);
+	}
+	
+	/**
 	 * 
 	 * @param view
 	 * @param direction
 	 * @param parameter
 	 */
-	protected boolean renderView(View view, Direction direction, Object parameter)
+	protected boolean renderView(View view, Direction direction, final Transition.Callback animationCallback, Object parameter)
 	{
 		if (activeView == null || !activeView.getId().equals(view.getId()))
 		{
@@ -169,12 +194,18 @@ public class HorizontalSwapContainer extends SingleViewContainer implements HasC
 				}
 				else
 				{
+					isAnimationRunning = true;
 					swapPanel.transitTo(active, direction, new Callback()
 					{
 						@Override
 						public void onTransitionCompleted()
 						{
 							concludeViewsSwapping(previous, next);
+							if(animationCallback != null)
+							{
+								animationCallback.onTransitionCompleted();
+							}
+							isAnimationRunning = false;
 						}
 					});
 				}
@@ -197,7 +228,7 @@ public class HorizontalSwapContainer extends SingleViewContainer implements HasC
 	@Override
 	protected boolean renderView(View view, Object parameter)
 	{
-		return renderView(view, Direction.FORWARD, parameter);
+		return renderView(view, Direction.FORWARD, null, parameter);
 	}
 
 	@Override
@@ -310,5 +341,10 @@ public class HorizontalSwapContainer extends SingleViewContainer implements HasC
 	public HandlerRegistration addChangeViewHandler(ChangeViewHandler handler)
 	{
 		return addHandler(handler, ChangeViewEvent.getType());
+	}
+
+	public boolean isAnimationRunning() 
+	{
+		return isAnimationRunning;
 	}
 }
