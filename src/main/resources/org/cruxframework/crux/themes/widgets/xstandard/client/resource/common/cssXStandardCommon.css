@@ -8,6 +8,10 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 @url svgIconSuccess svgIconSuccess;
 @url svgIconClose svgIconClose;
 @url svgIconFile svgIconFile;
+@url svgIconPaginatorFirst svgIconPaginatorFirst;
+@url svgIconPaginatorLast svgIconPaginatorLast;
+@url svgIconPaginatorNext svgIconPaginatorNext;
+@url svgIconPaginatorPrev svgIconPaginatorPrev;
 
 
 *:focus, *:active, *:hover
@@ -715,6 +719,76 @@ Inputs / Textarea
 	padding:5px;
 	box-shadow:0 1px 2px rgba(0, 0, 0, 0.1);
 	color:#555;
+}
+
+
+/****************
+   RandomPager
+****************/
+
+.crux-RandomPager
+{
+	border-radius:3px;
+	border:1px solid #ccc;
+	background:#fff;
+	overflow:hidden;
+	box-shadow:0 1px 3px rgba(0,0,0,0.05);
+}
+
+.crux-RandomPager .gwt-ListBox
+{
+	margin:5px 10px;
+}
+
+.crux-RandomPager td
+{
+	border-right:1px solid #ccc;
+}
+
+.crux-RandomPager td:hover
+{
+	background:#efefef;
+}
+
+.crux-RandomPager td:first-child
+{
+	border-radius:3px 0 0 3px;
+}
+
+.crux-RandomPager td:last-child
+{
+	border-radius:0 3px 3px 0;
+}
+
+.crux-RandomPager .firstButton
+{
+	background:svgIconPaginatorFirst no-repeat center;
+	background-size:10px auto;
+}
+
+.crux-RandomPager .previousButton
+{
+	background:svgIconPaginatorPrev no-repeat center;
+	background-size:10px auto;
+}
+
+.crux-RandomPager .nextButton
+{
+	background:svgIconPaginatorNext no-repeat center;
+	background-size:10px auto;
+}
+
+.crux-RandomPager .lastButton
+{
+	background:svgIconPaginatorLast no-repeat center;
+	background-size:10px auto;
+}
+
+.crux-RandomPager td button
+{
+	display:block;
+	border:0;
+	padding:12px;
 }
 
 

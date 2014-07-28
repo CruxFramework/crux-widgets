@@ -17,6 +17,7 @@ package org.cruxframework.crux.themes.widgets.xstandard.client.resource.common;
 
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.ClientBundle.Source;
 
 /**
  * @author Gesse Dafe
@@ -37,4 +38,16 @@ public interface XStandardResourcesCommon extends ClientBundle
 	
 	@Source("svg-icon-success.svg")
 	DataResource svgIconSuccess();
+	
+	@Source("svg-icon-paginator-first.svg")
+	DataResource svgIconPaginatorFirst();
+	
+	@Source("svg-icon-paginator-last.svg")
+	DataResource svgIconPaginatorLast();
+	
+	@Source("svg-icon-paginator-next.svg")
+	DataResource svgIconPaginatorNext();
+	
+	@Source("svg-icon-paginator-prev.svg")
+	DataResource svgIconPaginatorPrev();
 }
