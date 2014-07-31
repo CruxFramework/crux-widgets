@@ -791,6 +791,39 @@ Inputs / Textarea
 	padding:12px;
 }
 
+/****************
+  TablelessGrid
+****************/
+
+.crux-AbstractTablelessGridStructure .cellWrapper
+{
+	display:inline-table !important;
+	margin-left:-1px !important;
+	margin-top:-1px !important;
+	vertical-align:top;
+}
+
+.crux-AbstractTablelessGridStructure .cellWrapper.cellWrapper-rowSelectionColumn td
+{
+	background:#f3f3f3 !important;
+}
+
+.crux-AbstractTablelessGridStructure .cellWrapper input
+{
+	margin-bottom:0 !important;
+}
+
+.crux-AbstractTablelessGridStructure .cellWrapper .crux-Cell .gwt-Label
+{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap !important;
+}
+
+.crux-AbstractTablelessGridStructure td
+{
+	min-width:initial !important;
+}
 
 
 
