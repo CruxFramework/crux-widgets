@@ -225,6 +225,7 @@ Inputs / Textarea
 
 .gwt-TextBox,
 .gwt-TextArea,
+.crux-DateBox,
 .crux-SingleSelect
 {
 	background:#fff;
@@ -245,6 +246,7 @@ Inputs / Textarea
 
 .gwt-TextBox:focus,
 .gwt-TextArea:focus,
+.crux-DateBox:focus,
 .crux-SingleSelect:focus
 {
 	border:1px solid #66afe9;
@@ -253,6 +255,7 @@ Inputs / Textarea
 
 /* SUCCESS */
 .gwt-TextBox.success,
+.crux-DateBox.success,
 .gwt-TextArea.success
 {
 	border:1px solid #6d991a;
@@ -263,19 +266,22 @@ Inputs / Textarea
 }
 
 .gwt-TextBox.success:hover,
-.gwt-TextArea.success:hover
+.gwt-TextArea.success:hover,
+.crux-DateBox.success:hover
 {
 	border-color:#527808;
 }
 .gwt-TextBox.success:focus,
-.gwt-TextArea.success:focus
+.gwt-TextArea.success:focus,
+.crux-DateBox.success:focus
 {
 	box-shadow:0 1px 2px rgba(0,0,0,0.2) inset, 0 0 5px rgba(0,255,0,0.4), -30px 0 0 rgba(70, 180, 0, 0.18) inset;
 }
 
 /* WARNING */
 .gwt-TextBox.warn,
-.gwt-TextArea.warn
+.gwt-TextArea.warn,
+.crux-DateBox.warn
 {
 	border:1px solid #d58512;
 	background:svgIconWarning no-repeat 96% center #fff;
@@ -285,20 +291,23 @@ Inputs / Textarea
 }
 
 .gwt-TextBox.warn:hover,
-.gwt-TextArea.warn:hover
+.gwt-TextArea.warn:hover,
+.crux-DateBox.warn:hover
 {
 	border-color:#b76f09;
 }
 
 .gwt-TextBox.warn:focus,
-.gwt-TextArea.warn:focus
+.gwt-TextArea.warn:focus,
+.crux-DateBox.warn:focus
 {
 	box-shadow:0 1px 2px rgba(0,0,0,0.2) inset, 0 0 5px rgba(255,168,0,0.6), -30px 0 0 rgba(190, 180, 0, 0.18) inset;
 }
 
 /* ERROR */
 .gwt-TextBox.error,
-.gwt-TextArea.error
+.gwt-TextArea.error,
+.crux-DateBox.error
 {
 	border:1px solid #ac2925;
 	background:svgIconDanger no-repeat 96% center #fff;
@@ -308,13 +317,15 @@ Inputs / Textarea
 }
 
 .gwt-TextBox.error:hover,
-.gwt-TextArea.error:hover
+.gwt-TextArea.error:hover,
+.crux-DateBox.error:hover
 {
 	border-color:#96130f;
 }
 
 .gwt-TextBox.error:focus,
-.gwt-TextArea.error:focus
+.gwt-TextArea.error:focus,
+.crux-DateBox.error:focus
 {
 	box-shadow:0 1px 2px rgba(0,0,0,0.2) inset, 0 0 5px rgba(255,0,0,0.4), -30px 0 0 rgba(190, 80, 30, 0.18) inset;
 }
@@ -322,52 +333,60 @@ Inputs / Textarea
 /* SIZES */
 .gwt-TextBox.mini,
 .gwt-TextArea.mini
+.crux-DateBox.mini
 {
 	font-size:70%;
 	padding:4px 7px;
 }
 
 .gwt-TextBox.xsmall,
-.gwt-TextArea.xsmall
+.gwt-TextArea.xsmall,
+.crux-DateBox.xsmall
 {
 	font-size:70%;
 	padding:6px 10px;
 }
 
 .gwt-TextBox.small,
-.gwt-TextArea.small
+.gwt-TextArea.small,
+.crux-DateBox.small
 {
 	font-size:80%;
 	padding:8px 12px;
 }
 
 .gwt-TextBox.large,
-.gwt-TextArea.large
+.gwt-TextArea.large,
+.crux-DateBox.large
 {
 	font-size:115%;
 }
 
 .gwt-TextBox.xlarge,
-.gwt-TextArea.xlarge
+.gwt-TextArea.xlarge,
+.crux-DateBox.xlarge
 {
 	font-size:130%;
 }
 
 /* STYLES */
 .gwt-TextBox.bullet,
-.gwt-TextArea.bullet
+.gwt-TextArea.bullet,
+.crux-DateBox.bullet
 {
 	border-radius:500px;
 }
 .gwt-TextBox.round,
-.gwt-TextArea.round
+.gwt-TextArea.round,
+.crux-DateBox.round
 {
 	border-radius:3px;
 }
 
 /* DISABLED */
 .gwt-TextBox:disabled,
-.gwt-TextArea:disabled
+.gwt-TextArea:disabled,
+.crux-DateBox:disabled
 {
 	background:#e5e5e5;
 	border:1px solid #a5a5a5;
