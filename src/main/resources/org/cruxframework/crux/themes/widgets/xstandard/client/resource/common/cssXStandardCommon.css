@@ -226,7 +226,10 @@ Inputs / Textarea
 .gwt-TextBox,
 .gwt-TextArea,
 .crux-DateBox,
-.crux-SingleSelect
+.crux-Filter,
+.crux-NumberTextBox,
+.crux-SingleSelect,
+.crux-MaskedTextBox
 {
 	background:#fff;
 	color:#444;
@@ -239,7 +242,11 @@ Inputs / Textarea
 
 .gwt-TextBox:hover,
 .gwt-TextArea:hover,
-.crux-SingleSelect:hover
+.crux-DateBox:hover,
+.crux-Filter:hover,
+.crux-NumberTextBox:hover,
+.crux-SingleSelect:hover,
+.crux-MaskedTextBox:hover
 {
 	border:1px solid #5c87b0;
 }
@@ -247,7 +254,10 @@ Inputs / Textarea
 .gwt-TextBox:focus,
 .gwt-TextArea:focus,
 .crux-DateBox:focus,
-.crux-SingleSelect:focus
+.crux-Filter:focus,
+.crux-NumberTextBox:focus,
+.crux-SingleSelect:focus,
+.crux-MaskedTextBox:focus
 {
 	border:1px solid #66afe9;
 	box-shadow:0 1px 2px rgba(0,0,0,0.2) inset, 0 0 5px rgba(102,175,233,0.75);
@@ -255,8 +265,11 @@ Inputs / Textarea
 
 /* SUCCESS */
 .gwt-TextBox.success,
+.gwt-TextArea.success,
 .crux-DateBox.success,
-.gwt-TextArea.success
+.crux-Filter.success,
+.crux-NumberTextBox.success,
+.crux-MaskedTextBox.success
 {
 	border:1px solid #6d991a;
 	background:svgIconSuccess no-repeat 96% center #fff;
@@ -267,13 +280,17 @@ Inputs / Textarea
 
 .gwt-TextBox.success:hover,
 .gwt-TextArea.success:hover,
-.crux-DateBox.success:hover
+.crux-DateBox.success:hover,
+.crux-Filter.success:hover,
+.crux-MaskedTextBox.success:hover
 {
 	border-color:#527808;
 }
 .gwt-TextBox.success:focus,
 .gwt-TextArea.success:focus,
-.crux-DateBox.success:focus
+.crux-DateBox.success:focus,
+.crux-Filter.success:focus,
+.crux-NumberTextBox.success:focus
 {
 	box-shadow:0 1px 2px rgba(0,0,0,0.2) inset, 0 0 5px rgba(0,255,0,0.4), -30px 0 0 rgba(70, 180, 0, 0.18) inset;
 }
@@ -281,7 +298,10 @@ Inputs / Textarea
 /* WARNING */
 .gwt-TextBox.warn,
 .gwt-TextArea.warn,
-.crux-DateBox.warn
+.crux-DateBox.warn,
+.crux-Filter.warn,
+.crux-NumberTextBox.warn,
+.crux-MaskedTextBox.warn
 {
 	border:1px solid #d58512;
 	background:svgIconWarning no-repeat 96% center #fff;
@@ -292,14 +312,20 @@ Inputs / Textarea
 
 .gwt-TextBox.warn:hover,
 .gwt-TextArea.warn:hover,
-.crux-DateBox.warn:hover
+.crux-DateBox.warn:hover,
+.crux-Filter.warn:hover,
+.crux-NumberTextBox.warn:hover,
+.crux-MaskedTextBox.warn:hover
 {
 	border-color:#b76f09;
 }
 
 .gwt-TextBox.warn:focus,
 .gwt-TextArea.warn:focus,
-.crux-DateBox.warn:focus
+.crux-DateBox.warn:focus,
+.crux-Filter.warn:focus,
+.crux-NumberTextBox.warn:focus,
+.crux-MaskedTextBox.warn:focus
 {
 	box-shadow:0 1px 2px rgba(0,0,0,0.2) inset, 0 0 5px rgba(255,168,0,0.6), -30px 0 0 rgba(190, 180, 0, 0.18) inset;
 }
@@ -307,7 +333,9 @@ Inputs / Textarea
 /* ERROR */
 .gwt-TextBox.error,
 .gwt-TextArea.error,
-.crux-DateBox.error
+.crux-DateBox.error,
+.crux-Filter.error,
+.crux-NumberTextBox.error
 {
 	border:1px solid #ac2925;
 	background:svgIconDanger no-repeat 96% center #fff;
@@ -318,22 +346,31 @@ Inputs / Textarea
 
 .gwt-TextBox.error:hover,
 .gwt-TextArea.error:hover,
-.crux-DateBox.error:hover
+.crux-DateBox.error:hover,
+.crux-Filter.error:hover,
+.crux-NumberTextBox.error:hover,
+.crux-MaskedTextBox.error:hover
 {
 	border-color:#96130f;
 }
 
 .gwt-TextBox.error:focus,
 .gwt-TextArea.error:focus,
-.crux-DateBox.error:focus
+.crux-DateBox.error:focus,
+.crux-Filter.error:focus,
+.crux-NumberTextBox.error:focus
+.crux-MaskedTextBox.error:focus
 {
 	box-shadow:0 1px 2px rgba(0,0,0,0.2) inset, 0 0 5px rgba(255,0,0,0.4), -30px 0 0 rgba(190, 80, 30, 0.18) inset;
 }
 
 /* SIZES */
 .gwt-TextBox.mini,
-.gwt-TextArea.mini
-.crux-DateBox.mini
+.gwt-TextArea.mini,
+.crux-DateBox.mini,
+.crux-Filter.mini,
+.crux-NumberTextBox.mini,
+.crux-MaskedTextBox.mini
 {
 	font-size:70%;
 	padding:4px 7px;
@@ -341,7 +378,10 @@ Inputs / Textarea
 
 .gwt-TextBox.xsmall,
 .gwt-TextArea.xsmall,
-.crux-DateBox.xsmall
+.crux-DateBox.xsmall,
+.crux-Filter.xsmall,
+.crux-NumberTextBox.xsmall
+.crux-MaskedTextBox.xsmall
 {
 	font-size:70%;
 	padding:6px 10px;
@@ -349,7 +389,10 @@ Inputs / Textarea
 
 .gwt-TextBox.small,
 .gwt-TextArea.small,
-.crux-DateBox.small
+.crux-DateBox.small,
+.crux-Filter.small,
+.crux-NumberTextBox.small,
+.crux-MaskedTextBox.small
 {
 	font-size:80%;
 	padding:8px 12px;
@@ -357,14 +400,20 @@ Inputs / Textarea
 
 .gwt-TextBox.large,
 .gwt-TextArea.large,
-.crux-DateBox.large
+.crux-DateBox.large,
+.crux-Filter.large,
+.crux-NumberTextBox.large,
+.crux-MaskedTextBox.large
 {
 	font-size:115%;
 }
 
 .gwt-TextBox.xlarge,
 .gwt-TextArea.xlarge,
-.crux-DateBox.xlarge
+.crux-DateBox.xlarge,
+.crux-Filter.xlarge,
+.crux-NumberTextBox.xlarge,
+.crux-MaskedTextBox.xlarge
 {
 	font-size:130%;
 }
@@ -372,13 +421,19 @@ Inputs / Textarea
 /* STYLES */
 .gwt-TextBox.bullet,
 .gwt-TextArea.bullet,
-.crux-DateBox.bullet
+.crux-DateBox.bullet,
+.crux-Filter.bullet,
+.crux-NumberTextBox.bullet,
+.crux-MaskedTextBox.bullet
 {
 	border-radius:500px;
 }
 .gwt-TextBox.round,
 .gwt-TextArea.round,
-.crux-DateBox.round
+.crux-DateBox.round,
+.crux-Filter.round,
+.crux-NumberTextBox.round,
+.crux-MaskedTextBox.round
 {
 	border-radius:3px;
 }
@@ -386,7 +441,10 @@ Inputs / Textarea
 /* DISABLED */
 .gwt-TextBox:disabled,
 .gwt-TextArea:disabled,
-.crux-DateBox:disabled
+.crux-DateBox:disabled,
+.crux-Filter:disabled,
+.crux-NumberTextBox:disabled,
+.crux-MaskedTextBox:disabled
 {
 	background:#e5e5e5;
 	border:1px solid #a5a5a5;
@@ -742,6 +800,37 @@ Inputs / Textarea
 
 
 /****************
+     ListBox
+****************/
+
+.gwt-ListBox
+{
+	color:#444;
+	padding:8px 8px;
+	border-radius:1px;
+	background:#f8f8f8;
+	border:1px solid #92aec8;
+	box-shadow:0 1px 3px rgba(0,0,0,0.1);
+}
+
+.gwt-ListBox:hover
+{
+	border:1px solid #5c87b0;
+}
+
+.gwt-ListBox:active
+{
+	box-shadow:0 1px 3px rgba(0,0,0,0.1) inset;
+}
+
+.gwt-ListBox:disabled
+{
+	background:#e5e5e5;
+	border:1px solid #a5a5a5;
+	box-shadow:0 1px 0 #eaeaea inset, 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/****************
    RandomPager
 ****************/
 
@@ -813,7 +902,7 @@ Inputs / Textarea
 /****************
   TablelessGrid
 ****************/
-
+	
 .crux-AbstractTablelessGridStructure .cellWrapper
 {
 	display:inline-table !important;
