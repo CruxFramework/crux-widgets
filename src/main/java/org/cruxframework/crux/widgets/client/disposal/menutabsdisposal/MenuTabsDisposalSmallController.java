@@ -53,6 +53,7 @@ public class MenuTabsDisposalSmallController extends AbstractMenuTabsDisposalCon
 		else
 		{
 			swapPanel.transitTo(getMenuPanel(), Direction.BACKWARDS);
+			
 		}
 	}
 
@@ -74,5 +75,12 @@ public class MenuTabsDisposalSmallController extends AbstractMenuTabsDisposalCon
 	{
 		viewContainer.showView(targetView);
 		swapPanel.transitTo(viewContainer, direction);
+	}
+	
+	@Override
+	protected void showView(String targetView, boolean saveHistory, Direction direction)
+	{
+		lastVisitedView = targetView;
+		doShowView(targetView, direction);
 	}
 }
