@@ -1023,6 +1023,11 @@
     background: #E4F6F1 !important;
 }
 
+.row-highlighted td
+{
+    background: #FFFFE1 !important;
+}
+
 .grid .columnHeadersRow .columnHeader table td
 {
     border:none;
