@@ -997,15 +997,19 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 			}
 		}
 
+		row.setSelected(row.getDataSourceRecord().isSelected());
+		row.setEnabled(!row.getDataSourceRecord().isReadOnly());
+		
 		if (editMode)
 		{
 			chooseFocusedEditor(editors, editableColumns, focusCellKey);
 			fireBeforeRowEditEvent(row);
-		}else{
-			row.setEnabled(!row.getDataSourceRecord().isReadOnly());
+			row.setRowSelectorEnabled(false);
 		}
-
-		row.setSelected(row.getDataSourceRecord().isSelected());
+		else
+		{
+			row.setRowSelectorEnabled(true);
+		}
 
 		if (dataSource.hasNextRecord())
 		{
@@ -1944,8 +1948,8 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 				}
 			}
 
-			renderRow(row, row.getDataSourceRecord(), true, focusCellKey);
 			row.setEditMode(true);
+			renderRow(row, row.getDataSourceRecord(), true, focusCellKey);
 
 			if(showEditorButtons)
 			{

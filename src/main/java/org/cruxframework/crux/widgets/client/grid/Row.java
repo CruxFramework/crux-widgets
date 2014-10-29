@@ -273,6 +273,15 @@ public class Row
 		this.enabled = enabled;
 	}
 	
+	public void setRowSelectorEnabled(boolean enabled)
+	{
+		if(hasSelectionCell)
+		{
+			CheckBox selector = (CheckBox) getCell(0).getCellWidget();
+			selector.setEnabled(enabled);
+		}
+	}
+	
 	/**
 	 * @return The panel on which the row's details are attached 
 	 */
