@@ -564,6 +564,7 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 						if(fireBeforeCancelRowEditionEvent(r))
 						{
 							grid.removeRow(r);
+							enableRows();
 							return;
 						}
 					}
