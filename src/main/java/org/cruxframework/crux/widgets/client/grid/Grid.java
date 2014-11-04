@@ -999,12 +999,11 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 		}
 
 		row.setSelected(row.getDataSourceRecord().isSelected());
-		row.setEnabled(!row.getDataSourceRecord().isReadOnly());
+	//	row.setEnabled(!row.getDataSourceRecord().isReadOnly());
 		
 		if (editMode)
 		{
 			chooseFocusedEditor(editors, editableColumns, focusCellKey);
-			fireBeforeRowEditEvent(row);
 			row.setRowSelectorEnabled(false);
 		}
 		else
@@ -1044,17 +1043,21 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 	 */
 	public void rollbackRowEdition(DataRow row)
 	{
-		if (row != null && fireBeforeCancelRowEditionEvent(row))
+		if (row != null)
 		{	
-			if(originalRecord != null)
+			if(fireBeforeCancelRowEditionEvent(row))
 			{
-				row.getDataSourceRecord().setRecordDto(originalRecord);
+				if(originalRecord != null)
+				{
+					row.getDataSourceRecord().setRecordDto(originalRecord);
+				}
+				fireCancelRowEditionEvent(row);
 			}
+			
 			row.setEditMode(false);
 			renderRow(row, row.getDataSourceRecord(), false, null);
 			this.currentEditingRow = null;
 			enableRows();
-			fireCancelRowEditionEvent(row);
 		}
 	}
 
@@ -1777,7 +1780,6 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 
 			columnLabelArrow = new Label(" ");
 			columnLabelArrow.setStyleName("arrow");
-
 			panel.add(columnLabel);
 			panel.add(columnLabelArrow);
 
@@ -1950,13 +1952,19 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 			}
 
 			row.setEditMode(true);
-			renderRow(row, row.getDataSourceRecord(), true, focusCellKey);
-
-			if(showEditorButtons)
+			fireBeforeRowEditEvent(row);
+			disableRows();
+			renderRow(row, row.getDataSourceRecord(), row.isEditMode(), focusCellKey);
+			
+			//If event was cancelled
+			if(!row.isEditMode())
+			{
+				enableRows();
+			}
+			else if(showEditorButtons)
 			{
 				startEditingButtons(row);
 			}
-			disableRows();
 		}
 	}
 
