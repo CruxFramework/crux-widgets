@@ -7,7 +7,7 @@
 	<description>Crux Widgets Library</description>
 
 	<properties>
-		<cruxVersion>5.3</cruxVersion>
+		<cruxVersion>5.3.0</cruxVersion>
 	</properties>
 
 	<parent>
