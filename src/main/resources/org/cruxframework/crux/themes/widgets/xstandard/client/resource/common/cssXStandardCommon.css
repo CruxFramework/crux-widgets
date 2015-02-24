@@ -692,6 +692,12 @@ Inputs / Textarea
 /****************
    ColorPicker
 ****************/
+.crux-ColorPickerDialog .manualPicker
+{
+	width: 90px;
+  	margin-top: 5px;
+}
+
 .crux-ColorPickerDialog .previewPanel
 {
 	width:20px;
@@ -699,6 +705,7 @@ Inputs / Textarea
 	float:right;
 	border-radius:2px;
 	margin-right:3px;
+	margin-top:-44px;
 }
 
 .crux-ColorPickerDialog .crux-SaturationLightnessPicker
