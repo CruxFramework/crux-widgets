@@ -676,12 +676,17 @@
     margin-top:40px;
     padding:10px 15px 0;
 }
+
 .crux-Dialog .popupContent, .crux-ProgressBox .popupContent, .crux-FlatMessageBox .popupContent
 {
     height: 100%;
     min-height: inherit;
-    width: 100%;
+    /* issue 585 */
+    @if !user.agent ie8 ie9 {
+        width: 100%;
+    }
 }
+
 .crux-Dialog .dialogResizer, .crux-FlatMessageBox .dialogResizer
 {
     position: absolute;
@@ -1382,8 +1387,10 @@
 {
     border:1px solid #1a6299;
     border-radius:2px;
-    /*if uncommented it will make a page stretch in IE9*/
-/*     overflow: hidden; */
+    /* issue 582 */
+    @if !user.agent ie8 ie9 {
+        overflow: hidden;
+	}
 }
 
 .crux-TopMenuDisposal .headerPanel .menuPanel table
