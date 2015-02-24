@@ -1382,7 +1382,8 @@
 {
     border:1px solid #1a6299;
     border-radius:2px;
-    overflow:hidden;
+    /*if uncommented it will make a page stretch in IE9*/
+/*     overflow: hidden; */
 }
 
 .crux-TopMenuDisposal .headerPanel .menuPanel table
