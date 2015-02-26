@@ -1068,6 +1068,87 @@ Inputs / Textarea
 	padding:12px;
 }
 
+
+/****************
+   SequentialPager
+****************/
+
+.crux-SequentialPager
+{
+	border-radius:3px;
+	border:1px solid #ccc;
+	background:#fff;
+	overflow:hidden;
+	box-shadow:0 1px 3px rgba(0,0,0,0.05);
+}
+
+.crux-SequentialPager .gwt-ListBox
+{
+	margin:5px 10px;
+}
+
+.crux-SequentialPager td
+{
+	border-right:1px solid #ccc;
+}
+
+.crux-SequentialPager td:hover
+{
+	background:#efefef;
+}
+
+.crux-SequentialPager td:first-child
+{
+	border-radius:3px 0 0 3px;
+}
+
+.crux-SequentialPager td:last-child
+{
+	border-radius:0 3px 3px 0;
+}
+
+.crux-SequentialPager td:nth-child\(2\):hover
+{
+	background:inherit;
+}
+
+.crux-SequentialPager .firstButton
+{
+	background:svgIconPaginatorFirst no-repeat center;
+	background-size:10px auto;
+}
+
+.crux-SequentialPager .previousButton
+{
+	background:svgIconPaginatorPrev no-repeat center;
+	background-size:10px auto;
+}
+
+.crux-SequentialPager .nextButton
+{
+	background:svgIconPaginatorNext no-repeat center;
+	background-size:10px auto;
+}
+
+.crux-SequentialPager .lastButton
+{
+	background:svgIconPaginatorLast no-repeat center;
+	background-size:10px auto;
+}
+
+.crux-SequentialPager td button
+{
+	display:block;
+	border:0;
+	padding:12px;
+}
+
+.crux-SequentialPager .currentPageLabel
+{
+	padding:5px 10px;
+}
+
+
 /****************
   TablelessGrid
 ****************/
