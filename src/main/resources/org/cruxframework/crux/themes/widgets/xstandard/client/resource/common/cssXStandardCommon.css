@@ -1068,6 +1068,13 @@ Inputs / Textarea
 	padding:12px;
 }
 
+.crux-RandomPager .nextButton-disabled,
+.crux-RandomPager .previousButton-disabled
+{
+	opacity:0.4;
+	cursor:not-allowed;
+}
+
 
 /****************
    SequentialPager
@@ -1146,6 +1153,13 @@ Inputs / Textarea
 .crux-SequentialPager .currentPageLabel
 {
 	padding:5px 10px;
+}
+
+.crux-SequentialPager .nextButton-disabled,
+.crux-SequentialPager .previousButton-disabled
+{
+	opacity:0.4;
+	cursor:not-allowed;
 }
 
 
