@@ -55,7 +55,8 @@ body
 
 .gwt-TextBox,
 .gwt-TextArea,
-.crux-SingleSelect
+.crux-SingleSelect,
+.crux-NumberTextBox
 {
     font-size:115%;
     padding:12px 8px;
@@ -97,6 +98,12 @@ body
 .crux-FormDisplay > tbody > tr:last-child > td
 {
     box-shadow: none;
+}
+
+.crux-FormDisplay .formEntryData:first-child,
+.crux-FormDisplay .formEntryLabel
+{
+	padding-right:0;
 }
 
 /* Styling the TD that wraps the top bar  */
@@ -979,6 +986,16 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 .crux-AbstractTablelessGridStructure .detail-icon
 {
 	margin:0;
+}
+
+
+/****************
+     DateBox
+****************/
+
+.crux-Slider > div
+{
+	height:100%;
 }
 
 
