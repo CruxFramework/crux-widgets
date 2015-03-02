@@ -1198,8 +1198,41 @@ Inputs / Textarea
 }
 
 
+/******************************************************************************
+    SortableList
+*******************************************************************************/
+
+.crux-sortableList .buttonsColumn button
+{
+	position:relative;
+	text-indent:-9999px;
+}
+
+.crux-sortableList .buttonsColumn button:before
+{
+	content:'';
+	width:0;
+	height:0;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-4px 0 0 -4px;
+}
+
+.crux-sortableList .buttonsColumn button:first-child:before
+{
+	border-bottom:8px solid white;
+	border-left:7px solid transparent;
+	border-right:7px solid transparent;
+}
 
 
+.crux-sortableList .buttonsColumn button:last-child:before
+{
+	border-top:8px solid white;
+	border-left:7px solid transparent;
+	border-right:7px solid transparent;
+}
 
 
 
