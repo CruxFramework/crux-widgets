@@ -594,7 +594,7 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
     box-shadow: 0 0 10px rgba(90,90,90,0.1);
     background-image: -webkit-linear-gradient(top,rgba(255,255,255,1)80%,rgba(240,240,240,0.3));
     padding: 10px;
-    width:calc(100% - 20px);
+    width:literal("calc(100% - 20px)");
     position: relative;
     width: 100%;
     height: 60px;
@@ -993,7 +993,7 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
      DateBox
 ****************/
 
-.crux-Slider > div
+.crux-Slider
 {
 	height:100%;
 }
