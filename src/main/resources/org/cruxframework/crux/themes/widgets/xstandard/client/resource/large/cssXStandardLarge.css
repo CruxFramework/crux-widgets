@@ -635,18 +635,15 @@
 }
 .crux-Dialog .dialogCloseButton
 {
-    position: absolute;
-    right: 2px;
-    top: 2px;
-    background: rgba(0, 0, 0, 0);
-    border: none;
     cursor: pointer;
-}
-.crux-Dialog .dialogCloseButton:after 
-{
-    content: "X";
-    color: #4496C6;
-    font-size: 18px;
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:16px;
+    height:16px;
+    border:none;
+    background:svgIconClose;
+    background-size:100% auto;
 }
 .crux-Dialog .dialogBody, .crux-ProgressBox .dialogBody, .crux-FlatMessageBox .dialogBody
 {
