@@ -902,6 +902,7 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 .crux-ScrollBanner .messageCount
 {
     border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
     font-size:15px;
     padding:6px 0 6px 1px;
     margin-left:1px;
