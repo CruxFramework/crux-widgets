@@ -1239,6 +1239,47 @@ Inputs / Textarea
 
 
 
+
+
+
+
+@if user.agent ie8
+{
+	.crux-FlatMessageBox
+	{
+	    border:1px solid #ccc;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @-webkit-keyframes crux-InfinityProgressBarAnimation
 {
 	0%   {width:0%;left:0%}
