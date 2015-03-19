@@ -1061,6 +1061,38 @@ Inputs / Textarea
 	background-size:10px auto;
 }
 
+@if user.agent ie8
+{
+	
+.crux-RandomPager .nextButton:before,
+.crux-RandomPager .lastButton:before
+{
+	content:'>';
+}
+
+.crux-RandomPager .nextButton:before
+{
+	content:'>';
+}
+
+
+.crux-RandomPager .lastButton:before
+{
+	content:'>>';
+}
+
+.crux-RandomPager .previousButton:before
+{
+	content:'<';
+}
+
+.crux-RandomPager .firstButton:before
+{
+	content:'<<';
+}
+	
+}
+
 .crux-RandomPager td button
 {
 	display:block;
@@ -1077,7 +1109,7 @@ Inputs / Textarea
 
 
 /****************
-   SequentialPager
+ SequentialPager
 ****************/
 
 .crux-SequentialPager
@@ -1141,6 +1173,29 @@ Inputs / Textarea
 {
 	background:svgIconPaginatorLast no-repeat center;
 	background-size:10px auto;
+}
+
+@if user.agent ie8
+{
+.crux-SequentialPager .firstButton:before
+{
+	content:'<<';
+}
+
+.crux-SequentialPager .previousButton:before
+{
+	content:'<';
+}
+
+.crux-SequentialPager .nextButton:before
+{
+	content:'>';
+}
+
+.crux-SequentialPager .lastButton:before
+{
+	content:'>>';
+}
 }
 
 .crux-SequentialPager td button
