@@ -839,6 +839,28 @@ Inputs / Textarea
     font-size:13px;
 }
 
+.crux-StackMenu .item-border-nw,
+.crux-StackMenu .item-border-n,
+.crux-StackMenu .item-border-ne,
+.crux-StackMenu .item-border-sw,
+.crux-StackMenu .item-border-s,
+.crux-StackMenu .item-border-se
+{
+	line-height:0;
+	padding:0;
+}
+	
+.item-border-w
+{
+	display:none !important;
+	background:red;
+}
+	
+.crux-StackMenu colgroup
+{
+	display:none;
+}
+
 /****************
     DatePicker
 ****************/
