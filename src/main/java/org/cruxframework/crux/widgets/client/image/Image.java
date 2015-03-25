@@ -51,7 +51,7 @@ public class Image extends Composite implements HasSelectHandlers, HasLoadHandle
 {
 	private static final ConditionalImageRenderer conditionalImageRenderer = GWT.create(ConditionalImageRenderer.class);
 	
-	static abstract class ImageImpl extends com.google.gwt.user.client.ui.Image implements HasSelectHandlers, HasEnabled
+	public static abstract class ImageImpl extends com.google.gwt.user.client.ui.Image implements HasSelectHandlers, HasEnabled
 	{
 		protected boolean preventDefaultTouchEvents = false;
 		private boolean enabled = true;
