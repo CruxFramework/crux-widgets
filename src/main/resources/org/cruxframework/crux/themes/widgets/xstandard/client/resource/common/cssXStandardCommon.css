@@ -1313,7 +1313,7 @@ Inputs / Textarea
 }
 
 
-.crux-sortableList .buttonsColumn button:last-child:before
+.crux-sortableList .buttonsColumn button:first-child + button:before
 {
 	border-top:8px solid white;
 	border-left:7px solid transparent;
