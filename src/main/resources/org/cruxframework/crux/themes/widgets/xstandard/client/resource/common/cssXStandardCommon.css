@@ -975,7 +975,8 @@ Inputs / Textarea
 	cursor:pointer;
 }
 
-.crux-SuggestPopup .suggestPopupContent table td:hover
+.crux-SuggestPopup .suggestPopupContent table td:hover,
+.crux-SuggestPopup .suggestPopupContent table td.item-selected
 {
 	background:#eee;
 }
