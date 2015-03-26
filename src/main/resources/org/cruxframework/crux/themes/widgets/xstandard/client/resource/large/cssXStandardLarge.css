@@ -1241,25 +1241,23 @@
 }
 
 @if !user.agent ie8 ie9 {
-	.bannersArea .leftArrow:hover, .bannersArea .rightArrow:hover
+	.bannersArea .leftArrow
 	{
-	    background:#333;
+	    background:leftArrow no-repeat center rgba(0,0,0,0.2);
+	    border-radius:0 4px 4px 0;
+	}
+	
+	.bannersArea .rightArrow
+	{
+	    background:rightArrow no-repeat center rgba(0,0,0,0.2);
+	    border-radius:4px 0 0 4px;
 	}
 
 	.bannersArea .leftArrow, .bannersArea .rightArrow
 	{
     	width:50px;
 	    height:90px;
-	    background:#333;
-	    border-radius:4px 0 0 4px;
 	}
-
-	.bannersArea .leftArrow
-	{
-	    -webkit-transform:rotate(-180deg);
-	    -moz-transform:rotate(-180deg);
-	    transform:rotate(-180deg);
-	}	
 }
 
 .bullets
