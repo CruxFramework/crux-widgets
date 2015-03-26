@@ -253,7 +253,8 @@
 }
 .flapCloseButton:before 
 {
-    content: "X";
+    content: "X" !important;
+    font-weight:bold;
     color: rgb(255, 255, 255);
     padding-right: 1px;
     font-family: arial;
