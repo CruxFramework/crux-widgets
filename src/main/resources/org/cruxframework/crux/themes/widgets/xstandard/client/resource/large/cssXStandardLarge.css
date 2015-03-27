@@ -634,6 +634,7 @@
     font-size:12px;
     margin-top:6px;
 }
+
 .crux-Dialog .dialogCloseButton
 {
     cursor: pointer;
@@ -646,6 +647,15 @@
     background:svgIconClose;
     background-size:100% auto;
 }
+
+@if user.agent ie8
+{
+	.crux-Dialog .dialogCloseButton:before
+	{
+		content:"X";
+	}
+}
+
 .crux-Dialog .dialogBody, .crux-ProgressBox .dialogBody, .crux-FlatMessageBox .dialogBody
 {
     overflow:auto;
@@ -753,7 +763,6 @@
     opacity:0;
 }
 .crux-FlatMessageBox .dialogBody{
-    margin-top:0;
     padding:20px 5px 0;
     height:100%;
 }
