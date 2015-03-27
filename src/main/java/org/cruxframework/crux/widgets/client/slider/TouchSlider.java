@@ -143,6 +143,7 @@ public class TouchSlider extends Composite implements HasSwapHandlers, HasSlidin
 			itemWrapper.setStyleName("touchSliderItem");
 			itemWrapper.setVisible(false);
 			Style style = itemWrapper.getElement().getStyle();
+			style.setPosition(Position.ABSOLUTE);
 			style.setTop(0, Unit.PX);
 			style.setLeft(0, Unit.PX);
 			style.setWidth(100, Unit.PCT);
@@ -169,6 +170,7 @@ public class TouchSlider extends Composite implements HasSwapHandlers, HasSlidin
 		itemWrapper.setStyleName("touchSliderItem");
 		itemWrapper.setVisible(false);
 		Style style = itemWrapper.getElement().getStyle();
+		style.setPosition(Position.ABSOLUTE);
 		style.setTop(0, Unit.PX);
 		style.setLeft(0, Unit.PX);
 		style.setWidth(100, Unit.PCT);
@@ -622,7 +624,7 @@ public class TouchSlider extends Composite implements HasSwapHandlers, HasSlidin
 
 	private void configureHiddenPanel(Widget panel, boolean forward) 
 	{
-		panel.setVisible(true);
+		panel.setVisible(false);
 		int width = panel.getOffsetWidth();
 		Transition.translateX(panel, forward?width:-width, null);
 	}
