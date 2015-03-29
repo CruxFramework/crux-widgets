@@ -41,7 +41,8 @@ import com.google.gwt.resources.client.ImageResource;
  * @authorThiago da Rosa de Bustamante
  *
  */
-@DeclarativeFactory(library="widgets", id="image", targetWidget=Image.class)
+@DeclarativeFactory(library="widgets", id="image", targetWidget=Image.class, 
+	description="An image widget that handle select events properly on touch devices.")
 
 @TagAttributes({
 	@TagAttribute(value="preventDefaultTouchEvents", type=Boolean.class, defaultValue="false"),
