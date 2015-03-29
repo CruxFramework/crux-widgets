@@ -624,7 +624,7 @@ public class TouchSlider extends Composite implements HasSwapHandlers, HasSlidin
 
 	private void configureHiddenPanel(Widget panel, boolean forward) 
 	{
-		panel.setVisible(false);
+		panel.setVisible(true);
 		int width = panel.getOffsetWidth();
 		Transition.translateX(panel, forward?width:-width, null);
 	}
