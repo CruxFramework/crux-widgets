@@ -75,15 +75,18 @@ public class SlideshowFactory extends WidgetCreator<SlideshowContext>
 {
 	public static class LayoutAttributeProcessor extends AttributeProcessor<SlideshowContext>
 	{
+		private SlideshowScanner slideshowScanner;
+		
 		public LayoutAttributeProcessor(WidgetCreator<?> widgetCreator)
         {
 	        super(widgetCreator);
+	        slideshowScanner = new SlideshowScanner(widgetCreator.getContext().getGeneratorContext());
         }
 
 		@Override
         public void processAttribute(SourcePrinter out, SlideshowContext context, String attributeValue)
         {
-			String layoutClass = SlideshowConfig.getLayout(attributeValue);
+			String layoutClass = slideshowScanner.getLayout(attributeValue);
 			if (!StringUtils.isEmpty(layoutClass))
 			{
 				out.println(context.getWidget()+".setLayout(new "+layoutClass+"());");
@@ -104,21 +107,27 @@ public class SlideshowFactory extends WidgetCreator<SlideshowContext>
 	})
 	public static class ServiceProcessor extends WidgetChildProcessor<SlideshowContext> implements HasPostProcessor<SlideshowContext>
 	{
+		private SlideshowScanner slideshowScanner;
+		
 		@Override
 		public void processChildren(SourcePrinter out, SlideshowContext context) throws CruxGeneratorException
 		{
+			if (slideshowScanner == null)
+			{
+				slideshowScanner = new SlideshowScanner(getWidgetCreator().getContext().getGeneratorContext());
+			}
 			context.serviceVariable = ViewFactoryCreator.createVariableName("service");
 			String name = context.readChildProperty("name");
 			if (StringUtils.isEmpty(name))
 			{
 				throw new CruxGeneratorException("Service name is required for slideshow service. WidgetID["+context.getWidgetId()+"]");
 			}
-			String serviceClass = SlideshowConfig.getService(name);
+			String serviceClass = slideshowScanner.getService(name);
 			if (StringUtils.isEmpty(serviceClass))
 			{
 				throw new CruxGeneratorException("Service ["+serviceClass+"] not found for slideshow. WidgetID["+context.getWidgetId()+"]");
 			}
-			context.serviceClass = getWidgetCreator().getContext().getTypeOracle().findType(serviceClass);
+			context.serviceClass = getWidgetCreator().getContext().getGeneratorContext().getTypeOracle().findType(serviceClass);
 			if (context.serviceClass == null)
 			{
 	    		String message = "Service class ["+serviceClass+"], declared on view ["+getWidgetCreator().getView().getId()+"], refered by slideshow ["+context.getWidgetId()+"], could not be loaded. "
