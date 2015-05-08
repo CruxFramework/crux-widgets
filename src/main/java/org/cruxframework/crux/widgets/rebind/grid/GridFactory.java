@@ -20,8 +20,7 @@ import org.cruxframework.crux.core.client.utils.EscapeUtils;
 import org.cruxframework.crux.core.client.utils.StringUtils;
 import org.cruxframework.crux.core.rebind.AbstractProxyCreator.SourcePrinter;
 import org.cruxframework.crux.core.rebind.CruxGeneratorException;
-import org.cruxframework.crux.core.rebind.datasource.DataSources;
-import org.cruxframework.crux.core.rebind.formatter.Formatters;
+import org.cruxframework.crux.core.rebind.context.scanner.ResourceNotFoundException;
 import org.cruxframework.crux.core.rebind.screen.widget.AttributeProcessor;
 import org.cruxframework.crux.core.rebind.screen.widget.ViewFactoryCreator.WidgetConsumer;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreator;
@@ -477,7 +476,7 @@ public class GridFactory extends WidgetCreator<WidgetCreatorContext>
 							out.println(ColumnDefinition.class.getCanonicalName()+" "+def+" = new "+DataColumnDefinition.class.getCanonicalName()+"("+
 									label+", "+
 									EscapeUtils.quote(width)+", "+
-									Formatters.getFormatterInstantionCommand(formatter)+", "+ 
+									getContext().getFormatters().getFormatterInstantionCommand(formatter)+", "+ 
 									visible+", "+
 									sortable+", "+
 									wrapLine+", "+
@@ -702,7 +701,16 @@ public class GridFactory extends WidgetCreator<WidgetCreatorContext>
 
 		public void processAttribute(SourcePrinter out, WidgetCreatorContext context, String propertyValue)
 		{
-			JClassType dataSourceClass = getWidgetCreator().getContext().getTypeOracle().findType(DataSources.getDataSource(propertyValue, getWidgetCreator().getDevice()));
+			JClassType dataSourceClass;
+            try
+            {
+	            dataSourceClass = getWidgetCreator().getContext().getGeneratorContext().getTypeOracle().findType(
+	            		getWidgetCreator().getContext().getDataSources().getDataSource(propertyValue, getWidgetCreator().getDevice()));
+            }
+            catch (ResourceNotFoundException e)
+            {
+    	    	throw new CruxGeneratorException("Can not found the datasource class for datasource ["+propertyValue+"].");
+            }
 			JClassType dtoType = JClassUtils.getReturnTypeFromMethodClass(dataSourceClass, "getBoundObject", new JType[]{}).isClassOrInterface();
 			org.cruxframework.crux.core.client.datasource.annotation.ColumnDefinitions columnDefinitionsAnot = 
 				dataSourceClass.getAnnotation(org.cruxframework.crux.core.client.datasource.annotation.ColumnDefinitions.class);
@@ -761,7 +769,8 @@ public class GridFactory extends WidgetCreator<WidgetCreatorContext>
 									throw new CruxGeneratorException("Grid ["+gridId+"] has an invalid column ["+colKey+"].");
 								}
 
-								JClassType comparableType = getWidgetCreator().getContext().getTypeOracle().findType(Comparable.class.getCanonicalName());
+								JClassType comparableType = getWidgetCreator().getContext().getGeneratorContext().
+										getTypeOracle().findType(Comparable.class.getCanonicalName());
 
 								boolean isSortable = (propType.isPrimitive() != null) || (comparableType.isAssignableFrom((JClassType) propType));
 								String propTypeName = JClassUtils.getGenericDeclForType(propType);
