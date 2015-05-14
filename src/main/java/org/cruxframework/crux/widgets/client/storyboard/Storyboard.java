@@ -36,7 +36,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 	@Template(name="storyboardLarge", device=Device.largeDisplayTouch),
 	@Template(name="storyboardLargeMouse", device=Device.largeDisplayMouse),
 	@Template(name="storyboardSmall", device=Device.smallDisplayArrows),
-	@Template(name="storyboardSmall", device=Device.smallDisplayTouch),
+	@Template(name="storyboardSmall", device=Device.smallDisplayTouch)
 })
 public interface Storyboard extends DeviceAdaptive, IndexedPanel, HasSelectionHandlers<Integer>, HasWidgets
 {
