@@ -15,6 +15,10 @@
  */
 package org.cruxframework.crux.widgets.client.filter;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.cruxframework.crux.widgets.client.filter.Filterable.FilterResult;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
@@ -26,7 +30,8 @@ import com.google.gwt.user.client.ui.SuggestBox;
 import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
 
 /**
- * TODO - Gesse - Comment this
+ * A filter to suggest values based no the Filterable interface. It has a default behavior 
+ * that can run in the user informs the defaultFilteredResult.
  * @author Gesse S. F. Dafe
  */
 @SuppressWarnings("unchecked")
@@ -149,5 +154,47 @@ public class Filter extends SuggestBox
 		}
 		
 		super.setText(text);
+	}
+	
+	public int getMinNumberCharForRequestFilter() 
+	{
+		return getFilterSuggestOracle().getMinNumberCharForRequestFilter();
+	}
+	
+	public void setMinNumberCharForRequestFilter(int minNumberCharForRequestFilter) 
+	{
+		getFilterSuggestOracle().setMinNumberCharForRequestFilter(minNumberCharForRequestFilter);
+	}
+	
+	public <T> void setFilteredResultValues(final ArrayList<FilterResult<T>> filteredResultValues)
+	{
+		setFilterable(new Filterable<T>()
+		{
+			@Override
+			public List<org.cruxframework.crux.widgets.client.filter.Filterable.FilterResult<T>> filter(
+					String query) 
+			{
+				List<FilterResult<T>> result = new ArrayList<FilterResult<T>>();
+				
+				for(FilterResult<T> filteredResult : filteredResultValues)
+				{
+					if (query != null 
+							&& 
+						filteredResult.getLabel() != null 
+							&& 
+						filteredResult.getLabel().toLowerCase().contains(query.toLowerCase()))
+					{
+						result.add(filteredResult);
+					}
+				}
+				return result;
+			}
+
+			@Override
+			public void onSelectItem(T selectedItem) 
+			{
+			}
+		
+		});
 	}
 }
