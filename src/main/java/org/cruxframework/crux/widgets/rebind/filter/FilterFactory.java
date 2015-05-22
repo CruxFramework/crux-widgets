@@ -29,7 +29,6 @@ import org.cruxframework.crux.core.rebind.screen.widget.declarative.DeclarativeF
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttribute;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributes;
 import org.cruxframework.crux.gwt.rebind.CompositeFactory;
-import org.cruxframework.crux.widgets.client.WidgetMsgFactory;
 import org.cruxframework.crux.widgets.client.filter.Filter;
 import org.cruxframework.crux.widgets.client.filter.Filterable;
 
@@ -45,11 +44,13 @@ import org.cruxframework.crux.widgets.client.filter.Filterable;
 	@TagAttribute(value="autoSelectEnabled", type=Boolean.class),
 	@TagAttribute(value="focus", type=Boolean.class),
 	@TagAttribute(value="limit", type=Integer.class),
+	@TagAttribute(value="minNumberCharForRequestFilter", type=Integer.class, defaultValue="1"),
 	@TagAttribute(value="popupStyleName", supportsResources=true),
 	@TagAttribute(value="tabIndex", type=Integer.class),
 	@TagAttribute("value"),
-	@TagAttribute(value="filterable", processor=FilterFactory.FilterableAttributeParser.class, required=true)
+	@TagAttribute(value="filterable", processor=FilterFactory.FilterableAttributeParser.class)
 })
+
 public class FilterFactory extends CompositeFactory<WidgetCreatorContext> 
 	   implements HasAnimationFactory<WidgetCreatorContext>, HasTextFactory<WidgetCreatorContext>, 
 	              HasValueChangeHandlersFactory<WidgetCreatorContext>, HasSelectionHandlersFactory<WidgetCreatorContext>,
@@ -71,7 +72,7 @@ public class FilterFactory extends CompositeFactory<WidgetCreatorContext>
 		public void processAttribute(SourcePrinter out, WidgetCreatorContext context, String propertyValue)
 		{
 			String widget = context.getWidget();
-			String filterableId =context.readWidgetProperty("filterable");
+			String filterableId = context.readWidgetProperty("filterable");
 			String filterableWidget = getWidgetCreator().createVariableName("filterable");
 
 			String widgetClassName = getWidgetCreator().getWidgetClassName();
@@ -81,10 +82,6 @@ public class FilterFactory extends CompositeFactory<WidgetCreatorContext>
 			printlnPostProcessing("if("+filterableWidget+" != null){");
 			printlnPostProcessing(widget+".setFilterable(("+Filterable.class.getCanonicalName()+"<?>) "+filterableWidget+");");
 			printlnPostProcessing("}");
-			printlnPostProcessing("else{");
-			printlnPostProcessing("throw new RuntimeException("+WidgetMsgFactory.class.getCanonicalName()+".getMessages().filterableNotFoundWhenInstantiantingFilter("+
-					EscapeUtils.quote(filterableId)+"));");
-			printlnPostProcessing("}");							
 		}		
 	}
 	

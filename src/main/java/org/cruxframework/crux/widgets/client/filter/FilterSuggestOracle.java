@@ -30,7 +30,8 @@ import com.google.gwt.user.client.ui.SuggestOracle;
 public class FilterSuggestOracle extends SuggestOracle
 {
 	private Filterable filterable;
-
+	private int minNumberCharForRequestFilter = 1;
+	
 	/**
 	 * 
 	 */
@@ -49,6 +50,11 @@ public class FilterSuggestOracle extends SuggestOracle
 	@Override
 	public void requestSuggestions(Request request, Callback callback)
 	{
+		if(request.getQuery() == null || request.getQuery().length() < minNumberCharForRequestFilter)
+		{
+			return;
+		}
+		
 		List<FilterSuggestion> suggestions = new ArrayList<FilterSuggestion>();
 		
 		String query = request.getQuery();
@@ -79,5 +85,15 @@ public class FilterSuggestOracle extends SuggestOracle
 	public Filterable getFilterable()
 	{
 		return filterable;
+	}
+	
+	public int getMinNumberCharForRequestFilter() 
+	{
+		return minNumberCharForRequestFilter;
+	}
+
+	public void setMinNumberCharForRequestFilter(int minNumberCharForRequestFilter) 
+	{
+		this.minNumberCharForRequestFilter = minNumberCharForRequestFilter;
 	}
 }
