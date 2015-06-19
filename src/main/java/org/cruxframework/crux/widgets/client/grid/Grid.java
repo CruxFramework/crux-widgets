@@ -306,7 +306,7 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 		{
 			this.rowDetailsManager = new RowDetailsManager(rowDetailsWidgetCreator);
 		}
-		super.render();
+		render();
 	}
 	
 	/**
@@ -345,7 +345,7 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 		{
 			this.rowDetailsManager = new RowDetailsManager(rowDetailsWidgetCreator);
 		}
-		super.render();
+		render();
 		
 		setEditorColumns();
 		keepEditorOpen();
@@ -389,7 +389,7 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 		{
 			this.rowDetailsManager = new RowDetailsManager(rowDetailsWidgetCreator);
 		}
-		super.render();
+		render();
 		
 		setEditorColumns();
 		keepEditorOpen();
@@ -429,7 +429,7 @@ public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSour
 		{
 			this.rowDetailsManager = new RowDetailsManager(rowDetailsWidgetCreator);
 		}
-		super.render();
+		render();
 		
 		setEditorColumns();
 		keepEditorOpen();

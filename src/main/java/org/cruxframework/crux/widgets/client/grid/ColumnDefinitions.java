@@ -114,7 +114,7 @@ public class ColumnDefinitions
 	/**
 	 * 
 	 */
-	void reset()
+	protected void reset()
 	{
 		this.visibleColumnCount = -1;
 		this.actualColumnIndexes.clear();
