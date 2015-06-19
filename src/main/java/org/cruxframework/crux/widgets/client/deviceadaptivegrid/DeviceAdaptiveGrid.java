@@ -76,7 +76,7 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSource<PagedDataSource<?>>
 {
-	private GridImpl gridImpl;
+	protected GridImpl gridImpl;
 	
 	private String height;
 	
@@ -442,7 +442,12 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 		this.gridImpl.initGrid(columnDefinitions, pageSize, rowSelection, cellSpacing, autoLoadData, stretchColumns, highlightRowOnMouseOver, emptyDataFilling, fixedCellSize, defaultSortingColumn, defaultSortingType,keepEditorOnClickDisabledRows,showEditorButtons,freezeHeaders);
 	}
 	
-	static abstract class GridImpl extends SimplePanel
+	protected Grid getInnerGrid()
+	{
+		return this.gridImpl.grid;
+	}
+	
+	protected static abstract class GridImpl extends SimplePanel
 	{
 		protected Grid grid;
 		protected DeviceAdaptiveGridColumnDefinitions columnDefinitions;
@@ -813,7 +818,7 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 		public abstract Widget getActionWidget(String key);
 	}
 
-	static class GridSmallImpl extends GridImpl
+	protected static class GridSmallImpl extends GridImpl
 	{
 		HashMap<String, Button> actionsWidgets = new HashMap<String, Button>();
 
@@ -833,7 +838,7 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 		/**
 		 * initialize the actions available on grid detail when in mobile visualization
 		 */
-		private void initActionColumns()
+		protected void initActionColumns()
 		{
 			Iterator<ColumnDefinition> it = columnDefinitions.getSmallColumnDefinitions().getIterator();
 
@@ -1057,7 +1062,7 @@ public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSo
 
 	}
 
-	static class GridLargeImpl extends GridImpl
+	protected static class GridLargeImpl extends GridImpl
 	{
 		
 		/**

@@ -92,19 +92,19 @@ public abstract class AbstractGrid<R extends Row> extends Composite implements H
 	
 	private static final String DEFAULT_STYLE_NAME = "crux-Grid";
 	
-	private GridBaseTable table;
-	private ColumnDefinitions definitions;
-	private String generatedId =  "cruxGrid_" + new Date().getTime();
-	private FastList<R> rows = new FastList<R>();
-	private Map<Widget, R> widgetsPerRow = new HashMap<Widget, R>();
-	private RowSelectionModel rowSelection;
-	private ScrollPanel scrollingArea;
-	private boolean stretchColumns;
-	private boolean highlightRowOnMouseOver;
-	private RowDetailWidgetCreator rowDetailWidgetCreator;
-	private boolean showRowDetailsIcon;
-	private boolean freezeHeaders;
-	private Boolean hasFrozenColumns;
+	protected GridBaseTable table;
+	protected ColumnDefinitions definitions;
+	protected String generatedId =  "cruxGrid_" + new Date().getTime();
+	protected FastList<R> rows = new FastList<R>();
+	protected Map<Widget, R> widgetsPerRow = new HashMap<Widget, R>();
+	protected RowSelectionModel rowSelection;
+	protected ScrollPanel scrollingArea;
+	protected boolean stretchColumns;
+	protected boolean highlightRowOnMouseOver;
+	protected RowDetailWidgetCreator rowDetailWidgetCreator;
+	protected boolean showRowDetailsIcon;
+	protected boolean freezeHeaders;
+	protected Boolean hasFrozenColumns;
 	protected FastList<BeforeSaveRowEditionHandler> beforeSaveRowEditionHandlers = new FastList<BeforeSaveRowEditionHandler>();
 	protected FastList<BeforeCancelRowEditionHandler> beforeCancelRowEditionHandlers = new FastList<BeforeCancelRowEditionHandler>();
 	
@@ -589,7 +589,7 @@ public abstract class AbstractGrid<R extends Row> extends Composite implements H
 	{
 		onBeforeRender();
 		
-		this.definitions.reset();
+		resetColumnDefinitions();
 		
 		int rowCount = (hasRowDetails() ? 2 * getRowsToBeRendered() : getRowsToBeRendered()) + 1;
 		
@@ -621,6 +621,11 @@ public abstract class AbstractGrid<R extends Row> extends Composite implements H
 		renderRows();
 		table.onAfterRender();
 	}
+
+	protected void resetColumnDefinitions()
+    {
+	    this.definitions.reset();
+    }
 	
 	/**
 	 * Return true if the grid can be rendered
@@ -706,7 +711,7 @@ public abstract class AbstractGrid<R extends Row> extends Composite implements H
 	/**
 	 * Resizes the grid table, according with the number of rows that will be rendered. 
 	 */
-	private void clearRendering()
+	protected void clearRendering()
 	{
 		int rowCount = (hasRowDetails() ? 2 * getRowsToBeRendered() : getRowsToBeRendered()) + 1;
 		table.resize(rowCount, definitions.getVisibleColumnCount() + (hasSelectionColumn() ? 1 : 0) + (hasRowDetailsIconColumn() ? 1 : 0));
@@ -844,7 +849,7 @@ public abstract class AbstractGrid<R extends Row> extends Composite implements H
 	 * Renders the columns headers
 	 * @param rowCount
 	 */
-	private void renderHeaders(int rowCount)
+	protected void renderHeaders(int rowCount)
 	{
 		R row = rows.get(0);
 		
@@ -882,7 +887,7 @@ public abstract class AbstractGrid<R extends Row> extends Composite implements H
 	/**
 	 * Renders the grid rows
 	 */
-	private void renderRows()
+	protected void renderRows()
 	{
 		Iterator<R> it = getRowIterator();
 		
