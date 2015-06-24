@@ -615,7 +615,7 @@ public class DeviceAdaptiveGridFactory extends WidgetCreator<WidgetCreatorContex
 		    return new WidgetCreatorContext();
 	    }
 
-		private String getDataColumnEditorCreator(SourcePrinter out, JSONObject colElem, WidgetCreatorContext context)
+		protected String getDataColumnEditorCreator(SourcePrinter out, JSONObject colElem, WidgetCreatorContext context)
 	    {
 		    String editorCreatorVarName = "null";
 
@@ -646,7 +646,7 @@ public class DeviceAdaptiveGridFactory extends WidgetCreator<WidgetCreatorContex
 		 * @param colElem
 		 * @return
 		 */
-		private String getWidgetColumnCreator(SourcePrinter out, JSONObject colElem, WidgetCreatorContext context)
+		protected String getWidgetColumnCreator(SourcePrinter out, JSONObject colElem, WidgetCreatorContext context)
 	    {
 			String colDef = createVariableName("widgetColumnCreator");
 		    String className = WidgetColumnCreator.class.getCanonicalName();
