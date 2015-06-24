@@ -307,7 +307,7 @@ public class DeviceAdaptiveGridFactory extends WidgetCreator<WidgetCreatorContex
 		 * @param gridElem
 		 * @return
 		 */
-		private boolean getKeepEditorOnClickDisabledRows(JSONObject gridElem)
+		protected boolean getKeepEditorOnClickDisabledRows(JSONObject gridElem)
 		{
 			String keepEditor = gridElem.optString("keepEditorOnClickDisabledRows");
 			
@@ -323,7 +323,7 @@ public class DeviceAdaptiveGridFactory extends WidgetCreator<WidgetCreatorContex
 		 * @param gridElem
 		 * @return
 		 */
-		private boolean getShowEditorButtons(JSONObject gridElem)
+		protected boolean getShowEditorButtons(JSONObject gridElem)
 		{
 			String highlight = gridElem.optString("showEditorButtons");
 			
