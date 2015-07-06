@@ -558,7 +558,7 @@ public class GridFactory extends WidgetCreator<WidgetCreatorContext>
 	    
 	    JSONObject child = ensureFirstChild(colElem, false, context.getWidgetId());
 		String childWidget = createChildWidget(out, child, null, true, context);
-        out.println("return "+childWidget+";");
+        out.println("return "+childWidget+".asWidget();");
 	    
 	    out.println("};");
 	    out.println("};");
