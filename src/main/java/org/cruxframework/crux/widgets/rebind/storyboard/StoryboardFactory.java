@@ -16,6 +16,7 @@
 package org.cruxframework.crux.widgets.rebind.storyboard;
 
 import org.cruxframework.crux.core.client.screen.DeviceAdaptive.Device;
+import org.cruxframework.crux.core.client.screen.DeviceAdaptive.Size;
 import org.cruxframework.crux.core.client.utils.EscapeUtils;
 import org.cruxframework.crux.core.client.utils.StringUtils;
 import org.cruxframework.crux.core.rebind.AbstractProxyCreator.SourcePrinter;
@@ -101,7 +102,8 @@ public class StoryboardFactory  extends ComplexPanelFactory<StoryboardContext> i
 		public void processChildren(SourcePrinter out, StoryboardContext context) throws CruxGeneratorException 
 		{
 			context.largeDeviceItemHeight = context.readChildProperty("height");
-			context.smallDeviceItemHeight = context.readChildProperty("width");
+			context.smallDeviceItemHeight = context.readChildProperty("height");
+			context.largeDeviceItemWidth = context.readChildProperty("width");
 			context.horizontalAlignment = context.readChildProperty("horizontalAlignment");
 			context.verticalAlignment = context.readChildProperty("verticalAlignment");
 		}
@@ -122,15 +124,16 @@ public class StoryboardFactory  extends ComplexPanelFactory<StoryboardContext> i
 			String child = getWidgetCreator().createChildWidget(out, context.getChildElement(), context);
 			String parent = context.getWidget();
 			out.println(parent+".add("+child+");");
-			if (!StringUtils.isEmpty(context.largeDeviceItemHeight))
+			Device device = getWidgetCreator().getDevice();
+			if (!StringUtils.isEmpty(context.largeDeviceItemHeight) && (device == null || device.getSize().equals(Size.large)))
 			{
 				out.println(parent+".setLargeDeviceItemHeight("+child+", "+EscapeUtils.quote(context.largeDeviceItemHeight)+");");
 			}
-			if (!StringUtils.isEmpty(context.smallDeviceItemHeight))
+			if (!StringUtils.isEmpty(context.smallDeviceItemHeight) && (device == null || device.getSize().equals(Size.small)))
 			{
 				out.println(parent+".setSmallDeviceItemHeight("+child+", "+EscapeUtils.quote(context.smallDeviceItemHeight)+");");
 			}
-			if (!StringUtils.isEmpty(context.largeDeviceItemWidth))
+			if (!StringUtils.isEmpty(context.largeDeviceItemWidth) && (device == null || device.getSize().equals(Size.large)))
 			{
 				out.println(parent+".setLargeDeviceItemWidth("+child+", "+EscapeUtils.quote(context.largeDeviceItemWidth)+");");
 			}
@@ -147,6 +150,7 @@ public class StoryboardFactory  extends ComplexPanelFactory<StoryboardContext> i
 			{
 				out.println("}");
 			}
+			context.largeDeviceItemWidth = null;
 			context.largeDeviceItemHeight = null;
 			context.smallDeviceItemHeight = null;
 			context.horizontalAlignment = null;
