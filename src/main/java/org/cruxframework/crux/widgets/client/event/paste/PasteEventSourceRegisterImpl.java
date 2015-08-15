@@ -20,7 +20,7 @@ import com.google.gwt.dom.client.Element;
 /**
  * @author Thiago da Rosa de Bustamante
  */
-public class PasteEventSourceRegisterImpl implements PasteEventSourceRegister
+public class PasteEventSourceRegisterImpl implements org.cruxframework.crux.widgets.client.event.paste.PasteEventSourceRegister
 {
 	public native void registerPasteEventSource(HasPasteHandlers source, Element element)/*-{
 		element.onpaste = function()
