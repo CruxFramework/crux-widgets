@@ -542,6 +542,21 @@ Inputs / Textarea
 /**********/
 
 /****************
+   Dialogs
+****************/
+
+.crux-DialogViewContainer,
+.crux-Dialog,
+.popupContent,
+.crux-ColorPickerDialog,
+.grid-detail-dialog,
+.crux-popupPanel,
+.crux-DatePicker
+{
+	pointer-events: auto;
+}
+
+/****************
    StyledPanel
 ****************/
 .crux-StyledPanelOuter
