@@ -31,7 +31,7 @@ public class PasteEventSourceRegisterFactory
 	{
 		if (pasteRegister == null)
 		{
-			pasteRegister = GWT.create(PasteEventSourceRegisterImpl.class);
+			pasteRegister = GWT.create(PasteEventSourceRegister.class);
 		}
 		return pasteRegister;
 	}

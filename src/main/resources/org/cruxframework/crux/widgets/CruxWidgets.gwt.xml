@@ -1,9 +1,14 @@
 <module>
 	<inherits name="org.cruxframework.crux.core.Crux" />
 	<replace-with
+		class="org.cruxframework.crux.widgets.client.event.paste.PasteEventSourceRegisterImpl">
+		<when-type-is
+			class="org.cruxframework.crux.widgets.client.event.paste.PasteEventSourceRegister" />
+	</replace-with>
+	<replace-with
 		class="org.cruxframework.crux.widgets.client.event.paste.PasteEventSourceRegisterOperaImpl">
 		<when-type-is
-			class="org.cruxframework.crux.widgets.client.event.paste.PasteEventSourceRegisterImpl" />
+			class="org.cruxframework.crux.widgets.client.event.paste.PasteEventSourceRegister" />
 		<when-property-is name="user.agent" value="opera" />
 	</replace-with>
 	<replace-with
