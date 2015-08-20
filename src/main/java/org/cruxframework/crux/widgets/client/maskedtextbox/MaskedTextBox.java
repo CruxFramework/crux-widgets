@@ -83,7 +83,7 @@ public class MaskedTextBox extends Composite implements HasFormatter, HasDirecti
 	/**
 	 * @return
 	 */
-	public MaskedInput getMaskedInput()
+	MaskedInput getMaskedInput()
     {
     	return maskedInput;
     }
