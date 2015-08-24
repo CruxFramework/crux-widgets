@@ -15,8 +15,9 @@
  */
 package org.cruxframework.crux.widgets.client.maskedtextbox;
 
-import org.cruxframework.crux.widgets.client.event.paste.PasteEvent;
-import org.cruxframework.crux.widgets.client.event.paste.PasteHandler;
+
+import org.cruxframework.crux.core.client.event.paste.PasteEvent;
+import org.cruxframework.crux.core.client.event.paste.PasteHandler;
 
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;

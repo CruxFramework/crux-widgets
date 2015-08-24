@@ -17,8 +17,8 @@ package org.cruxframework.crux.widgets.client.maskedtextbox;
 
 import org.cruxframework.crux.core.client.collection.FastList;
 import org.cruxframework.crux.core.client.collection.FastMap;
-import org.cruxframework.crux.widgets.client.event.paste.PasteEvent;
-import org.cruxframework.crux.widgets.client.event.paste.PasteHandler;
+import org.cruxframework.crux.core.client.event.paste.PasteEvent;
+import org.cruxframework.crux.core.client.event.paste.PasteHandler;
 
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
@@ -315,7 +315,8 @@ class MaskedInput implements KeyDownHandler, KeyPressHandler, FocusHandler, Blur
 	@Override
 	public void onPaste(PasteEvent event)
 	{
-		checkVal(true);
+		int pos = checkVal(true);
+		caret(pos, -1);
 	}
 
 	/**
