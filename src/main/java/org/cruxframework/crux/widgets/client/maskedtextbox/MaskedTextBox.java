@@ -15,14 +15,14 @@
  */
 package org.cruxframework.crux.widgets.client.maskedtextbox;
 
+import org.cruxframework.crux.core.client.event.paste.HasPasteHandlers;
+import org.cruxframework.crux.core.client.event.paste.PasteEvent;
+import org.cruxframework.crux.core.client.event.paste.PasteEventSourceRegister;
+import org.cruxframework.crux.core.client.event.paste.PasteHandler;
 import org.cruxframework.crux.core.client.formatter.FilterFormatter;
 import org.cruxframework.crux.core.client.formatter.Formatter;
 import org.cruxframework.crux.core.client.formatter.HasFormatter;
 import org.cruxframework.crux.core.client.formatter.MaskedFormatter;
-import org.cruxframework.crux.widgets.client.event.paste.HasPasteHandlers;
-import org.cruxframework.crux.widgets.client.event.paste.PasteEvent;
-import org.cruxframework.crux.widgets.client.event.paste.PasteEventSourceRegisterFactory;
-import org.cruxframework.crux.widgets.client.event.paste.PasteHandler;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
@@ -142,7 +142,7 @@ public class MaskedTextBox extends Composite implements HasFormatter, HasDirecti
 		this.textBox = textBox;
 		this.textBox.setStyleName(DEFAULT_STYLE_NAME);
 		initWidget(this.textBox);
-		PasteEventSourceRegisterFactory.getRegister().registerPasteEventSource(this, this.textBox.getElement());
+		PasteEventSourceRegister.registerPasteEventSource(this, textBox.getElement());
 	}
 	
 	/**
