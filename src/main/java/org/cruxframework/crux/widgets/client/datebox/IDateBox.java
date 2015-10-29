@@ -24,6 +24,7 @@ import org.cruxframework.crux.widgets.client.util.type.CruxWidget;
 
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.user.client.ui.Focusable;
+import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.UIObject;
 
@@ -31,7 +32,7 @@ import com.google.gwt.user.client.ui.UIObject;
  * @author Samuel Almeida Cardoso (samuel@cruxframework.org)
  *
  */
-interface IDateBox extends CruxWidget, HasValue<Date>, Focusable, HasValueChangeHandlers<Date>
+interface IDateBox extends CruxWidget, HasValue<Date>, Focusable, HasValueChangeHandlers<Date>, HasEnabled
 {
 	public CruxFormat getFormat();
 	public UIObject getPopup();
