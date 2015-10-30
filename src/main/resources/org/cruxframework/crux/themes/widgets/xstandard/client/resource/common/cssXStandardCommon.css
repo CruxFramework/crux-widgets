@@ -274,6 +274,7 @@ Inputs / Textarea
 
 .gwt-TextBox,
 .gwt-TextArea,
+.gwt-DateBox,
 .crux-DateBox,
 .crux-Filter,
 .crux-NumberTextBox,
@@ -291,6 +292,7 @@ Inputs / Textarea
 
 .gwt-TextBox:hover,
 .gwt-TextArea:hover,
+.gwt-DateBox:hover,
 .crux-DateBox:hover,
 .crux-Filter:hover,
 .crux-NumberTextBox:hover,
@@ -302,6 +304,7 @@ Inputs / Textarea
 
 .gwt-TextBox:focus,
 .gwt-TextArea:focus,
+.gwt-DateBox:focus,
 .crux-DateBox:focus,
 .crux-Filter:focus,
 .crux-NumberTextBox:focus,
@@ -315,6 +318,7 @@ Inputs / Textarea
 /* SUCCESS */
 .gwt-TextBox.success,
 .gwt-TextArea.success,
+.gwt-DateBox.success,
 .crux-DateBox.success,
 .crux-Filter.success,
 .crux-NumberTextBox.success,
@@ -331,6 +335,7 @@ Inputs / Textarea
 {
 .gwt-TextBox.success,
 .gwt-TextArea.success,
+.gwt-DateBox.success,
 .crux-DateBox.success,
 .crux-Filter.success,
 .crux-NumberTextBox.success,
@@ -342,6 +347,7 @@ Inputs / Textarea
 
 .gwt-TextBox.success:hover,
 .gwt-TextArea.success:hover,
+.gwt-DateBox.success:hover,
 .crux-DateBox.success:hover,
 .crux-Filter.success:hover,
 .crux-MaskedTextBox.success:hover
@@ -350,6 +356,7 @@ Inputs / Textarea
 }
 .gwt-TextBox.success:focus,
 .gwt-TextArea.success:focus,
+.gwt-DateBox.success:focus,
 .crux-DateBox.success:focus,
 .crux-Filter.success:focus,
 .crux-NumberTextBox.success:focus
@@ -360,6 +367,7 @@ Inputs / Textarea
 /* WARNING */
 .gwt-TextBox.warn,
 .gwt-TextArea.warn,
+.gwt-DateBox.warn,
 .crux-DateBox.warn,
 .crux-Filter.warn,
 .crux-NumberTextBox.warn,
@@ -376,6 +384,7 @@ Inputs / Textarea
 {
 .gwt-TextBox.warn,
 .gwt-TextArea.warn,
+.gwt-DateBox.warn,
 .crux-DateBox.warn,
 .crux-Filter.warn,
 .crux-NumberTextBox.warn,
@@ -387,6 +396,7 @@ Inputs / Textarea
 
 .gwt-TextBox.warn:hover,
 .gwt-TextArea.warn:hover,
+.gwt-DateBox.warn:hover,
 .crux-DateBox.warn:hover,
 .crux-Filter.warn:hover,
 .crux-NumberTextBox.warn:hover,
@@ -397,6 +407,7 @@ Inputs / Textarea
 
 .gwt-TextBox.warn:focus,
 .gwt-TextArea.warn:focus,
+.gwt-DateBox.warn:focus,
 .crux-DateBox.warn:focus,
 .crux-Filter.warn:focus,
 .crux-NumberTextBox.warn:focus,
@@ -408,6 +419,7 @@ Inputs / Textarea
 /* ERROR */
 .gwt-TextBox.error,
 .gwt-TextArea.error,
+.gwt-DateBox.error,
 .crux-DateBox.error,
 .crux-Filter.error,
 .crux-NumberTextBox.error
@@ -423,6 +435,7 @@ Inputs / Textarea
 {
 .gwt-TextBox.error,
 .gwt-TextArea.error,
+.gwt-DateBox.error,
 .crux-DateBox.error,
 .crux-Filter.error,
 .crux-NumberTextBox.error
@@ -433,6 +446,7 @@ Inputs / Textarea
 
 .gwt-TextBox.error:hover,
 .gwt-TextArea.error:hover,
+.gwt-DateBox.error:hover,
 .crux-DateBox.error:hover,
 .crux-Filter.error:hover,
 .crux-NumberTextBox.error:hover,
@@ -443,6 +457,7 @@ Inputs / Textarea
 
 .gwt-TextBox.error:focus,
 .gwt-TextArea.error:focus,
+.gwt-DateBox.error:focus,
 .crux-DateBox.error:focus,
 .crux-Filter.error:focus,
 .crux-NumberTextBox.error:focus
@@ -454,6 +469,7 @@ Inputs / Textarea
 /* SIZES */
 .gwt-TextBox.mini,
 .gwt-TextArea.mini,
+.gwt-DateBox.mini,
 .crux-DateBox.mini,
 .crux-Filter.mini,
 .crux-NumberTextBox.mini,
@@ -465,6 +481,7 @@ Inputs / Textarea
 
 .gwt-TextBox.xsmall,
 .gwt-TextArea.xsmall,
+.gwt-DateBox.xsmall,
 .crux-DateBox.xsmall,
 .crux-Filter.xsmall,
 .crux-NumberTextBox.xsmall
@@ -476,6 +493,7 @@ Inputs / Textarea
 
 .gwt-TextBox.small,
 .gwt-TextArea.small,
+.gwt-DateBox.small,
 .crux-DateBox.small,
 .crux-Filter.small,
 .crux-NumberTextBox.small,
@@ -487,6 +505,7 @@ Inputs / Textarea
 
 .gwt-TextBox.large,
 .gwt-TextArea.large,
+.gwt-DateBox.large,
 .crux-DateBox.large,
 .crux-Filter.large,
 .crux-NumberTextBox.large,
@@ -497,6 +516,7 @@ Inputs / Textarea
 
 .gwt-TextBox.xlarge,
 .gwt-TextArea.xlarge,
+.gwt-DateBox.xlarge,
 .crux-DateBox.xlarge,
 .crux-Filter.xlarge,
 .crux-NumberTextBox.xlarge,
@@ -508,6 +528,7 @@ Inputs / Textarea
 /* STYLES */
 .gwt-TextBox.bullet,
 .gwt-TextArea.bullet,
+.gwt-DateBox.bullet,
 .crux-DateBox.bullet,
 .crux-Filter.bullet,
 .crux-NumberTextBox.bullet,
@@ -517,6 +538,7 @@ Inputs / Textarea
 }
 .gwt-TextBox.round,
 .gwt-TextArea.round,
+.gwt-DateBox.round,
 .crux-DateBox.round,
 .crux-Filter.round,
 .crux-NumberTextBox.round,
@@ -528,6 +550,7 @@ Inputs / Textarea
 /* DISABLED */
 .gwt-TextBox:disabled,
 .gwt-TextArea:disabled,
+.gwt-DateBox:disabled,
 .crux-DateBox:disabled,
 .crux-Filter:disabled,
 .crux-NumberTextBox:disabled,
@@ -551,6 +574,7 @@ Inputs / Textarea
 .crux-ColorPickerDialog,
 .grid-detail-dialog,
 .crux-popupPanel,
+.gwt-DatePicker
 .crux-DatePicker
 {
 	pointer-events: auto;
@@ -917,6 +941,7 @@ Inputs / Textarea
 /****************
     DatePicker
 ****************/
+.gwt-DatePicker,
 .crux-DatePicker
 {
 	background:#eee;
@@ -925,32 +950,38 @@ Inputs / Textarea
 	overflow:hidden;
 }
 
+.gwt-DatePicker .datePickerDays,
 .crux-DatePicker .datePickerDays
 {
 	border-collapse:collapse;
 	background:#fff;
 }
 
+.gwt-DatePicker .datePickerDays tbody tr td,
 .crux-DatePicker .datePickerDays tbody tr td
 {
 	border:1px solid #ccc;
 }
 
+.gwt-DatePicker .datePickerDays tbody tr td:first-child,
 .crux-DatePicker .datePickerDays tbody tr td:first-child
 {
 	border-left:none;
 }
 
+.gwt-DatePicker .datePickerDays tbody tr td:last-child,
 .crux-DatePicker .datePickerDays tbody tr td:last-child
 {
 	border-right:none;
 }
 
+.gwt-DatePicker .datePickerDays tbody tr:last-child td,
 .crux-DatePicker .datePickerDays tbody tr:last-child td
 {
 	border-bottom:none;
 }
 
+.gwt-DatePicker .datePickerDays .datePickerDay,
 .crux-DatePicker .datePickerDays .datePickerDay
 {
 	padding:6px;
@@ -958,12 +989,13 @@ Inputs / Textarea
 	cursor:default;
 }
 
+.gwt-DatePicker .datePickerDays .datePickerDay:hover,
 .crux-DatePicker .datePickerDays .datePickerDay:hover
 {
 	background:#f5f5f5;
 }
 
-.crux-DatePicker .datePickerDays .datePickerWeekdayLabel,
+.gwt-DatePicker .datePickerDays .datePickerWeekdayLabel,
 .crux-DatePicker .datePickerDays .datePickerWeekendLabel
 {
 	background:rgba(51, 51, 51, 0.55);
@@ -973,32 +1005,38 @@ Inputs / Textarea
 	text-align:center;
 }
 
+.gwt-DatePicker .datePickerMonthSelector,
 .crux-DatePicker .datePickerMonthSelector
 {
 	width:100%;
 }
 
+.gwt-DatePicker .datePickerMonthSelector td[width="100%"],
 .crux-DatePicker .datePickerMonthSelector td[width="100%"]
 {
 	text-align:center;
 }
 
+.gwt-DatePicker .datePickerMonthSelector td,
 .crux-DatePicker .datePickerMonthSelector td
 {
 	box-shadow:0 -2px rgba(0,0,0,0.04) inset;
 }
 
+.gwt-DatePicker .datePickerMonthSelector td > div,
 .crux-DatePicker .datePickerMonthSelector td > div
 {
 	padding:5px;
 	cursor:pointer;
 }
 
+.gwt-DatePicker .datePickerMonthSelector td:hover,
 .crux-DatePicker .datePickerMonthSelector td:hover
 {
 	background:#e0e0e0;
 }
 
+.gwt-DatePicker .datePickerMonthSelector td[width="100%"]:hover,
 .crux-DatePicker .datePickerMonthSelector td[width="100%"]:hover
 {
 	background:none;

@@ -1022,27 +1022,33 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 ****************/
 
 .crux-popupPanel,
+.gwt-DatePicker,
 .crux-DatePicker
 {
 	width:100%;
 }
 
+.gwt-DatePicker .datePickerMonthSelector,
+.gwt-DatePicker .datePickerDays,
 .crux-DatePicker .datePickerMonthSelector,
 .crux-DatePicker .datePickerDays
 {
 	width:100% !important;
 }
 
+.gwt-DatePicker .datePickerDays,
 .crux-DatePicker .datePickerDays
 {
 	height:auto !important;
 }
 
+.gwt-DatePicker .datePickerDays .datePickerDay,
 .crux-DatePicker .datePickerDays .datePickerDay
 {
 	padding:13px;
 }
 
+.gwt-DatePicker .datePickerMonthSelector td,
 .crux-DatePicker .datePickerMonthSelector td
 {
 	text-align:center;
