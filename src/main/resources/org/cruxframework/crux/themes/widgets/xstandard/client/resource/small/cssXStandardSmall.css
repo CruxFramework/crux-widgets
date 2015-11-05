@@ -1028,6 +1028,11 @@ TABLE.menuTabsHeaderSplitPanel>TBODY>TR:first-child>TD
 	width:100%;
 }
 
+.dateBoxPopup > .popupContent 
+{
+    width: auto;
+}
+
 .gwt-DatePicker .datePickerMonthSelector,
 .gwt-DatePicker .datePickerDays,
 .crux-DatePicker .datePickerMonthSelector,
