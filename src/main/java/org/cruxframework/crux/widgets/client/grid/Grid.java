@@ -95,7 +95,9 @@ import com.google.gwt.user.client.ui.Widget;
  * A Data grid component that allows pagination, edition, sort, frozen headers & columns and 
  * 
  * @author Gesse S. F. Dafe
+ * @see DataGrid from SmartFaces.
  */
+@Deprecated
 public class Grid extends AbstractGrid<DataRow> implements Pageable, HasDataSource<PagedDataSource<?>>, HasBeforeRowSelectHandlers
 {
 	private int pageSize;
