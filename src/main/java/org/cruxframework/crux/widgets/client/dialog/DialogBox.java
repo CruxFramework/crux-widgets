@@ -18,7 +18,9 @@ package org.cruxframework.crux.widgets.client.dialog;
 /**
  * A simple dialog box built upon DIV elements.
  * @author Gesse Dafe
+ * @see org.cruxframework.crux.smartfaces.client.dialog.DialogBox
  */
+@Deprecated
 public class DialogBox extends AbstractDialogBox
 {
 	public DialogBox()

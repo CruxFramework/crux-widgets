@@ -38,7 +38,9 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * A panel that swaps its contents using slide animations.
  * @author Gesse Dafe
+ * @see org.cruxframework.crux.smartfaces.client.swappanel.SwapPanel
  */
+@Deprecated
 public class HorizontalSwapPanel extends Composite implements HasSwapHandlers
 {
 	public static enum Direction{FORWARD, BACKWARDS}

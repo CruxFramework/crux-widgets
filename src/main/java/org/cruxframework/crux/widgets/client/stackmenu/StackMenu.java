@@ -33,8 +33,9 @@ import com.google.gwt.user.client.ui.FlowPanel;
  * A vertical hierarchical menu.
  * 
  * @author Gesse Dafe
+ * @see org.cruxframework.crux.smartfaces.client.menu.Menu
  */
-//TODO deprecar essa classe.... criar um outro menu semanticamente correto <ul><li> e com base num <nav>
+@Deprecated
 public class StackMenu extends Composite implements Filterable<StackMenuItem>, HasSelectionHandlers<StackMenuItem>
 {
 	public static final String DEFAULT_STYLE_NAME = "crux-StackMenu";

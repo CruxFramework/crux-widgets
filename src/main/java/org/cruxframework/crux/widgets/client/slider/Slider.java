@@ -37,7 +37,9 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * @author Samuel Almeida Cardoso (samuel@cruxframework.org)
  * A crossdevice panel that swaps its contents using slide animations.
+ * @see org.cruxframework.crux.smartfaces.client.swappanel.SwapPanel
  */
+@Deprecated
 public class Slider extends Composite implements SliderWidget
 {
 	private GeneratedSlider slider;
