@@ -24,7 +24,9 @@ import com.google.gwt.user.client.ui.SimplePanel;
 /**
  * A pager which does not know the total number of pages. So, it can only move the cursor to next or to previous page.  
  * @author Gesse S. F. Dafe
+ * @see org.cruxframework.crux.smartfaces.client.pager.*
  */
+@Deprecated
 public class SequentialPager extends NavigationButtonsPager
 {
 	private HorizontalPanel panel;

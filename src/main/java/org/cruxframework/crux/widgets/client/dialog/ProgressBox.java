@@ -22,7 +22,9 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * A simple dialog which shows a progress message
  * @author Gesse Dafe
+ * @see org.cruxframework.crux.smartfaces.client.dialog.ProgressBox
  */
+@Deprecated
 public class ProgressBox extends AbstractDialogBox
 {
 	/**

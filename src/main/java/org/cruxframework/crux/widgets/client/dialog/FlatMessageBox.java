@@ -27,7 +27,9 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * A simple dialog which shows messages
  * @author Gesse Dafe
+ * @see org.cruxframework.crux.smartfaces.client.dialog.MessageBox
  */
+@Deprecated
 public class FlatMessageBox extends AbstractDialogBox
 {
 	public static enum MessageType

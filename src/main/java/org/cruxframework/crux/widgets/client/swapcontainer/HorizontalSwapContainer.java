@@ -36,9 +36,9 @@ import com.google.gwt.user.client.ui.SimplePanel;
 
 /**
  * @author Thiago da Rosa de Bustamante
- *
+ * @see org.cruxframework.crux.smartfaces.client.swappanel.SwapViewContainer
  */
-@SuppressWarnings("deprecation")
+@Deprecated
 public class HorizontalSwapContainer extends SingleViewContainer implements HasChangeViewHandlers
 {
 	public static final String DEFAULT_STYLE_NAME = "crux-HorizontalSwapContainer";

@@ -27,7 +27,9 @@ import com.google.gwt.user.client.ui.ListBox;
 /**
  * A pager which knows the total number of pages.  
  * @author Gesse S. F. Dafe
+ * @see org.cruxframework.crux.smartfaces.client.pager.*
  */
+@Deprecated
 public class RandomPager extends NavigationButtonsPager
 {
 	private HorizontalPanel panel;

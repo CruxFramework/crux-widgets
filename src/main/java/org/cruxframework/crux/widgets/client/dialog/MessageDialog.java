@@ -58,8 +58,10 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * A simple message dialog box
  * @author Thiago da Rosa de Bustamante
+ * @see org.cruxframework.crux.smartfaces.client.dialog.MessageBox
  *
  */
+@Deprecated
 public class MessageDialog implements HasOkHandlers, HasAnimation, IsWidget, OrientationChangeHandler, HasCloseHandlers<MessageDialog>, HasOpenHandlers<MessageDialog>
 {
 	private static final String DEFAULT_STYLE_NAME = "crux-MessageDialog";

@@ -32,8 +32,10 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * @author Thiago da Rosa de Bustamante
+ * @see org.cruxframework.crux.smartfaces.client.progress.Progress
  *
  */
+@Deprecated
 public class Progress implements HasAnimation, IsWidget
 {
 	public static final String DEFAULT_STYLE_NAME = "crux-Progress" ;

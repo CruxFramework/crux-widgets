@@ -55,8 +55,10 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * A simple confirm dialog box
  * @author Thiago da Rosa de Bustamante
+ * @see org.cruxframework.crux.smartfaces.client.dialog.Confirm
  *
  */
+@Deprecated
 public class ConfirmDialog  implements HasOkHandlers, HasCancelHandlers, HasAnimation, IsWidget, HasCloseHandlers<ConfirmDialog>, HasOpenHandlers<ConfirmDialog>
 {
 	private static final String DEFAULT_STYLE_NAME = "crux-ConfirmDialog";

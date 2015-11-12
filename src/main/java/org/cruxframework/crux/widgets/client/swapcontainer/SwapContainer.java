@@ -23,9 +23,9 @@ import com.google.gwt.user.client.ui.SimplePanel;
 
 /**
  * @author Thiago da Rosa de Bustamante
- *
+ * @see org.cruxframework.crux.smartfaces.client.swappanel.SwapPanel
  */
-//TODO remover isso... criar um outro swap com outros tipod de animacao
+@Deprecated
 public class SwapContainer extends SingleViewContainer
 {
 	public static final String DEFAULT_STYLE_NAME = "crux-SwapContainer";
