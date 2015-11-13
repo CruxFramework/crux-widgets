@@ -20,7 +20,10 @@ import org.cruxframework.crux.core.rebind.AbstractProxyCreator.SourcePrinter;
 import org.cruxframework.crux.core.rebind.CruxGeneratorException;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreator;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreatorContext;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.ProcessingTime;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttribute;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributeDeclaration;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributes;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributesDeclaration;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagEvent;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagEvents;
@@ -32,8 +35,10 @@ import org.cruxframework.crux.widgets.rebind.event.PageEvtBind;
  * @author Gesse S. F. Dafe
  */
 @TagAttributesDeclaration({
-	@TagAttributeDeclaration(value="pageable", required=true),
-	@TagAttributeDeclaration(value="enabled", type=Boolean.class)
+	@TagAttributeDeclaration(value="pageable", required=true, supportsDataBinding=false)
+})
+@TagAttributes({
+	@TagAttribute(value="enabled", type=Boolean.class, processingTime=ProcessingTime.afterAllWidgetsOnView)
 })
 @TagEvents({
 	@TagEvent(PageEvtBind.class)
@@ -47,7 +52,6 @@ public abstract class AbstractPagerFactory extends WidgetCreator<WidgetCreatorCo
 	
 		String widget = context.getWidget();
 		String pageableId = context.readWidgetProperty("pageable");
-		String strEnabled = context.readWidgetProperty("enabled");
 
 		if(pageableId != null)
 		{
@@ -55,10 +59,6 @@ public abstract class AbstractPagerFactory extends WidgetCreator<WidgetCreatorCo
 			printlnPostProcessing("final "+widgetClassName+" "+widget+" = ("+widgetClassName+")"+ getViewVariable()+".getWidget("+EscapeUtils.quote(context.getWidgetId())+");");
 			printlnPostProcessing("assert("+getViewVariable()+".getWidget("+EscapeUtils.quote(pageableId)+") != null):"+EscapeUtils.quote("No pageable widget set for the pager ["+context.getWidgetId()+"], on view ["+getView().getId()+"].")+";");
 			printlnPostProcessing(widget+".setPageable(("+Pageable.class.getCanonicalName()+") "+getViewVariable()+".getWidget("+EscapeUtils.quote(pageableId)+"));");
-			if(strEnabled != null && strEnabled.length() > 0)
-			{
-				printlnPostProcessing(widget+".setEnabled("+Boolean.parseBoolean(strEnabled)+");");
-			}
 		}
 		else
 		{

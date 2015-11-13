@@ -22,8 +22,6 @@ import org.cruxframework.crux.core.client.utils.EscapeUtils;
 import org.cruxframework.crux.core.client.utils.StringUtils;
 import org.cruxframework.crux.core.rebind.AbstractProxyCreator.SourcePrinter;
 import org.cruxframework.crux.core.rebind.CruxGeneratorException;
-import org.cruxframework.crux.core.rebind.screen.widget.AttributeProcessor;
-import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreator;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreatorContext;
 import org.cruxframework.crux.core.rebind.screen.widget.creator.HasAnimationFactory;
 import org.cruxframework.crux.core.rebind.screen.widget.creator.HasBeforeSelectionHandlersFactory;
@@ -36,6 +34,7 @@ import org.cruxframework.crux.core.rebind.screen.widget.creator.event.KeyDownEvt
 import org.cruxframework.crux.core.rebind.screen.widget.creator.event.KeyPressEvtBind;
 import org.cruxframework.crux.core.rebind.screen.widget.creator.event.KeyUpEvtBind;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.DeclarativeFactory;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.ProcessingTime;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttribute;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributeDeclaration;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributes;
@@ -77,7 +76,7 @@ class RollingTabPanelContext extends WidgetCreatorContext
 @DeclarativeFactory(id="rollingTabPanel", library="widgets", targetWidget=RollingTabPanel.class, 
 		description="A tab panel that uses a rolling area for tabs, when a lot of tabs are opened.")
 @TagAttributes({
-	@TagAttribute(value="visibleTab", type=Integer.class, processor=RollingTabPanelFactory.VisibleTabAttributeParser.class)
+	@TagAttribute(value="visibleTab", type=Integer.class, processingTime=ProcessingTime.afterAllWidgetsOnView, method="selectTab")
 })
 @TagChildren({
 	@TagChild(RollingTabPanelFactory.TabProcessor.class)
@@ -88,26 +87,6 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 {
 	 private static Logger logger = Logger.getLogger(RollingTabPanelFactory.class.getName());
 	 
-	/**
-	 * @author Thiago da Rosa de Bustamante
-	 *
-	 */
-	public static class VisibleTabAttributeParser extends AttributeProcessor<RollingTabPanelContext>
-	{
-		public VisibleTabAttributeParser(WidgetCreator<?> widgetCreator)
-        {
-	        super(widgetCreator);
-        }
-
-		public void processAttribute(SourcePrinter out, RollingTabPanelContext context, final String propertyValue)
-        {
-			String widget = context.getWidget();
-			String widgetClassName = getWidgetCreator().getWidgetClassName();
-			printlnPostProcessing("final "+widgetClassName+" "+widget+" = ("+widgetClassName+")"+ getViewVariable()+".getWidget("+EscapeUtils.quote(context.getWidgetId())+");");
-			printlnPostProcessing(widget+".selectTab("+String.valueOf(Integer.parseInt(propertyValue) - 1)+");");
-        }
-	}	
-	
 	@TagConstraints(minOccurs="0", maxOccurs="unbounded", tagName="tab" )
 	@TagAttributesDeclaration({
 		@TagAttributeDeclaration(value="tabEnabled", type=Boolean.class, defaultValue="true"),

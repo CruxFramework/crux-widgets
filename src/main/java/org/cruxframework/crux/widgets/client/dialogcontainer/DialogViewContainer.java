@@ -290,7 +290,6 @@ public class DialogViewContainer extends SingleViewContainer
 	 */
 	public void center()
 	{
-		assert(getActiveView() != null):"There is no View loaded into this container.";
 		bindToDOM();
 		dialog.center();
 	}
@@ -309,7 +308,6 @@ public class DialogViewContainer extends SingleViewContainer
 	 */
 	public void openDialog()
 	{
-		assert(getActiveView() != null):"There is no View loaded into this container.";
 		bindToDOM();
 		dialog.show();
 	}
