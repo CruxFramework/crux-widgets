@@ -48,9 +48,9 @@ import com.google.gwt.user.client.ui.ValueBoxBase;
 
 /**
  * @author Thiago da Rosa de Bustamante
- *
+ * @see org.cruxframework.crux.smartfaces.client.input.NumberBox
  */
-//TODO refatorar isso. Deveriamos ter no futuro boxs usando html5 apenas
+@Deprecated
 public class NumberTextBox extends Composite implements HasValue<Integer>, HasEnabled, HasAllFocusHandlers, HasName, HasAllKeyHandlers, Focusable
 {
 	private Impl impl;
