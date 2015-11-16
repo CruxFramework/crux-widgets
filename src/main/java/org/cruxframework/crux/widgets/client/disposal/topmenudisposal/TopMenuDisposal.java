@@ -22,13 +22,14 @@ import org.cruxframework.crux.core.client.screen.DeviceAdaptive.Templates;
 
 /**
  * @author Thiago da Rosa de Bustamante
- *
+ * @see org.cruxframework.crux.smartfaces.client.disposal.menudisposal.TopMenuDisposal
  */
 @Templates({
 	@Template(name="topMenuDisposalLarge", device=Device.all),
 	@Template(name="topMenuDisposalSmall", device=Device.smallDisplayArrows),
 	@Template(name="topMenuDisposalSmall", device=Device.smallDisplayTouch)
 })
+@Deprecated
 public interface TopMenuDisposal extends DeviceAdaptive
 {
 	public static final String HASH = "#";

@@ -47,6 +47,7 @@ import com.google.gwt.user.client.ui.Widget;
  * The base implementation for dialog boxes.
  * @author Gesse Dafe
  */
+@Deprecated
 public abstract class AbstractDialogBox extends PopupPanel implements Movable<Label>, Resizable<Label>, HasCloseHandlers<PopupPanel>, HasOpenHandlers<PopupPanel>
 {
 	private static final int MIN_WIDTH = 100;

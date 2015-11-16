@@ -46,6 +46,7 @@ import org.cruxframework.crux.widgets.client.grid.WidgetColumnDefinition;
 import org.cruxframework.crux.widgets.client.grid.WidgetColumnDefinition.WidgetColumnCreator;
 import org.cruxframework.crux.widgets.client.paging.Pageable;
 import org.cruxframework.crux.widgets.client.paging.Pager;
+
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -72,8 +73,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * @author wesley.diniz
- *
+ * @see org.cruxframework.crux.smartfaces.client.grid.DataGrid<T>
  */
+@Deprecated
 public class DeviceAdaptiveGrid extends Composite implements Pageable, HasDataSource<PagedDataSource<?>>
 {
 	protected GridImpl gridImpl;

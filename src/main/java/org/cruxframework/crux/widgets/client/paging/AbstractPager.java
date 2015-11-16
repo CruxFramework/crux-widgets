@@ -25,9 +25,9 @@ import com.google.gwt.user.client.ui.Composite;
 /**
  * Base implementation for a Pager
  * @author Gesse S. F. Dafe
+ * @see org.cruxframework.crux.core.client.dataprovider.pager.AbstractPager<T>
  */
-//TODO refatorar este componente. Nao usar table, mas sim NavPanel.
-//TODO incluir aqui um scrollPager, semelhante ao do showcase do GWT
+@Deprecated
 public abstract class AbstractPager extends Composite implements Pager
 {
 	private Pageable pageable;
