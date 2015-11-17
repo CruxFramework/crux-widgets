@@ -37,7 +37,6 @@ import com.google.gwt.view.client.MultiSelectionModel;
  * @author Samuel Almeida Cardoso (samuel@cruxframework.org)
  * @param <T> the ListShuttle type object.
  */
-//TODO refatorar este componente
 public class ListShuttle<T> extends Composite implements IListShuttle<T>
 {
 	private boolean enabled;

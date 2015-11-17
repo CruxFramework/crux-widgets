@@ -21,7 +21,11 @@ import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasVisibility;
 import com.google.gwt.user.client.ui.IsWidget;
 
-
+/**
+ * @author samuel.cardoso
+ * @see org.cruxframework.crux.core.client.dataprovider.pager.Pager<T>
+ */
+@Deprecated
 public interface Pager extends IsWidget, HasPageHandlers, HasVisibility, HasEnabled
 {
 	void update(int currentPage, boolean isLastPage);

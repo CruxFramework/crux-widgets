@@ -33,6 +33,7 @@ import com.google.gwt.user.client.ui.MenuItem;
 /**
  * @author Gesse Dafe
  */
+@Deprecated
 @Controller("topMenuDisposalLargeController")
 public class TopMenuDisposalLargeController extends DeviceAdaptiveController implements TopMenuDisposal
 {

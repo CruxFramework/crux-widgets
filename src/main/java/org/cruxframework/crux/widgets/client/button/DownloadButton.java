@@ -25,9 +25,9 @@ import org.cruxframework.crux.widgets.client.event.HasSelectHandlers;
 import org.cruxframework.crux.widgets.client.event.SelectHandler;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.http.client.URL;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasEnabled;
