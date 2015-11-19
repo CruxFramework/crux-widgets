@@ -83,7 +83,7 @@ import com.google.gwt.user.client.ui.HasVerticalAlignment;
 	@TagAttributeDeclaration(value="detailDialogTitle", type=String.class, defaultValue=" ")
 })
 @TagAttributes({
-	@TagAttribute(value="dataSource", processor=DeviceAdaptiveGridFactory.DataSourceAttributeParser.class)
+	@TagAttribute(value="dataSource", processor=DeviceAdaptiveGridFactory.DataSourceAttributeParser.class, supportsDataBinding=false)
 })
 @TagEvents({
 	@TagEvent(RowRenderEvtBind.class)

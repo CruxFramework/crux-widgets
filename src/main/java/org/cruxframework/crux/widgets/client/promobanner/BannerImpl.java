@@ -150,7 +150,7 @@ abstract class BannerImpl extends Composite
 	{
 		SimplePanel panel = new SimplePanel();
 		Style style = panel.getElement().getStyle();
-		style.setProperty("background", "url(" + Screen.rewriteUrl(image.getSafeUri().asString()) + ") no-repeat " + (-image.getLeft() + "px ") + (-image.getTop() + "px"));
+		style.setProperty("background", "url(" + image.getSafeUri().asString() + ") no-repeat " + (-image.getLeft() + "px ") + (-image.getTop() + "px"));
 		style.setPropertyPx("width", image.getWidth());
 		style.setPropertyPx("height", image.getHeight());
 		
@@ -160,7 +160,7 @@ abstract class BannerImpl extends Composite
 	protected void addBanner(String imageURL, String title, String text,  String styleName, String buttonLabel, final SelectHandler selectHandler)
 	{
 		SimplePanel panel = new SimplePanel();
-		panel.getElement().getStyle().setBackgroundImage("url(" + Screen.rewriteUrl(imageURL) + ")");
+		panel.getElement().getStyle().setBackgroundImage("url(" + imageURL + ")");
 		panel.setStyleName("promoBannerImage");
 		doAddBanner(title, text, styleName, buttonLabel, selectHandler, panel);
 	}

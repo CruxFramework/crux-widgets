@@ -50,7 +50,7 @@ import com.google.gwt.resources.client.ImageResource;
 	@TagAttribute(value="width", description="Sets the object's width, in CSS units (e.g. \"10px\", \"1em\"). This width does not include decorations such as border, margin, and padding."),
 	@TagAttribute(value="height", description="Sets the object's height, in CSS units (e.g. \"10px\", \"1em\"). This height does not include decorations such as border, margin, and padding."),
 	@TagAttribute(value="altText"),
-	@TagAttribute(value="visibleRect", processor=ImageFactory.VisibleRectAttributeParser.class)
+	@TagAttribute(value="visibleRect", processor=ImageFactory.VisibleRectAttributeParser.class, supportsDataBinding=false)
 })	
 @TagEvents({
 	@TagEvent(LoadEvtBind.class),
@@ -96,13 +96,13 @@ public class ImageFactory extends WidgetCreator<WidgetCreatorContext>
 	        	out.println("final " + ImageResource.class.getCanonicalName()+" "+resource+" = "+getWidgetCreator().getResourceAccessExpression(property)+";");
 	        	
 	        	out.println("com.google.gwt.core.client.Scheduler.get().scheduleDeferred(new com.google.gwt.core.client.Scheduler.ScheduledCommand() { @Override public void execute() {");
-	        	out.println(context.getWidget() + ".setUrlAndVisibleRect(Screen.rewriteUrl("+
-	        			resource + ".getSafeUri().asString()), "+resource+".getLeft(), "+resource+".getTop(), "+height+", "+width+");");
+	        	out.println(context.getWidget() + ".setUrlAndVisibleRect("+
+	        			resource + ".getSafeUri().asString(), "+resource+".getLeft(), "+resource+".getTop(), "+height+", "+width+");");
 	        	out.println(" } });");
 	        }
 	        else
 	        {
-	        	out.println(context.getWidget()+".setUrl(Screen.rewriteUrl("+EscapeUtils.quote(property)+"));");
+	        	out.println(context.getWidget()+".setUrl("+EscapeUtils.quote(property)+");");
 	        }
         }
 	}
