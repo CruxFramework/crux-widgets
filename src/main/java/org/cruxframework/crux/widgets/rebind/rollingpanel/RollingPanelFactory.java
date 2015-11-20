@@ -107,7 +107,7 @@ public class RollingPanelFactory extends WidgetCreator<RollingPanelContext>
 		}
 	}
 		
-	@TagConstraints(type=AnyWidget.class)
+	@TagConstraints(type=AnyWidget.class, autoProcessingEnabled=false)
 	public static class VerticalWidgetProcessor extends WidgetChildProcessor<RollingPanelContext> 
 	{
 		@Override

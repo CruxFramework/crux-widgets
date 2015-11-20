@@ -50,7 +50,7 @@ import org.cruxframework.crux.widgets.client.maskedtextbox.MaskedTextBox;
 	@TagAttribute(value="maxLength", type=Integer.class),
 	@TagAttribute(value="accessKey", type=Character.class),
 	@TagAttribute(value="focus", type=Boolean.class),
-	@TagAttribute(value="value", processor=MaskedTextBoxFactory.ValueAttributeParser.class),
+	@TagAttribute(value="value", property="unformattedValue", processor=MaskedTextBoxFactory.ValueAttributeParser.class),
 	@TagAttribute(value="clearIfNotValid", type=Boolean.class, defaultValue="true")
 })
 public class MaskedTextBoxFactory extends WidgetCreator<WidgetCreatorContext> 

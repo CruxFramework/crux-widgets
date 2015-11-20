@@ -42,7 +42,7 @@ import org.cruxframework.crux.widgets.client.maskedlabel.MaskedLabel;
 @DeclarativeFactory(id="maskedLabel", library="widgets", targetWidget=MaskedLabel.class, 
 	description="An information input component that can be associated with a Formatter to guide the user during the filling-out process and ensure the conversion of this information into typed data to be consumed by application")
 @TagAttributes({
-	@TagAttribute(value="text", processor=MaskedLabelFactory.TextAttributeParser.class)
+	@TagAttribute(value="text", property="unformattedValue", processor=MaskedLabelFactory.TextAttributeParser.class)
 })
 public class MaskedLabelFactory extends WidgetCreator<WidgetCreatorContext> 
 				implements HasDirectionFactory<WidgetCreatorContext>, HasClickHandlersFactory<WidgetCreatorContext>, 

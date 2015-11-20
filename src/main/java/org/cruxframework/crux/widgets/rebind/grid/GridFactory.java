@@ -95,7 +95,8 @@ import com.google.gwt.user.client.ui.HasVerticalAlignment;
 	@TagAttributeDeclaration(value="cancelButtonTooltip", type=String.class,defaultValue="false",supportsI18N=true,supportsResources=true,description="Tooltip message that will be showed on CANCEL button")
 })
 @TagAttributes({
-	@TagAttribute(value="dataSource", processor=GridFactory.DataSourceAttributeParser.class, description="A data grid component that allows pagination, edition, sort, frozen headers and datasource integration")
+	@TagAttribute(value="dataSource", processor=GridFactory.DataSourceAttributeParser.class, supportsDataBinding=false, 
+				  description="A data grid component that allows pagination, edition, sort, frozen headers and datasource integration")
 })
 @TagEvents({
 	@TagEvent(RowClickEvtBind.class),

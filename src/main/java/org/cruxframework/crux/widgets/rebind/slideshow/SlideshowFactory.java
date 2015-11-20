@@ -36,6 +36,7 @@ import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagChildren;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagConstraints;
 import org.cruxframework.crux.core.utils.JClassUtils;
 import org.cruxframework.crux.widgets.client.slideshow.Slideshow;
+import org.cruxframework.crux.widgets.client.slideshow.Slideshow.Layout;
 import org.cruxframework.crux.widgets.client.slideshow.data.AlbumService.Callback;
 import org.cruxframework.crux.widgets.client.slideshow.data.PhotoAlbum;
 
@@ -59,7 +60,7 @@ class SlideshowContext extends WidgetCreatorContext
 @DeclarativeFactory(id="slideshow", library="widgets", targetWidget=Slideshow.class, 
 	description="A slideshow panel, to present a collection of images.")
 @TagAttributes({
-	@TagAttribute(value="layout", processor=SlideshowFactory.LayoutAttributeProcessor.class),
+	@TagAttribute(value="layout", processor=SlideshowFactory.LayoutAttributeProcessor.class, widgetType=Layout.class),
 	@TagAttribute(value="preloadNextImages", type=Boolean.class, defaultValue="true"),
 	@TagAttribute(value="transitionDelay", type=Integer.class, defaultValue="5000")
 })

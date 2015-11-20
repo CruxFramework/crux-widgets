@@ -36,7 +36,8 @@ import org.cruxframework.crux.widgets.client.slider.Slider;
 @TagAttributes({
 	@TagAttribute(value="circularShowing", type=Boolean.class, defaultValue="false"),
 	@TagAttribute(value="slideTransitionDuration", type=Integer.class, defaultValue="500"),
-	@TagAttribute(value="showFirstWidget", type=Boolean.class, defaultValue="true", processor=SliderFactory.ShowFirstWidgetProcessor.class)
+	@TagAttribute(value="showFirstWidget", type=Boolean.class, 
+				  defaultValue="true", processor=SliderFactory.ShowFirstWidgetProcessor.class, supportsDataBinding=false)
 })
 @TagChildren({
 	@TagChild(SliderFactory.FieldWidgetChildProcessor.class)

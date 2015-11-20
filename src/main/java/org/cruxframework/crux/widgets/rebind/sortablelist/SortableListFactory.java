@@ -50,7 +50,7 @@ public class SortableListFactory extends WidgetCreator<WidgetCreatorContext>
 	{
 	}
 	
-	@TagConstraints(type=AnyWidget.class, description="The widget inserted into the item.")
+	@TagConstraints(type=AnyWidget.class, autoProcessingEnabled=false, description="The widget inserted into the item.")
 	public static class WidgetProcessor extends WidgetChildProcessor<WidgetCreatorContext>
 	{
 		@Override

@@ -147,7 +147,7 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 	})	
 	public static class WidgetTitleTabProcessor extends WidgetChildProcessor<RollingTabPanelContext> {}
 
-	@TagConstraints(type=AnyWidget.class)
+	@TagConstraints(type=AnyWidget.class, autoProcessingEnabled=false)
 	public static class WidgetTitleProcessor extends WidgetChildProcessor<RollingTabPanelContext> 
 	{
 		@Override
@@ -169,7 +169,7 @@ public class RollingTabPanelFactory extends CompositeFactory<RollingTabPanelCont
 	})	
 	public static class TabWidgetProcessor extends WidgetChildProcessor<RollingTabPanelContext> {}
 
-	@TagConstraints(type=AnyWidget.class)
+	@TagConstraints(type=AnyWidget.class, autoProcessingEnabled=false)
 	public static class WidgetContentProcessor extends WidgetChildProcessor<RollingTabPanelContext> 
 	{
 		@Override
