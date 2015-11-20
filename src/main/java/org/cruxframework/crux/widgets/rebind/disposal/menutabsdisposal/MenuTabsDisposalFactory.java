@@ -62,7 +62,7 @@ public class MenuTabsDisposalFactory extends WidgetCreator<WidgetCreatorContext>
 	{
 	}
 	
-	@TagConstraints(minOccurs="0", maxOccurs="1", type=AnyWidget.class)
+	@TagConstraints(minOccurs="0", maxOccurs="1", type=AnyWidget.class, autoProcessingEnabled=false)
 	public static class HeaderContentProcessor extends WidgetChildProcessor<WidgetCreatorContext>
 	{
 		@Override

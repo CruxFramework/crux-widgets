@@ -68,7 +68,7 @@ public class FormDisplayFactory extends CompositeFactory<FormDisplayContext>
 		}
 	}
 	
-	@TagConstraints(minOccurs="1", maxOccurs="1", type=AnyWidget.class)
+	@TagConstraints(minOccurs="1", maxOccurs="1", type=AnyWidget.class, autoProcessingEnabled=false)
 	public static class EntryWidgetProcessor extends WidgetChildProcessor<FormDisplayContext>
 	{
 		@Override
