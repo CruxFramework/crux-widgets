@@ -38,6 +38,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 /**
  * @author Gesse Dafe
  */
+@Deprecated
 @Controller("topMenuDisposalSmallController")
 public class TopMenuDisposalSmallController extends DeviceAdaptiveController implements TopMenuDisposal
 {

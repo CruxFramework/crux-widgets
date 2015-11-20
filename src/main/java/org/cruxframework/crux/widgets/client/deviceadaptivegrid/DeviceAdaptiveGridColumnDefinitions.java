@@ -25,6 +25,7 @@ import org.cruxframework.crux.widgets.client.grid.ColumnDefinitions;
  * @author wesley.diniz
  *
  */
+@Deprecated
 public class DeviceAdaptiveGridColumnDefinitions
 {
 	private ColumnDefinitions largeColumnDefinitions = new ColumnDefinitions();

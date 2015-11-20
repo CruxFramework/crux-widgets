@@ -20,6 +20,7 @@ package org.cruxframework.crux.widgets.client.paging;
  * @author Thiago da Rosa de Bustamante
  *
  */
+@Deprecated
 public interface Pageable
 {
 	/**

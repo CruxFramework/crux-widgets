@@ -17,7 +17,6 @@ package org.cruxframework.crux.widgets.client.deviceadaptivegrid;
 
 
 import org.cruxframework.crux.widgets.client.grid.WidgetColumnDefinition;
-import org.cruxframework.crux.widgets.client.grid.WidgetColumnDefinition.WidgetColumnCreator;
 
 import com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant;
 import com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant;
@@ -26,6 +25,7 @@ import com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConst
  * @author wesley.diniz
  *
  */
+@Deprecated
 public class ActionColumnDefinition extends WidgetColumnDefinition 
 {
 

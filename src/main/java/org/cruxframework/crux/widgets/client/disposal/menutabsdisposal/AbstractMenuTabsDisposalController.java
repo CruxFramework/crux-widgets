@@ -40,7 +40,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Gesse Dafe
  *
  */
-//TODO rever estrutura de componentes em todos os disposal
+//TODO review this component in order to be tableless
 abstract class AbstractMenuTabsDisposalController extends DeviceAdaptiveController implements MenuTabsDisposal
 {
 	private static final String HISTORY_PREFIX = "view:";

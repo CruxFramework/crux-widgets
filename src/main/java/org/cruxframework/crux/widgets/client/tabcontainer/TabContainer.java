@@ -29,9 +29,9 @@ import com.google.gwt.user.client.ui.Panel;
 
 /**
  * @author Thiago da Rosa de Bustamante
- *
+ * @see org.cruxframework.crux.smartfaces.client.tabviewcontainer.TabContainer
  */
-//TODO refatorar. Fazer sem tables
+@Deprecated
 public class TabContainer extends MultipleViewsContainer
 {
 	public static final String DEFAULT_STYLE_NAME = "crux-TabContainer";
