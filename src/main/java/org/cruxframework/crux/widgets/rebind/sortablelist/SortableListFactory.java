@@ -15,8 +15,6 @@
  */
 package org.cruxframework.crux.widgets.rebind.sortablelist;
 
-import org.cruxframework.crux.core.rebind.AbstractProxyCreator.SourcePrinter;
-import org.cruxframework.crux.core.rebind.CruxGeneratorException;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreator;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreatorContext;
 import org.cruxframework.crux.core.rebind.screen.widget.creator.children.WidgetChildProcessor;
@@ -31,9 +29,12 @@ import org.cruxframework.crux.widgets.client.sortablelist.SortableList;
 
 @DeclarativeFactory(id = "sortableList", library = "widgets", targetWidget = SortableList.class, 
 		description="A list of widgets that allow items reordering throug up and down buttons.")
-@TagChildren({ @TagChild(value = SortableListFactory.ContentProcessor.class) })
+@TagChildren({ 
+	@TagChild(value = SortableListFactory.ContentProcessor.class) 
+})
 @TagAttributes({
-	@TagAttribute(value = "header", required = false, supportsI18N = true)})
+	@TagAttribute(value = "header", required = false, supportsI18N = true)
+})
 public class SortableListFactory extends WidgetCreator<WidgetCreatorContext>
 {
 	@Override
@@ -42,22 +43,12 @@ public class SortableListFactory extends WidgetCreator<WidgetCreatorContext>
 		return new WidgetCreatorContext();
 	}
 
-	@TagConstraints(tagName="itemWidget", minOccurs="1", maxOccurs="unbounded", description="The item.")
+	@TagConstraints(tagName="itemWidget", minOccurs="1", maxOccurs="unbounded", description="The widget inserted into the list.")
 	@TagChildren({
 		@TagChild(WidgetProcessor.class)
 	})
-	public static class ContentProcessor extends WidgetChildProcessor<WidgetCreatorContext>
-	{
-	}
+	public static class ContentProcessor extends WidgetChildProcessor<WidgetCreatorContext> {}
 	
-	@TagConstraints(type=AnyWidget.class, autoProcessingEnabled=false, description="The widget inserted into the item.")
-	public static class WidgetProcessor extends WidgetChildProcessor<WidgetCreatorContext>
-	{
-		@Override
-		public void processChildren(SourcePrinter out, WidgetCreatorContext context) throws CruxGeneratorException 
-		{
-			String widget = getWidgetCreator().createChildWidget(out, context.getChildElement(), context);
-			out.println(context.getWidget()+".addItem("+ widget +");");
-		}
-	}
+	@TagConstraints(type=AnyWidget.class, autoProcessingEnabled=true, method="addItem")
+	public static class WidgetProcessor extends WidgetChildProcessor<WidgetCreatorContext> {}
 }

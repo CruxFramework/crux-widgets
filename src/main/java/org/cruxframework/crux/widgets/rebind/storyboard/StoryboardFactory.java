@@ -167,11 +167,4 @@ public class StoryboardFactory  extends ComplexPanelFactory<StoryboardContext> i
     {
 	    return new StoryboardContext();
     }
-	
-	@Override
-	public void instantiateWidget(SourcePrinter out, StoryboardContext context) throws CruxGeneratorException
-	{
-		String className = getWidgetClassName();
-		out.println("final "+className + " " + context.getWidget()+" = GWT.create("+className+".class);");
-	}
 }
