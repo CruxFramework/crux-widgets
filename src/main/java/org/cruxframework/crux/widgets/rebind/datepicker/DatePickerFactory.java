@@ -15,35 +15,112 @@
  */
 package org.cruxframework.crux.widgets.rebind.datepicker;
 
+import org.cruxframework.crux.core.client.utils.EscapeUtils;
+import org.cruxframework.crux.core.rebind.AbstractProxyCreator.SourcePrinter;
+import org.cruxframework.crux.core.rebind.CruxGeneratorException;
+import org.cruxframework.crux.core.rebind.screen.widget.AttributeProcessor;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreator;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreatorContext;
-import org.cruxframework.crux.core.rebind.screen.widget.creator.children.WidgetChildProcessor;
-import org.cruxframework.crux.core.rebind.screen.widget.creator.children.WidgetChildProcessor.HTMLTag;
+import org.cruxframework.crux.core.rebind.screen.widget.creator.HasHighlightHandlersFactory;
+import org.cruxframework.crux.core.rebind.screen.widget.creator.HasShowRangeHandlersFactory;
+import org.cruxframework.crux.core.rebind.screen.widget.creator.HasValueChangeHandlersFactory;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.DeclarativeFactory;
-import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagChild;
-import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagChildren;
-import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagConstraints;
-import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagEvent;
-import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagEvents;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttribute;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributeDeclaration;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributes;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributesDeclaration;
+import org.cruxframework.crux.gwt.client.DateFormatUtil;
+import org.cruxframework.crux.gwt.rebind.CompositeFactory;
 import org.cruxframework.crux.widgets.client.datepicker.DatePicker;
-import org.cruxframework.crux.widgets.rebind.event.SelectEvtBind;
 
 /**
  * @author Samuel Almeida Cardoso (samuel@cruxframework.org)
  *
  */
 @DeclarativeFactory(library="widgets", id="datePicker", targetWidget=DatePicker.class)
-@TagChildren({
-	@TagChild(value=DatePickerFactory.ContentProcessor.class, autoProcess=false)
+@TagAttributes({
+	@TagAttribute(value="value", processor=DatePickerFactory.ValueAttributeProcessor.class),
+	@TagAttribute(value="currentMonth", processor=DatePickerFactory.CurrentMonthAttributeProcessor.class)
 })
-@TagEvents({
-	@TagEvent(SelectEvtBind.class)
+@TagAttributesDeclaration({
+	@TagAttributeDeclaration(value="datePattern", supportsDataBinding=false)
 })
-public class DatePickerFactory extends WidgetCreator<WidgetCreatorContext>
+public class DatePickerFactory extends CompositeFactory<WidgetCreatorContext> 
+       implements HasValueChangeHandlersFactory<WidgetCreatorContext>, 
+                  HasShowRangeHandlersFactory<WidgetCreatorContext>, 
+                  HasHighlightHandlersFactory<WidgetCreatorContext>
 {
-	@TagConstraints(minOccurs="0", maxOccurs="unbounded", type=HTMLTag.class)
-	public static class ContentProcessor extends WidgetChildProcessor<WidgetCreatorContext> {}
+	public static class ValueAttributeProcessor extends AttributeProcessor<WidgetCreatorContext> 
+	{
+		public ValueAttributeProcessor(WidgetCreator<?> widgetCreator)
+		{
+			super(widgetCreator);
+		}
 
+		@Override
+		public void processAttribute(SourcePrinter out, WidgetCreatorContext context, String attributeValue)
+		{
+			String widget = context.getWidget();
+
+			String datePattern = context.readWidgetProperty("datePattern");
+			if (datePattern == null || datePattern.length() == 0)
+			{
+				datePattern = DateFormatUtil.MEDIUM_DATE_PATTERN;
+			}
+			
+			String value = context.readWidgetProperty("value");
+			
+			if (value != null && value.length() > 0)
+			{
+				out.println(widget+".setValue("+
+						DateFormatUtil.class.getCanonicalName()+".getDateTimeFormat("+
+						EscapeUtils.quote(datePattern)+").parse("+EscapeUtils.quote(value)+"));");
+			}		
+
+			String currentMonth = context.readWidgetProperty("currentMonth");
+			if (currentMonth != null && currentMonth.length() > 0)
+			{
+				out.println(widget+".setCurrentMonth("+
+						DateFormatUtil.class.getCanonicalName()+".getDateTimeFormat("+
+						EscapeUtils.quote(datePattern)+").parse("+EscapeUtils.quote(currentMonth)+"));");
+			}
+		}
+	}
+	
+	public static class CurrentMonthAttributeProcessor extends AttributeProcessor<WidgetCreatorContext> 
+	{
+		public CurrentMonthAttributeProcessor(WidgetCreator<?> widgetCreator)
+		{
+			super(widgetCreator);
+		}
+
+		@Override
+		public void processAttribute(SourcePrinter out, WidgetCreatorContext context, String attributeValue)
+		{
+			String widget = context.getWidget();
+
+			String datePattern = context.readWidgetProperty("datePattern");
+			if (datePattern == null || datePattern.length() == 0)
+			{
+				datePattern = DateFormatUtil.MEDIUM_DATE_PATTERN;
+			}
+			
+			String currentMonth = context.readWidgetProperty("currentMonth");
+			if (currentMonth != null && currentMonth.length() > 0)
+			{
+				out.println(widget+".setCurrentMonth("+
+						DateFormatUtil.class.getCanonicalName()+".getDateTimeFormat("+
+						EscapeUtils.quote(datePattern)+").parse("+EscapeUtils.quote(currentMonth)+"));");
+			}
+		}
+	}
+	
+	@Override
+	public void processAttributes(SourcePrinter out, WidgetCreatorContext context) throws CruxGeneratorException
+	{
+		super.processAttributes(out, context);
+	}
+	
 	@Override
     public WidgetCreatorContext instantiateContext()
     {
