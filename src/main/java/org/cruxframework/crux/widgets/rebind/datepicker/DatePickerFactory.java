@@ -15,14 +15,16 @@
  */
 package org.cruxframework.crux.widgets.rebind.datepicker;
 
+import org.cruxframework.crux.core.rebind.AbstractProxyCreator.SourcePrinter;
+import org.cruxframework.crux.core.rebind.CruxGeneratorException;
+import org.cruxframework.crux.core.rebind.screen.widget.ExpressionDataBinding;
+import org.cruxframework.crux.core.rebind.screen.widget.PropertyBindInfo;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreator;
 import org.cruxframework.crux.core.rebind.screen.widget.WidgetCreatorContext;
-import org.cruxframework.crux.core.rebind.screen.widget.creator.children.WidgetChildProcessor;
-import org.cruxframework.crux.core.rebind.screen.widget.creator.children.WidgetChildProcessor.HTMLTag;
+import org.cruxframework.crux.core.rebind.screen.widget.creator.HasValueChangeHandlersFactory;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.DeclarativeFactory;
-import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagChild;
-import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagChildren;
-import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagConstraints;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributeDeclaration;
+import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagAttributesDeclaration;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagEvent;
 import org.cruxframework.crux.core.rebind.screen.widget.declarative.TagEvents;
 import org.cruxframework.crux.widgets.client.datepicker.DatePicker;
@@ -33,20 +35,44 @@ import org.cruxframework.crux.widgets.rebind.event.SelectEvtBind;
  *
  */
 @DeclarativeFactory(library="widgets", id="datePicker", targetWidget=DatePicker.class)
-@TagChildren({
-	@TagChild(value=DatePickerFactory.ContentProcessor.class, autoProcess=false)
+@TagAttributesDeclaration({
+	@TagAttributeDeclaration(value="value", type=String.class)
 })
 @TagEvents({
 	@TagEvent(SelectEvtBind.class)
 })
-public class DatePickerFactory extends WidgetCreator<WidgetCreatorContext>
+public class DatePickerFactory extends WidgetCreator<WidgetCreatorContext> 
+	implements HasValueChangeHandlersFactory<WidgetCreatorContext> 
 {
-	@TagConstraints(minOccurs="0", maxOccurs="unbounded", type=HTMLTag.class)
-	public static class ContentProcessor extends WidgetChildProcessor<WidgetCreatorContext> {}
+	@Override
+	public void processAttributes(SourcePrinter out, WidgetCreatorContext context) throws CruxGeneratorException
+	{
+		super.processAttributes(out, context);
+
+		String value = context.readWidgetProperty("value");
+		if (value != null && value.length() > 0)
+		{
+			PropertyBindInfo binding = getObjectDataBinding(value, "value", true, context.getDataBindingProcessor());
+			if (binding != null)
+			{
+				context.registerObjectDataBinding(binding);
+				return;
+			}
+			else
+			{
+				ExpressionDataBinding expressionBinding = getExpressionDataBinding(value, "value", context.getDataBindingProcessor());
+				if (expressionBinding != null)
+				{
+					context.registerExpressionDataBinding(expressionBinding);
+					return;
+				}
+			}	
+		}
+	}
 
 	@Override
-    public WidgetCreatorContext instantiateContext()
-    {
-	    return new WidgetCreatorContext();
-    }
+	public WidgetCreatorContext instantiateContext()
+	{
+		return new WidgetCreatorContext();
+	}
 }
