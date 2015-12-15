@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>crux-widgets</artifactId>
 	<name>Crux Widgets</name>
-	<version>5.4.0</version>
+	<version>5.4.1-SNAPSHOT</version>
 	<description>Crux Widgets Library</description>
 
 	<parent>
@@ -13,7 +13,7 @@
 	</parent>
 	
 	<properties>
-		<crux.version>5.4.0</crux.version>
+		<crux.version>5.4.1-SNAPSHOT</crux.version>
 	</properties>
 	
 	<dependencies>
