@@ -530,7 +530,16 @@ abstract class AbstractFileUploader extends Composite implements HasEnabled, Has
 	protected ProgressBar getProgressBar(String fileName)
 	{
 		FlowPanel filePanel = filePanelWidgets.get(fileName);
-		ProgressBar progressBar = (ProgressBar) filePanel.getWidget(filePanel.getWidgetCount()-1);
+		ProgressBar progressBar = null;
+		Widget widget = filePanel.getWidget(filePanel.getWidgetCount()-1);
+		if(widget instanceof ProgressBar)
+		{
+			progressBar = (ProgressBar) widget;
+		}
+		else
+		{
+			progressBar = (ProgressBar) filePanel.getWidget(filePanel.getWidgetCount()-2);
+		}
 		return progressBar;
 	}
 	
