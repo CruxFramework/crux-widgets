@@ -65,8 +65,7 @@ public class ScrollBannerFactory extends WidgetCreator<WidgetCreatorContext>
 		@Override
 		public void processChildren(SourcePrinter out, WidgetCreatorContext context) throws CruxGeneratorException
 		{
-			String message = getWidgetCreator().getDeclaredMessage(getWidgetCreator().
-					ensureTextChild(context.getChildElement(), true, context.getWidgetId(), false));
+			String message = getWidgetCreator().ensureTextChild(context.getChildElement(), true, context.getWidgetId(), false);
 			String rootWidget = context.getWidget();
 			out.println(rootWidget+".addMessage("+message+");");
 		}

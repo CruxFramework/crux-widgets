@@ -85,7 +85,7 @@ public class MenuTabsDisposalFactory extends WidgetCreator<WidgetCreatorContext>
 		{
 			String label = context.readChildProperty("label");
 			String targetView = context.readChildProperty("targetView");
-			out.print(context.getWidget() + ".addMenuEntry(" + getWidgetCreator().getDeclaredMessage(label) + ", " + EscapeUtils.quote(targetView));
+			out.print(context.getWidget() + ".addMenuEntry(" + getWidgetCreator().resolveI18NString(label) + ", " + EscapeUtils.quote(targetView));
 			out.println(");");
 		}
 	}
@@ -102,7 +102,7 @@ public class MenuTabsDisposalFactory extends WidgetCreator<WidgetCreatorContext>
 		{
 			String label = context.readChildProperty("label");
 			String style = context.readChildProperty("additionalStyleName");
-			out.print(context.getWidget() + ".addMenuSection(" + getWidgetCreator().getDeclaredMessage(label) + ", " + EscapeUtils.quote(style, false) + ");");
+			out.print(context.getWidget() + ".addMenuSection(" + getWidgetCreator().resolveI18NString(label) + ", " + EscapeUtils.quote(style, false) + ");");
 		}
 	}
 	

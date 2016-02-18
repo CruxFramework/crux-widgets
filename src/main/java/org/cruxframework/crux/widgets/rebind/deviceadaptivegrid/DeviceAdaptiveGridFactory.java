@@ -484,7 +484,7 @@ public class DeviceAdaptiveGridFactory extends WidgetCreator<WidgetCreatorContex
 								boolean wrapLine = (strWrapLine != null && strWrapLine.length() > 0) ? Boolean.parseBoolean(strWrapLine) : true;
 								boolean frozen = (strFrozen != null && strFrozen.length() > 0) ? Boolean.parseBoolean(strFrozen) : false;
 								String formatter = (strFormatter != null && strFormatter.length() > 0) ? strFormatter : null;
-								label = (label != null && label.length() > 0) ? getDeclaredMessage(label) : EscapeUtils.quote("");
+								label = (label != null && label.length() > 0) ? resolveI18NString(label) : EscapeUtils.quote("");
 
 								String def = createVariableName("def");
 

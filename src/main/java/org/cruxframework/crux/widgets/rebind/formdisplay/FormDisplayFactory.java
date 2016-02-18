@@ -59,7 +59,7 @@ public class FormDisplayFactory extends CompositeFactory<FormDisplayContext>
 		public void processChildren(SourcePrinter out, FormDisplayContext context) throws CruxGeneratorException 
 		{
 			String label = context.readChildProperty("label");
-			label = (label != null && label.length() > 0) ? getWidgetCreator().getDeclaredMessage(label) : null;
+			label = (label != null && label.length() > 0) ? getWidgetCreator().resolveI18NString(label) : null;
 			context.setLabel(label);
 			
 			String align = context.readChildProperty("horizontalAlignment");
