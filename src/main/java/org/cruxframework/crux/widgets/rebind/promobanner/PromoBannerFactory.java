@@ -107,10 +107,10 @@ public class PromoBannerFactory extends WidgetCreator<WidgetCreatorContext>
 				throw new CruxGeneratorException("You must inform a small image and a large image, or a defaultImage");
 			}
 
-			out.print(", " + getWidgetCreator().getDeclaredMessage(context.readChildProperty("title"))
-					  + ", " + getWidgetCreator().getDeclaredMessage(context.readChildProperty("text"))
+			out.print(", " + getWidgetCreator().resolveI18NString(context.readChildProperty("title"))
+					  + ", " + getWidgetCreator().resolveI18NString(context.readChildProperty("text"))
 					  + ", " + styleName
-					  + ", " + getWidgetCreator().getDeclaredMessage(context.readChildProperty("buttonLabel"))
+					  + ", " + getWidgetCreator().resolveI18NString(context.readChildProperty("buttonLabel"))
 					  + ", ");
 			processEvent(out, context.readChildProperty("onSelect"), getWidgetCreator());			
 			out.println(");");

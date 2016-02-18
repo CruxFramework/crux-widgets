@@ -60,7 +60,7 @@ public class TopMenuDisposalFactory extends WidgetCreator<TopMenuDisposalContext
 		{
 			String label = context.readChildProperty("label");
 			String targetView = context.readChildProperty("targetView");
-			out.print(context.getWidget() + ".addMenuEntry(" + getWidgetCreator().getDeclaredMessage(label) + ", " + EscapeUtils.quote(targetView));
+			out.print(context.getWidget() + ".addMenuEntry(" + getWidgetCreator().resolveI18NString(label) + ", " + EscapeUtils.quote(targetView));
 			out.println(");");
 		}
 	}
