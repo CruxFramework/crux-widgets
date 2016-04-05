@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.cruxframework.crux.core.client.screen.DeviceAdaptive;
 import org.cruxframework.crux.core.client.screen.Screen;
+import org.cruxframework.crux.core.client.screen.views.OrientationChangeEvent;
 import org.cruxframework.crux.core.client.screen.views.OrientationChangeHandler;
 import org.cruxframework.crux.core.client.utils.StringUtils;
 import org.cruxframework.crux.widgets.client.WidgetMessages;
@@ -309,7 +310,7 @@ public class ColorPickerDialog extends DialogBox implements HasCloseHandlers<Pop
 	}
 	
 	@Override
-	public void onOrientationChange() 
+	public void onOrientationChange(OrientationChangeEvent event) 
 	{
 		center();
 	}

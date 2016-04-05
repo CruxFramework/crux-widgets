@@ -17,6 +17,7 @@ package org.cruxframework.crux.widgets.client.slideshow;
 
 import org.cruxframework.crux.core.client.controller.Controller;
 import org.cruxframework.crux.core.client.controller.Expose;
+import org.cruxframework.crux.core.client.screen.views.OrientationChangeEvent;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
@@ -72,9 +73,9 @@ public class SlideshowTouchController extends SlideshowBaseController
 	}
 
 	@Override
-	public void onOrientationChange()
+	public void onOrientationChange(OrientationChangeEvent event)
 	{
-	    super.onOrientationChange();
+	    super.onOrientationChange(event);
 	    adjustTableSize();
 	}
 	
