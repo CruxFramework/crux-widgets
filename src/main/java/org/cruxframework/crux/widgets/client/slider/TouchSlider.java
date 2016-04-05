@@ -20,6 +20,7 @@ import java.util.Date;
 import org.cruxframework.crux.core.client.css.transition.Transition;
 import org.cruxframework.crux.core.client.css.transition.Transition.Callback;
 import org.cruxframework.crux.core.client.screen.Screen;
+import org.cruxframework.crux.core.client.screen.views.OrientationChangeEvent;
 import org.cruxframework.crux.core.client.screen.views.OrientationChangeHandler;
 import org.cruxframework.crux.widgets.client.event.swap.HasSwapHandlers;
 import org.cruxframework.crux.widgets.client.event.swap.SwapEvent;
@@ -352,7 +353,7 @@ public class TouchSlider extends Composite implements HasSwapHandlers, HasSlidin
 
 
 	@Override
-	public void onOrientationChange()
+	public void onOrientationChange(OrientationChangeEvent event)
 	{
 		if (getWidgetCount() > 0)
 		{

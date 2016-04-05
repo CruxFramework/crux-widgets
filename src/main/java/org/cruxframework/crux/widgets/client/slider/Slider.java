@@ -16,6 +16,7 @@
 package org.cruxframework.crux.widgets.client.slider;
 
 import org.cruxframework.crux.core.client.collection.FastList;
+import org.cruxframework.crux.core.client.screen.views.OrientationChangeEvent;
 import org.cruxframework.crux.widgets.client.button.Button;
 import org.cruxframework.crux.widgets.client.event.SelectEvent;
 import org.cruxframework.crux.widgets.client.event.SelectHandler;
@@ -76,9 +77,9 @@ public class Slider extends Composite implements SliderWidget
 		}
 
 		@Override
-		public void onOrientationChange() 
+		public void onOrientationChange(OrientationChangeEvent event) 
 		{
-			slider.onOrientationChange();
+			slider.onOrientationChange(event);
 		}
 
 		@Override
@@ -485,7 +486,7 @@ public class Slider extends Composite implements SliderWidget
 		}
 
 		@Override
-		public void onOrientationChange() 
+		public void onOrientationChange(OrientationChangeEvent event) 
 		{
 			//DO NOTHING
 		}
@@ -669,9 +670,9 @@ public class Slider extends Composite implements SliderWidget
 	}
 
 	@Override
-	public void onOrientationChange() 
+	public void onOrientationChange(OrientationChangeEvent event) 
 	{
-		slider.onOrientationChange();
+		slider.onOrientationChange(event);
 	}
 
 	@Override

@@ -22,6 +22,7 @@ import org.cruxframework.crux.core.client.Crux;
 import org.cruxframework.crux.core.client.collection.FastList;
 import org.cruxframework.crux.core.client.screen.DeviceAdaptive;
 import org.cruxframework.crux.core.client.screen.Screen;
+import org.cruxframework.crux.core.client.screen.views.OrientationChangeEvent;
 import org.cruxframework.crux.core.client.screen.views.OrientationChangeHandler;
 import org.cruxframework.crux.widgets.client.WidgetMessages;
 import org.cruxframework.crux.widgets.client.WidgetMsgFactory;
@@ -414,7 +415,7 @@ public class MessageDialog implements HasOkHandlers, HasAnimation, IsWidget, Ori
 	}
 
 	@Override
-	public void onOrientationChange()
+	public void onOrientationChange(OrientationChangeEvent event)
 	{
 		if (openedDialogBoxes == null)
 		{

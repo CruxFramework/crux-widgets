@@ -21,6 +21,7 @@ import org.cruxframework.crux.core.client.controller.Controller;
 import org.cruxframework.crux.core.client.controller.Expose;
 import org.cruxframework.crux.core.client.controller.crossdevice.DeviceAdaptiveController;
 import org.cruxframework.crux.core.client.ioc.Inject;
+import org.cruxframework.crux.core.client.screen.views.OrientationChangeEvent;
 import org.cruxframework.crux.core.client.screen.views.OrientationChangeHandler;
 import org.cruxframework.crux.core.client.screen.views.View;
 import org.cruxframework.crux.widgets.client.event.openclose.BeforeCloseEvent;
@@ -235,7 +236,7 @@ public class TopToolBarArrowsSmallController extends DeviceAdaptiveController im
 		View.of(this).addWindowOrientationChangeHandler(new OrientationChangeHandler() 
 		{
 			@Override
-			public void onOrientationChange() 
+			public void onOrientationChange(OrientationChangeEvent event) 
 			{
 				setFloatPanelPosition();
 			}

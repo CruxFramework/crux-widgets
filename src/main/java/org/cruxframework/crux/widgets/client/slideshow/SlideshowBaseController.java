@@ -19,6 +19,7 @@ import org.cruxframework.crux.core.client.collection.FastList;
 import org.cruxframework.crux.core.client.collection.FastMap;
 import org.cruxframework.crux.core.client.controller.crossdevice.DeviceAdaptiveController;
 import org.cruxframework.crux.core.client.screen.Screen;
+import org.cruxframework.crux.core.client.screen.views.OrientationChangeEvent;
 import org.cruxframework.crux.core.client.screen.views.OrientationChangeHandler;
 import org.cruxframework.crux.widgets.client.slideshow.data.AlbumService;
 import org.cruxframework.crux.widgets.client.slideshow.data.AlbumService.Callback;
@@ -478,7 +479,7 @@ public abstract class SlideshowBaseController extends DeviceAdaptiveController i
 	}
 	
 	@Override
-    public void onOrientationChange()
+    public void onOrientationChange(OrientationChangeEvent event)
     {
 		FastList<String> keys = imagesCache.keys();
 		
