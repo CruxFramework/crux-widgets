@@ -495,12 +495,6 @@ public class MaskedTextBox extends Composite implements HasFormatter, HasDirecti
 	public void setClearIfNotValid(boolean clearIfNotValid) 
 	{
 		this.clearIfNotValid = clearIfNotValid;
-		
-		if(this.formatter != null && this.formatter instanceof MaskedFormatter)
-		{
-			MaskedFormatter masked = (MaskedFormatter)formatter;
-			masked.applyMask(this, clearIfNotValid);
-		}
 	}
 
 	@Override
